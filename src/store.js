@@ -3,11 +3,13 @@ import { initStore } from 'react-waterfall';
 const store = {
   initialState: {
     loaded:false,
-    curLayerIdx:null
+    curLayerIdx:null,
+    scrollPosition:'middle'
   },
   actions: {
     toggleLoaded: ({ loaded }) => ({ loaded: !loaded }),
-    setLayer: ({curLayerIdx}, newLayerIdx) => ({curLayerIdx: newLayerIdx})
+    setLayer: ({curLayerIdx}, newLayerIdx) => ({curLayerIdx: newLayerIdx}),
+    scrollPosition: ({scrollPosition}, newScrollPosition) => ({scrollPosition: newScrollPosition})
   }
 };
  

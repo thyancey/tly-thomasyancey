@@ -11,7 +11,7 @@ export default class Layer extends Component {
   }
 
   render(){
-    const { layerObj, height } = this.props;
+    const { layerObj } = this.props;
 
     return (
       <section className="layer" >
