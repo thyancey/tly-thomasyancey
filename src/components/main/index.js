@@ -1,32 +1,54 @@
 import React, { Component } from 'react';
 
 import { connect } from 'src/store';
+import NavBar from 'src/components/navbar';
+import Layer from 'src/components/layer/index';
+// import ItemDivider from 'src/components/sections/navbuffer';
+
+import { jobs as JobData } from 'src/data/data.js';
+
 require('./style.less');
 
 class Main extends Component {
 
-  render() {
-    if(!this.props.loaded){
-      return (
-        <div id="sample">
-          <h1>{'Please wait... loading...'}</h1>
-          <button onClick={() => this.props.actions.toggleLoaded()}>{'toggle'}</button>
-        </div>
-      );
-    }else{
-      return (
-        <div id="sample" className="loaded">
-          <h1>{'LOADED'}</h1>
-          <button onClick={() => this.props.actions.toggleLoaded()}>{'toggle'}</button>
-        </div>
-      );
-    }
 
+  renderJobs(){
+    console.log("jobdata", JobData)
+    const jobsList = [];
+    const windowHeight = window.innerHeight || null;
+    const instance = this;
+
+    JobData.forEach((obj, idx) => {
+      jobsList.push(<Layer key={'jb-' + idx} layerObj={obj} height={windowHeight} setLayerIdx={this.props.actions.setLayerIdx}/>);
+    });
+
+    return jobsList;
+  }
+
+
+  componentDidMount(){
+  }
+
+
+
+  render() {
+    return(
+      <div className="main">
+        <div id="region-top" className="region" >
+          {this.renderJobs()}
+        </div>
+        <div id="region-center" className="region" >
+          <NavBar tags={this.props.tags} onSetTag={this.onSetTag}/>
+        </div>
+        <div id="region-bottom" className="region" >
+          {this.renderJobs()}
+        </div>
+      </div>
+    );
   }
 }
 
-//- pass this component through the connect method to attach store values to props.
-//- actions get mapped to props without explicitly stating anything. you can use any action from the store.
 export default connect(state => ({ 
-  loaded: state.loaded
+  loaded: state.loaded,
+  curLayerIdx: state.curLayerIdx
 }))(Main);

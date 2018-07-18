@@ -1,10 +1,58 @@
-@color-red:#E00400;
-@color-yellow:#FFF512;
-@color-green:#1DCF00;
-@color-blue:#1270FF;
-@color-purple:#870099;
 
-@color-grey:#2e2d33;
+@color-white:#FEF8DD;
+@color-black:#000000;
+@color-grey:#373737;
 
-@font-style-body: 'arial';
-@font-style-heading: 'arial';
+@color-blue:#1FB9F3;
+@color-blue-light:#69D1F5;
+@color-blue-dark:#0F5A73;
+
+@color-green: #51F249;
+
+
+@breakpoint-mobile: 750px;
+@breakpoint-tablet: 1000px;
+
+
+@border-radius-large: 3rem;
+@border-radius-medium: 1rem;
+
+@border-thickness-medium: .5rem;
+
+@shadow-z2: -0.1rem 0.1rem .25rem .1rem rgba(0,0,0,0.36);
+@shadow-z3: -.2rem .5rem 1rem .2rem rgba(0,0,0,.36);
+
+.mixin-lighten(@color) {
+  color: lighten(@color, 10%);
+}
+.mixin-bglighten(@color) {
+  background-color: lighten(@color, 10%);
+}
+
+.mixin-text-stroke(@stroke-thickness, @stroke-spread, @stroke-color){
+
+  text-shadow: -@stroke-thickness -@stroke-thickness @stroke-spread @stroke-color,
+                @stroke-thickness -@stroke-thickness @stroke-spread @stroke-color,
+               -@stroke-thickness @stroke-thickness @stroke-spread @stroke-color,
+                @stroke-thickness @stroke-thickness @stroke-spread @stroke-color,
+                -@stroke-thickness -@stroke-thickness @stroke-spread @stroke-color,
+                @stroke-thickness -@stroke-thickness @stroke-spread @stroke-color,
+               -@stroke-thickness @stroke-thickness @stroke-spread @stroke-color,
+                @stroke-thickness @stroke-thickness @stroke-spread @stroke-color,
+                -@stroke-thickness -@stroke-thickness @stroke-spread @stroke-color,
+                @stroke-thickness -@stroke-thickness @stroke-spread @stroke-color,
+               -@stroke-thickness @stroke-thickness @stroke-spread @stroke-color,
+                @stroke-thickness @stroke-thickness @stroke-spread @stroke-color,
+                -@stroke-thickness -@stroke-thickness @stroke-spread @stroke-color,
+                @stroke-thickness -@stroke-thickness @stroke-spread @stroke-color,
+               -@stroke-thickness @stroke-thickness @stroke-spread @stroke-color,
+                @stroke-thickness @stroke-thickness @stroke-spread @stroke-color;
+
+}
+
+
+
+@import (css) url(https://fonts.googleapis.com/css?family=Luckiest+Guy|Hind+Vadodara);
+
+@font-style-heading: 'Luckiest Guy', cursive;
+@font-style-body:'Hind Vadodara', sans-serif;

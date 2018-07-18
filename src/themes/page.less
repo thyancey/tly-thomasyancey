@@ -12,15 +12,51 @@ p, span, h1, h2, h3, h4, h5, h6{
 html{
   font-size: 62.5%;
 
-
   body{
     font-family: @font-style-body;
     font-weight: 500;
     font-size: 1.8rem;
 
     margin:0;
-    background-color:@color-grey;
-    color:@color-red;
+    background-color: @color-blue-light;
+
+    overflow-x:hidden;
   }
 }
 
+
+h1 {
+  font-size: 6.5rem;
+  line-height: 6rem;
+  font-family: @font-style-heading;
+}
+
+h2 {
+  font-size: 3rem;
+  font-family: @font-style-heading;
+}
+
+h3 {
+  font-size: 2rem;
+  font-family: @font-style-heading;
+}
+
+
+
+@media (max-width: @breakpoint-mobile) {
+  h1{
+    font-size:5rem;
+    line-height:4rem;
+  }
+
+  h2{
+    font-size:2.5rem;
+    line-height: 2.25rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    line-height: 1.6rem;
+  }
+
+}
