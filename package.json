@@ -17,15 +17,18 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.11",
+    "less-loader": "^4.1.0",
     "react-hot-loader": "^4.2.0",
+    "react-svg-loader": "^2.1.0",
     "style-loader": "^0.21.0",
+    "url-loader": "^1.0.1",
     "webpack": "^4.10.2",
     "webpack-cli": "^3.0.1",
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "immutable": "^3.8.2",
     "less": "^3.0.4",
-    "less-loader": "^4.1.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-waterfall": "^3.0.7"
