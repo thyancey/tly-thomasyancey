@@ -4,6 +4,7 @@ import { connect } from 'src/store';
 import Layer from 'src/components/layer/index';
 import NavBar from 'src/components/navbar';
 import Butler from 'src/components/butler';
+import ShortcutContainer from 'src/components/shortcut';
 
 import Easing from 'src/utils/easing';
 
@@ -29,6 +30,11 @@ class Main extends Component {
     this.scrollIntervalEnd = -1;
     this.scrollTarget = -1;
 
+    this.regionTopFirstIdx = 0;
+    this.regionTopLastIdx = this.regionTopFirstIdx + JobData.length - 1;
+    this.regionMiddleIdx = this.regionTopLastIdx + 1;
+    this.regionBottomFirstIdx = this.regionMiddleIdx + 1;
+    this.regionBottomLastIdx = this.regionBottomFirstIdx + JobData.length - 1;
 
     this.state = {
       currentRegion: 'middle'
@@ -36,11 +42,18 @@ class Main extends Component {
   }
 
   onScroll(e){
-    console.log('-> on scroll');
+    // console.log('-> on scroll');
     this.calcPosition();
   }
 
   componentDidUpdate(prevProps, prevState){
+    if(prevProps.curLayerIdx !== this.props.curLayerIdx){
+      if(this.props.curLayerIdx === this.regionMiddleIdx){
+        this.scrollToIndex(this.props.curLayerIdx, true, true);
+      }else{
+        this.scrollToIndex(this.props.curLayerIdx, true, false);
+      }
+    }
   }
 
   calcPosition(){
@@ -176,7 +189,7 @@ class Main extends Component {
     this.centerRegionEl = document.querySelector('#region-center');
 
     global.tester = this;
-    this.scrollToIndex(0, false, true);
+    this.scrollToIndex(this.regionMiddleIdx, false, true);
   }
 
   componentWillUnmount(){
@@ -184,52 +197,42 @@ class Main extends Component {
   }
 
   onMiddleClick(e){
-    this.scrollToIndex(0, true, true);
+    this.scrollToIndex(this.regionMiddleIdx, true, true);
   }
 
 
-  renderProjects(){
-    // console.log("jobdata", JobData)
-    const jobsList = [];
+  renderLayers(layerDataArray, startIdx){
+    const layerList = [];
 
-    let counter = 1;
-    JobData.forEach((obj, idx) => {
-      jobsList.push(<Layer key={'jb-' + idx} layerObj={obj} counter={counter} />);
-      counter++;
+    layerDataArray.forEach((obj, idx) => {
+      layerList.push(<Layer key={idx} layerObj={obj} counter={startIdx + idx}/>);
     });
 
-    return jobsList;
-  }
-
-
-  renderJobs(){
-    // console.log("jobdata", JobData)
-    const jobsList = [];
-
-    let counter = -1;
-    JobData.forEach((obj, idx) => {
-      jobsList.push(<Layer key={'jb-' + idx} layerObj={obj} counter={counter}/>);
-      counter--;
-    });
-
-    return jobsList;
+    return layerList;
   }
 
 
   render() {
+
     return(
       <div ref="element" className="main">
         <div id="region-top" className="region" >
-          {this.renderProjects()}
+          {this.renderLayers(JobData, this.regionTopFirstIdx)}
           <Butler currentRegion={this.state.currentRegion} region="top" butlerType="topDragon" butlerHeight={this.state.butlerHeight} />
         </div>
-        <div ref="element" id="region-center" className="region" data-idx="0" onClick={e => this.onMiddleClick(e)}>
+        <div ref="element" id="region-center" className="region" data-idx={this.regionMiddleIdx} onClick={e => this.onMiddleClick(e)}>
           <NavBar currentRegion={this.state.currentRegion} />
         </div>
         <div id="region-bottom" className="region" >
           <Butler currentRegion={this.state.currentRegion} region="bottom" butlerType="bottomTree" butlerHeight={this.state.butlerHeight} />
-          {this.renderJobs()}
+
+          {this.renderLayers(JobData, this.regionBottomFirstIdx)}
         </div>
+        <ShortcutContainer  topFirstIdx={this.regionTopFirstIdx} 
+                            topLastIdx={this.regionTopLastIdx} 
+                            middleIdx={this.regionMiddleIdx}
+                            bottomFirstIdx={this.regionBottomFirstIdx} 
+                            bottomLastIdx={this.regionBottomLastIdx} />
       </div>
     );
   }

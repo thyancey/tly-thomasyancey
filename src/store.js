@@ -4,11 +4,12 @@ const store = {
   initialState: {
     loaded:false,
     curLayerIdx:null,
-    scrollPosition:'middle'
+    scrollPosition:'middle',
+    scrollTargetIdx:-1
   },
   actions: {
     toggleLoaded: ({ loaded }) => ({ loaded: !loaded }),
-    setLayer: ({curLayerIdx}, newLayerIdx) => ({curLayerIdx: newLayerIdx}),
+    setLayerIdx: ({curLayerIdx}, newLayerIdx) => ({curLayerIdx: newLayerIdx}),
     scrollPosition: ({scrollPosition}, newScrollPosition) => ({scrollPosition: newScrollPosition})
   }
 };

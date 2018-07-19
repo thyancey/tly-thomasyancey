@@ -1,5 +1,37 @@
 @import "~themes/variables.less";
 
+
+
 #shortcut-container{
-  
+  position:fixed;
+  left:0;
+  top:50%;
+  // height:200px;
+  width:100px;
+  background-color:orange;
+  z-index:99999;
+
+  .shortcut-link{
+    width:5rem;
+    height:5rem;
+    border:2px solid black;
+    cursor:pointer;
+
+
+    &.mod-top{
+      background-color:white;
+    }
+
+    &.mod-middle{
+      background-color:black;
+    }
+
+    &.mod-bottom{
+      background-color:blue;
+    }
+
+    &.mod-active{
+      background-color:yellow;
+    }
+  }
 }
