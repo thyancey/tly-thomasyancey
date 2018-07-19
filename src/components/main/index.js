@@ -11,6 +11,8 @@ import { jobs as JobData } from 'src/data/data.js';
 
 require('./style.less');
 
+const SCROLL_INTERVAL_FRAMERATE = 25;
+
 class Main extends Component {
   constructor(){
     super();
@@ -22,13 +24,19 @@ class Main extends Component {
       this.onResize(e);
     }
 
+    this.scrollInterval = null;
+    this.scrollIntervalDuration = -1;
+    this.scrollIntervalEnd = -1;
+    this.scrollTarget = -1;
+
+
     this.state = {
       currentRegion: 'middle'
     }
   }
 
   onScroll(e){
-    console.log('-> on scroll')
+    console.log('-> on scroll');
     this.calcPosition();
   }
 
@@ -46,6 +54,39 @@ class Main extends Component {
     }
   }
 
+
+  startScrollInterval(startPosition, target, duration){
+    this.scrollStart = startPosition;
+    this.scrollTarget = target;
+    this.scrollIntervalStart = new Date().getTime();
+    this.scrollIntervalDuration = duration;
+
+    this.killScrollInterval();
+    this.scrollInterval = global.setInterval(() => {
+      this.onScrollInterval();
+    }, SCROLL_INTERVAL_FRAMERATE);
+  }
+
+  killScrollInterval(){
+    if(this.scrollInterval){
+      global.clearInterval(this.scrollInterval);
+      this.scrollInterval = null;
+    }
+  }
+
+  onScrollInterval(){
+    const now = new Date().getTime();
+    const scrollProgress = (now - this.scrollIntervalStart) / this.scrollIntervalDuration;
+    this.scrollToValue(this.scrollTarget, this.scrollStart, scrollProgress);
+
+    if(scrollProgress >= 1){
+      this.killScrollInterval();
+    }
+  }
+
+  scrollToValue(targetValue, startValue, progress){
+    this.refs.element.scrollTop = ((targetValue - startValue) * Easing.easeInOutQuad(progress)) + startValue;
+  }
 
   startButlerTimer(){
     this.killButlerTimer();
@@ -99,15 +140,20 @@ class Main extends Component {
     this.calcPosition();
   }
 
-  scrollTo(index, center){
+  scrollToIndex(index, animate, center){
     try{
       const foundElement = document.querySelector(`[data-idx="${index}"]`);
       let offset = 0;
       if(center){
         offset = global.innerHeight / 2;
       }
-      global.found = foundElement
-      this.refs.element.scrollTop = foundElement.getBoundingClientRect().y + this.refs.element.scrollTop  - offset;
+      const scrollTarget = foundElement.getBoundingClientRect().y + this.refs.element.scrollTop  - offset;
+
+      if(animate){
+        this.startScrollInterval(this.refs.element.scrollTop, scrollTarget, 1000);
+      }else{
+        this.refs.element.scrollTop = scrollTarget;
+      }
     }catch(e){
       console.error('could not scroll to index ' + index, e);
     }
@@ -130,11 +176,15 @@ class Main extends Component {
     this.centerRegionEl = document.querySelector('#region-center');
 
     global.tester = this;
-    this.scrollTo(0, true);
+    this.scrollToIndex(0, false, true);
   }
 
   componentWillUnmount(){
     this.removeListeners();
+  }
+
+  onMiddleClick(e){
+    this.scrollToIndex(0, true, true);
   }
 
 
@@ -173,7 +223,7 @@ class Main extends Component {
           {this.renderProjects()}
           <Butler currentRegion={this.state.currentRegion} region="top" butlerType="topDragon" butlerHeight={this.state.butlerHeight} />
         </div>
-        <div ref="element" id="region-center" className="region" data-idx="0">
+        <div ref="element" id="region-center" className="region" data-idx="0" onClick={e => this.onMiddleClick(e)}>
           <NavBar currentRegion={this.state.currentRegion} />
         </div>
         <div id="region-bottom" className="region" >
