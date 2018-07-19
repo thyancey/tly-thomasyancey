@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'src/store';
 import Layer from 'src/components/layer/index';
+import LayerDivider from 'src/components/layer/layer-divider';
 import NavBar from 'src/components/navbar';
 import Butler from 'src/components/butler';
 import ShortcutContainer from 'src/components/shortcut';
@@ -206,6 +207,9 @@ class Main extends Component {
 
     layerDataArray.forEach((obj, idx) => {
       layerList.push(<Layer key={idx} layerObj={obj} region={region} counter={startIdx + idx}/>);
+      if(idx !== layerDataArray.length - 1){
+        layerList.push(<LayerDivider key={'d-' + idx} layerObj={obj} region={region} />);
+      }
     });
 
     return layerList;

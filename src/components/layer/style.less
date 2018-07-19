@@ -2,15 +2,35 @@
 
 .layer{
   position:relative;
-  border:5px solid black;
-
-  padding: 5rem 3rem;
-
+  /* note: padding-top and margin-top for layers is weird so that the shortcut menu jumps with the title in a nice place */;
+  padding: 12rem 3rem;
 
   .layer-title-text{
     border-top:2px solid black;
     margin-top:1rem;
     padding-top:1rem;
+  }
+}
+
+.layer-divider{
+  @height-layerdivider:8rem;
+  @height-layerdividercover: 16rem;
+
+  height:@height-layerdivider;
+  background-color:red;
+
+
+  .layer-divider-body{
+    position:absolute;
+    height:@height-layerdividercover;
+    margin-top:(@height-layerdividercover - @height-layerdivider) / -2;
+
+    opacity:.5;
+    width:100%;
+    z-index:@zindex-layerdivider;
+
+    border:.5rem dashed white;
+    background-color:black;
   }
 }
 
@@ -50,57 +70,42 @@
     padding-bottom:1rem;
   }
 
-  .layer-detail-text{
-    // margin-top:1rem;
-    padding-top:1rem;
-
-  }
-
-  .layer-detail-images{
-    margin-top:1rem;
-  }
-  .layer-detail-image{
-    cursor:pointer;
-    display:inline-block;
-    margin:1rem;
-    width:~"calc(50% - 2rem)";
-    border: @border-thickness-medium solid @color-white;
-    box-shadow: @shadow-z3;
-
-    img{
-      display:block;
-      width:100%;
-    }
-
-    &:hover{
-      border-width: 0rem;
-      transition: border-width .2s;
-    }
-  }
 }
 
-
 .layer-detail{
-  &.mod-singleimage{
-    .layer-detail-text{
-      vertical-align:top;
+  .layer-detail-body{
+    .blorb{
       display:inline-block;
-      width:50%;
-      padding:1rem;
-    }
-    .layer-detail-images{
       vertical-align:top;
-      display:inline-block;
-      width:50%;
-      padding:1rem;
+      margin:1rem;
+      margin-bottom:3rem;
 
-      .layer-detail-image{
+      &.mod-half{
+        width:~"calc(50% - 2rem)";
+      }
+      &.mod-full{
         width:100%;
-        margin:0;
+      }
+
+      &.blorb-image{
+        cursor:pointer;
+        border: @border-thickness-medium solid @color-white;
+        box-shadow: @shadow-z3;
+
+        img{
+          display:block;
+          width:100%;
+        }
+
+        &:hover{
+          border-width: 0rem;
+          transition: border-width .2s;
+        }
       }
     }
   }
 }
+
 
 #region-top{
   .layer{
@@ -115,8 +120,7 @@
 #region-bottom{
   .layer{
     padding-right:22rem;
-    padding-top:14rem;
-    padding-bottom:0rem;
+    padding-top: 16rem;
   }
 
   .layer-detail{
@@ -133,7 +137,6 @@
   }
 
   &.theme-bottom{
-
   }
 
 
@@ -146,9 +149,6 @@
       box-shadow: 0 0 40px @color-purple;
 
       h1{
-        // font-family: 'Pacifico', cursive;
-        // font-size:4rem;
-        // font-weight: normal;
       }
       h2{
 
@@ -163,6 +163,8 @@
   #region-top{
     .layer{
       padding-left:16rem;
+      margin-top:12rem;
+      padding-top:4rem;
     }
 
     .layer-detail{
@@ -172,6 +174,7 @@
   #region-bottom{
     .layer{
       padding-right:16rem;
+      padding-top:16rem;
     }
 
     .layer-detail{
@@ -180,9 +183,15 @@
   }
 
   .layer-detail{
-    .layer-detail-image{
-      margin:1rem 0rem;
-      width:100%;
+  }
+
+  .layer-detail{
+    .layer-detail-body{
+      .blorb{
+        &.mod-half{
+          width:100%;
+        }
+      }
     }
   }
 

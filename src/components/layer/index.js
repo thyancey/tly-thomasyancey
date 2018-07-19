@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 
-import { connect } from 'src/store';
-import Detail from './detail';
+import LayerDetail from './layer-detail';
 
 require('./style.less');
 
 export default class Layer extends Component {
   renderDetails(detailsArray){
-    return detailsArray.map((dt, idx) => (<Detail key={idx} detailObj={dt}/>));
+    return detailsArray.map((dt, idx) => (<LayerDetail key={idx} detailObj={dt}/>));
   }
 
   render(){
