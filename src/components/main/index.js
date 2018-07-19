@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'src/store';
 import Layer from 'src/components/layer/index';
 import NavBar from 'src/components/navbar';
+import Butler from 'src/components/butler';
 
 import { jobs as JobData } from 'src/data/data.js';
 
@@ -25,7 +26,7 @@ class Main extends Component {
   }
 
   onScroll(e){
-    // console.log('onScroll', e);
+    console.log('-> on scroll')
     this.calcPosition();
   }
 
@@ -34,13 +35,53 @@ class Main extends Component {
 
   calcPosition(){
     const centerPoint = this.centerRegionEl.offsetTop - this.refs.element.scrollTop;
-    const currentRegion = this.getRegionAtCurrrentScrollPosition(centerPoint, global.innerHeight);
+    const currentRegion = this.getRegionAtCurrrentScrollPosition(this.centerRegionEl.offsetTop, this.refs.element.scrollTop, global.innerHeight);
+    
+    this.startButlerTimer();
+
     if(this.state.currentRegion !== currentRegion){
       this.setState({ currentRegion: currentRegion });
     }
   }
 
-  getRegionAtCurrrentScrollPosition(centerPoint, windowHeight){
+
+  startButlerTimer(){
+    this.killButlerTimer();
+
+    this.butlerTimer = global.setTimeout(() => {
+      this.killButlerTimer();
+      this.onButlerTimer();
+    }, 1000);
+  }
+
+  killButlerTimer(){
+    if(this.butlerTimer){
+      global.clearTimeout(this.butlerTimer);
+      this.butlerTimer = null;
+    }
+  }
+
+  onButlerTimer(){
+    const centerPoint = this.centerRegionEl.offsetTop - this.refs.element.scrollTop;
+    const butlerHeight = this.getButlerHeightAtScrollPosition(this.centerRegionEl.offsetTop, this.refs.element.scrollTop, global.innerHeight, true);
+
+    this.setState({ butlerHeight: butlerHeight });
+  }
+
+  getButlerHeightAtScrollPosition(centerRegionY, scrollAmount, windowHeight, doRandomize){
+    let randomizer = 0;
+    if(this.state.currentRegion === 'bottom'){
+      if(doRandomize) randomizer = Math.random() * (windowHeight / 3);
+      return scrollAmount - centerRegionY + windowHeight - randomizer;
+    }else{
+      if(doRandomize) randomizer = Math.random() * (windowHeight / 2);
+      return centerRegionY - scrollAmount - randomizer;
+    }
+  }
+
+  getRegionAtCurrrentScrollPosition(centerRegionY, scrollAmount, windowHeight){
+    const centerPoint = centerRegionY - scrollAmount;
+
     //- numbers below would be 0, but they help snap it in more naturally than dead center.
     if(centerPoint < 100){
       return 'bottom';
@@ -95,11 +136,13 @@ class Main extends Component {
       <div ref="element" className="main">
         <div id="region-top" className="region" >
           {this.renderJobs()}
+          <Butler currentRegion={this.state.currentRegion} region="top" butlerType="topDragon" butlerHeight={this.state.butlerHeight} />
         </div>
         <div ref="element" id="region-center" className="region">
           <NavBar currentRegion={this.state.currentRegion} />
         </div>
         <div id="region-bottom" className="region" >
+          <Butler currentRegion={this.state.currentRegion} region="bottom" butlerType="bottomTree" butlerHeight={this.state.butlerHeight} />
           {this.renderJobs()}
         </div>
       </div>

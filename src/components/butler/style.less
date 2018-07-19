@@ -1,0 +1,70 @@
+@import "~themes/variables.less";
+
+.mixin-height-bounce-transition(){
+-webkit-transition: height 500ms cubic-bezier(0.285, 1, 0.715, 0.850); /* older webkit */
+-webkit-transition: height 500ms cubic-bezier(0.285, 1.650, 0.715, 0.850); 
+   -moz-transition: height 500ms cubic-bezier(0.285, 1.650, 0.715, 0.850); 
+     -o-transition: height 500ms cubic-bezier(0.285, 1.650, 0.715, 0.850); 
+        transition: height 500ms cubic-bezier(0.285, 1.650, 0.715, 0.850); /* custom */
+
+-webkit-transition-timing-function: cubic-bezier(0.285, 1, 0.715, 0.850); /* older webkit */
+-webkit-transition-timing-function: cubic-bezier(0.285, 1.650, 0.715, 0.850); 
+   -moz-transition-timing-function: cubic-bezier(0.285, 1.650, 0.715, 0.850); 
+     -o-transition-timing-function: cubic-bezier(0.285, 1.650, 0.715, 0.850); 
+        transition-timing-function: cubic-bezier(0.285, 1.650, 0.715, 0.850); /* custom */
+}
+
+
+.butler{
+  position:absolute;
+  overflow:hidden;
+  z-index:1;
+
+  height:0;
+  .mixin-height-bounce-transition;
+
+  &.topDragon{
+    bottom:0;
+    left:-10rem;
+    width:40rem;
+
+    .butler-head{
+      background-image: url("~images/butlers/topdragon-head.png");
+      height:710px;
+    }
+    .butler-body{
+      background-image: url("~images/butlers/topdragon-body.png");
+    }
+  }
+
+  &.bottomTree{
+    top:0;
+    right:-10rem;
+    width:40rem;
+
+    .butler-head{
+      position:absolute;
+      bottom:0;
+      background-image: url("~images/butlers/bottomtree-head.png");
+      height:667px;
+      width:412px;
+    }
+    .butler-body{
+      position:absolute;
+      background-image: url("~images/butlers/bottomtree-body.png");
+      height:200px;
+      height:~"calc(100% - 467px)";
+      width:412px;
+    // transition: height .5s;
+    }
+  }
+
+  .butler-head{
+    background-repeat:no-repeat;
+  }
+
+  .butler-body{
+    background-repeat:repeat-y;
+    height:100%;
+  }
+}
