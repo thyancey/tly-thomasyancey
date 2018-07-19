@@ -75,3 +75,16 @@
     height:100%;
   }
 }
+
+
+/* when mobile, get a tiny nav all the time */
+@media (max-width: @breakpoint-mobile) {
+  .butler{
+    &.topDragon{
+      left:-9rem;
+    }
+    &.bottomTree{
+      right:-9rem;
+    }
+  }
+}

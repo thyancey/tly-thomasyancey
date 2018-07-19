@@ -13,12 +13,21 @@ export default class Layer extends Component {
   render(){
     const { layerObj, counter } = this.props;
 
+    let className = 'layer';
+    if(layerObj.theme){
+      className += ' theme-' + layerObj.theme;
+    }else{
+      className += ' theme-' + this.props.region;
+    }
+
     return (
-      <section className="layer" data-idx={counter} >
+      <section className={className} data-idx={counter} >
         <div className="layer-title layer-bubble">
           <h1>{layerObj.title}</h1>
           <h2>{layerObj.description}</h2>
-          <p>{layerObj.text}</p>
+          <div className="layer-title-text">
+            <p>{layerObj.text}</p>
+          </div>
         </div>
         {this.renderDetails(layerObj.details)}
       </section>

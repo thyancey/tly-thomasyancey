@@ -5,31 +5,12 @@
   border:5px solid black;
 
   padding: 5rem 3rem;
-}
 
-#region-top{
-  .layer{
-    padding-left:24rem;
-  }
 
-  .layer-bubble{
-    background-color:@color-blue;
-  }
-
-  .layer-detail{
-    margin:5rem 2rem 5rem 11rem;
-  }
-}
-
-#region-bottom{
-  .layer{
-    padding-right:22rem;
-    padding-top:14rem;
-    padding-bottom:0rem;
-  }
-
-  .layer-detail{
-    margin:5rem 11rem 5rem 2rem;
+  .layer-title-text{
+    border-top:2px solid black;
+    margin-top:1rem;
+    padding-top:1rem;
   }
 }
 
@@ -59,4 +40,150 @@
   border: @border-thickness-medium solid @color-grey;
   box-shadow: @shadow-z3;
   padding:3rem;
+
+  h2{
+    padding-bottom: .5rem;
+  }
+
+  .layer-detail-headers{
+    border-bottom:2px solid black;
+    padding-bottom:1rem;
+  }
+
+  .layer-detail-text{
+    // margin-top:1rem;
+    padding-top:1rem;
+
+  }
+
+  .layer-detail-images{
+    margin-top:1rem;
+  }
+  .layer-detail-image{
+    cursor:pointer;
+    display:inline-block;
+    margin:1rem;
+    width:~"calc(50% - 2rem)";
+    border: @border-thickness-medium solid @color-white;
+    box-shadow: @shadow-z3;
+
+    img{
+      display:block;
+      width:100%;
+    }
+
+    &:hover{
+      border-width: 0rem;
+      transition: border-width .2s;
+    }
+  }
+}
+
+
+.layer-detail{
+  &.mod-singleimage{
+    .layer-detail-text{
+      vertical-align:top;
+      display:inline-block;
+      width:50%;
+      padding:1rem;
+    }
+    .layer-detail-images{
+      vertical-align:top;
+      display:inline-block;
+      width:50%;
+      padding:1rem;
+
+      .layer-detail-image{
+        width:100%;
+        margin:0;
+      }
+    }
+  }
+}
+
+#region-top{
+  .layer{
+    padding-left:24rem;
+  }
+
+  .layer-detail{
+    margin:5rem 2rem 5rem 11rem;
+  }
+}
+
+#region-bottom{
+  .layer{
+    padding-right:22rem;
+    padding-top:14rem;
+    padding-bottom:0rem;
+  }
+
+  .layer-detail{
+    margin:5rem 11rem 5rem 2rem;
+  }
+}
+
+
+.layer{
+  &.theme-top{
+    .layer-bubble{
+      background-color:@color-blue;
+    }
+  }
+
+  &.theme-bottom{
+
+  }
+
+
+  &.theme-guitarapp{
+    background-color:@color-black;
+
+    .layer-bubble{
+      background-color:@color-purple;
+      color:@color-white;
+      box-shadow: 0 0 40px @color-purple;
+
+      h1{
+        // font-family: 'Pacifico', cursive;
+        // font-size:4rem;
+        // font-weight: normal;
+      }
+      h2{
+
+      }
+    }
+  }
+}
+
+
+
+@media (max-width: @breakpoint-mobile) {
+  #region-top{
+    .layer{
+      padding-left:16rem;
+    }
+
+    .layer-detail{
+      margin:3rem 1rem 3rem 8rem;
+    }
+  }
+  #region-bottom{
+    .layer{
+      padding-right:16rem;
+    }
+
+    .layer-detail{
+      margin:3rem 8rem 3rem 1rem;
+    }
+  }
+
+  .layer-detail{
+    .layer-detail-image{
+      margin:1rem 0rem;
+      width:100%;
+    }
+  }
+
 }

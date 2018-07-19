@@ -8,7 +8,7 @@ import ShortcutContainer from 'src/components/shortcut';
 
 import Easing from 'src/utils/easing';
 
-import { jobs as JobData } from 'src/data/data.js';
+import { jobs as JobData, projects as ProjectData } from 'src/data/data.js';
 
 require('./style.less');
 
@@ -31,7 +31,7 @@ class Main extends Component {
     this.scrollTarget = -1;
 
     this.regionTopFirstIdx = 0;
-    this.regionTopLastIdx = this.regionTopFirstIdx + JobData.length - 1;
+    this.regionTopLastIdx = this.regionTopFirstIdx + ProjectData.length - 1;
     this.regionMiddleIdx = this.regionTopLastIdx + 1;
     this.regionBottomFirstIdx = this.regionMiddleIdx + 1;
     this.regionBottomLastIdx = this.regionBottomFirstIdx + JobData.length - 1;
@@ -201,11 +201,11 @@ class Main extends Component {
   }
 
 
-  renderLayers(layerDataArray, startIdx){
+  renderLayers(layerDataArray, startIdx, region){
     const layerList = [];
 
     layerDataArray.forEach((obj, idx) => {
-      layerList.push(<Layer key={idx} layerObj={obj} counter={startIdx + idx}/>);
+      layerList.push(<Layer key={idx} layerObj={obj} region={region} counter={startIdx + idx}/>);
     });
 
     return layerList;
@@ -217,7 +217,7 @@ class Main extends Component {
     return(
       <div ref="element" className="main">
         <div id="region-top" className="region" >
-          {this.renderLayers(JobData, this.regionTopFirstIdx)}
+          {this.renderLayers(ProjectData, this.regionTopFirstIdx, 'top')}
           <Butler currentRegion={this.state.currentRegion} region="top" butlerType="topDragon" butlerHeight={this.state.butlerHeight} />
         </div>
         <div ref="element" id="region-center" className="region" data-idx={this.regionMiddleIdx} onClick={e => this.onMiddleClick(e)}>
@@ -226,7 +226,7 @@ class Main extends Component {
         <div id="region-bottom" className="region" >
           <Butler currentRegion={this.state.currentRegion} region="bottom" butlerType="bottomTree" butlerHeight={this.state.butlerHeight} />
 
-          {this.renderLayers(JobData, this.regionBottomFirstIdx)}
+          {this.renderLayers(JobData, this.regionBottomFirstIdx, 'bottom')}
         </div>
         <ShortcutContainer  topFirstIdx={this.regionTopFirstIdx} 
                             topLastIdx={this.regionTopLastIdx} 

@@ -28,7 +28,9 @@ class ShortCut extends Component {
 
   renderShortcuts(type, firstIdx, lastIdx, curIdx){
     const retVal = [];
-    for(let i = firstIdx; i < lastIdx; i++){
+    console.log('render hsortuut', firstIdx, lastIdx, curIdx)
+    for(let i = firstIdx; i <= lastIdx; i++){
+      console.log('thats one')
       retVal.push(
         <ShortcutLink idx={i} 
                       key={i} 
