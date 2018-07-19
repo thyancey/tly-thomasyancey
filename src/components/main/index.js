@@ -5,6 +5,8 @@ import Layer from 'src/components/layer/index';
 import NavBar from 'src/components/navbar';
 import Butler from 'src/components/butler';
 
+import Easing from 'src/utils/easing';
+
 import { jobs as JobData } from 'src/data/data.js';
 
 require('./style.less');
@@ -97,6 +99,21 @@ class Main extends Component {
     this.calcPosition();
   }
 
+  scrollTo(index, center){
+    try{
+      const foundElement = document.querySelector(`[data-idx="${index}"]`);
+      let offset = 0;
+      if(center){
+        offset = global.innerHeight / 2;
+      }
+      global.found = foundElement
+      this.refs.element.scrollTop = foundElement.getBoundingClientRect().y + this.refs.element.scrollTop  - offset;
+    }catch(e){
+      console.error('could not scroll to index ' + index, e);
+    }
+
+  }
+
   addListeners(){
     this.refs.element.addEventListener('scroll', this.onScrollHandler);
     global.addEventListener('resize', this.onResizeHandler);
@@ -111,6 +128,9 @@ class Main extends Component {
     this.addListeners();
 
     this.centerRegionEl = document.querySelector('#region-center');
+
+    global.tester = this;
+    this.scrollTo(0, true);
   }
 
   componentWillUnmount(){
@@ -118,13 +138,28 @@ class Main extends Component {
   }
 
 
+  renderProjects(){
+    // console.log("jobdata", JobData)
+    const jobsList = [];
+
+    let counter = 1;
+    JobData.forEach((obj, idx) => {
+      jobsList.push(<Layer key={'jb-' + idx} layerObj={obj} counter={counter} />);
+      counter++;
+    });
+
+    return jobsList;
+  }
+
 
   renderJobs(){
     // console.log("jobdata", JobData)
     const jobsList = [];
 
+    let counter = -1;
     JobData.forEach((obj, idx) => {
-      jobsList.push(<Layer key={'jb-' + idx} layerObj={obj} />);
+      jobsList.push(<Layer key={'jb-' + idx} layerObj={obj} counter={counter}/>);
+      counter--;
     });
 
     return jobsList;
@@ -135,10 +170,10 @@ class Main extends Component {
     return(
       <div ref="element" className="main">
         <div id="region-top" className="region" >
-          {this.renderJobs()}
+          {this.renderProjects()}
           <Butler currentRegion={this.state.currentRegion} region="top" butlerType="topDragon" butlerHeight={this.state.butlerHeight} />
         </div>
-        <div ref="element" id="region-center" className="region">
+        <div ref="element" id="region-center" className="region" data-idx="0">
           <NavBar currentRegion={this.state.currentRegion} />
         </div>
         <div id="region-bottom" className="region" >

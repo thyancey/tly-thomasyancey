@@ -11,10 +11,10 @@ export default class Layer extends Component {
   }
 
   render(){
-    const { layerObj } = this.props;
+    const { layerObj, counter } = this.props;
 
     return (
-      <section className="layer" >
+      <section className="layer" data-idx={counter} >
         <div className="layer-title layer-bubble">
           <h1>{layerObj.title}</h1>
           <h2>{layerObj.description}</h2>

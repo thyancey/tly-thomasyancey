@@ -20,17 +20,25 @@
   overflow:hidden;
   z-index:1;
 
+  .butler-head,.butler-body{
+    background-size:contain;
+  }
+
   height:0;
   .mixin-height-bounce-transition;
 
+  img{
+    background-size:contain;
+  }
+
   &.topDragon{
     bottom:0;
-    left:-10rem;
-    width:40rem;
+    width:300px;
+    left:-2rem;
 
     .butler-head{
       background-image: url("~images/butlers/topdragon-head.png");
-      height:710px;
+      height:519px;
     }
     .butler-body{
       background-image: url("~images/butlers/topdragon-body.png");
@@ -39,23 +47,22 @@
 
   &.bottomTree{
     top:0;
-    right:-10rem;
-    width:40rem;
+    right:0rem;
+    width:30rem;
 
     .butler-head{
       position:absolute;
       bottom:0;
       background-image: url("~images/butlers/bottomtree-head.png");
-      height:667px;
-      width:412px;
+      height:490px;
+      width:100%;
     }
     .butler-body{
       position:absolute;
       background-image: url("~images/butlers/bottomtree-body.png");
       height:200px;
-      height:~"calc(100% - 467px)";
-      width:412px;
-    // transition: height .5s;
+      height:~"calc(100% - 367px)";
+      width:100%;
     }
   }
 
