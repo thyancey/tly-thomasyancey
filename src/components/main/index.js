@@ -48,19 +48,26 @@ class Main extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(prevProps.curLayerIdx !== this.props.curLayerIdx){
-      if(this.props.curLayerIdx === this.regionMiddleIdx){
-        this.scrollToIndex(this.props.curLayerIdx, true, true);
+    if(prevProps.targetLayerIdx !== this.props.targetLayerIdx){
+      if(this.props.targetLayerIdx === this.regionMiddleIdx){
+        this.scrollToIndex(this.props.targetLayerIdx, true, true);
       }else{
-        this.scrollToIndex(this.props.curLayerIdx, true, false);
+        this.scrollToIndex(this.props.targetLayerIdx, true, false);
       }
     }
   }
 
   calcPosition(){
     const centerPoint = this.centerRegionEl.offsetTop - this.refs.element.scrollTop;
-    const currentRegion = this.getRegionAtCurrrentScrollPosition(this.centerRegionEl.offsetTop, this.refs.element.scrollTop, global.innerHeight);
-    
+    const currentRegion = this.getRegionAtCurrentScrollPosition(this.centerRegionEl.offsetTop, this.refs.element.scrollTop, global.innerHeight);
+    const currentLayerObj = this.getLayerAtCurrentScrollPosition(currentRegion, this.centerRegionEl.offsetTop, this.refs.element.scrollTop, global.innerHeight);
+    // console.log('currentLayer:', currentLayer);
+
+    if(currentLayerObj){
+      this.props.actions.setCurrentLayerIdx(currentLayerObj.idx);
+      this.props.actions.setCurrentLayerTheme(currentLayerObj.theme);
+    }
+
     this.startButlerTimer();
 
     if(this.state.currentRegion !== currentRegion){
@@ -108,7 +115,7 @@ class Main extends Component {
     this.butlerTimer = global.setTimeout(() => {
       this.killButlerTimer();
       this.onButlerTimer();
-    }, 1000);
+    }, 500);
   }
 
   killButlerTimer(){
@@ -136,7 +143,27 @@ class Main extends Component {
     }
   }
 
-  getRegionAtCurrrentScrollPosition(centerRegionY, scrollAmount, windowHeight){
+  getLayerAtCurrentScrollPosition(region, centerRegionY, scrollAmount, windowHeight){
+    const regionLayers = Array.from(document.querySelectorAll(`#region-${region} .layer`));
+
+    let centerScreen = scrollAmount + (windowHeight / 2);
+    if(centerScreen > centerRegionY){
+      centerScreen = centerScreen - centerRegionY;
+    }
+
+    for(let i = regionLayers.length - 1; i >= 0; i--){
+      if(centerScreen > regionLayers[i].offsetTop){
+        return {
+          idx: regionLayers[i].dataset.idx,
+          theme: regionLayers[i].dataset.theme
+        }
+      }
+    }
+
+    return null;
+  }
+
+  getRegionAtCurrentScrollPosition(centerRegionY, scrollAmount, windowHeight){
     const centerPoint = centerRegionY - scrollAmount;
 
     //- numbers below would be 0, but they help snap it in more naturally than dead center.
@@ -208,7 +235,7 @@ class Main extends Component {
     layerDataArray.forEach((obj, idx) => {
       layerList.push(<Layer key={idx} layerObj={obj} region={region} counter={startIdx + idx}/>);
       if(idx !== layerDataArray.length - 1){
-        layerList.push(<LayerDivider key={'d-' + idx} layerObj={obj} region={region} />);
+        layerList.push(<LayerDivider key={'d-' + idx} theme={obj.dividerTheme} region={region} />);
       }
     });
 
@@ -217,18 +244,25 @@ class Main extends Component {
 
 
   render() {
+    let className = `main theme-${this.props.curLayerTheme}`;
 
     return(
-      <div ref="element" className="main">
+      <div ref="element" className={className}>
         <div id="region-top" className="region" >
           {this.renderLayers(ProjectData, this.regionTopFirstIdx, 'top')}
-          <Butler currentRegion={this.state.currentRegion} region="top" butlerType="topDragon" butlerHeight={this.state.butlerHeight} />
+          <Butler currentRegion={this.state.currentRegion} 
+                  region="top" 
+                  butlerType="topDragon" 
+                  butlerHeight={this.state.butlerHeight} />
         </div>
         <div ref="element" id="region-center" className="region" data-idx={this.regionMiddleIdx} onClick={e => this.onMiddleClick(e)}>
           <NavBar currentRegion={this.state.currentRegion} />
         </div>
         <div id="region-bottom" className="region" >
-          <Butler currentRegion={this.state.currentRegion} region="bottom" butlerType="bottomTree" butlerHeight={this.state.butlerHeight} />
+          <Butler currentRegion={this.state.currentRegion} 
+                  region="bottom" 
+                  butlerType="bottomTree" 
+                  butlerHeight={this.state.butlerHeight}/>
 
           {this.renderLayers(JobData, this.regionBottomFirstIdx, 'bottom')}
         </div>
@@ -244,5 +278,7 @@ class Main extends Component {
 
 export default connect(state => ({ 
   loaded: state.loaded,
-  curLayerIdx: state.curLayerIdx
+  curLayerIdx: state.curLayerIdx,
+  curLayerTheme: state.curLayerTheme,
+  targetLayerIdx: state.targetLayerIdx
 }))(Main);

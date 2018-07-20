@@ -1,0 +1,72 @@
+
+
+/* !!! make sure mx-animationname is a unique value across all LESS! */
+.mixin-divider-slideleft(@mx-image-url, @mx-raw-width, @mx-raw-height, @mx-divider-height, @mx-divider-cover-height, @mx-animationname, @mx-animation-time){
+  //- set the background image, repeating width infinitely.
+  background: url(@mx-image-url) repeat-x;
+  background-size: auto 100%;
+
+  //- the image should be the defined hight of the cover area
+  height:@mx-divider-cover-height;
+  //- calcuate the width as if the image was scaled up 1:1 to match the new height (of the cover area)
+  @mx-scaledwidth: @mx-raw-width * (@mx-divider-cover-height / @mx-raw-height);
+  //- image is repeated as wide as the screen + one repitition wider, so it can move to the left just enough to seamlessly loop back
+  width:~"calc(100% + @{mx-scaledwidth})";
+  left:0px;
+
+  //- center the scaled image vertically
+  margin-top:(@mx-divider-cover-height - @mx-divider-height) / -2;
+
+  //- smooth animation
+  animation-duration: @mx-animation-time;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: normal;
+
+  //- since 1 segment wider to the right, move 1 segment to the left then warp back
+  @keyframes @mx-animationname {
+    from {
+      left: 0px;
+    }
+    to {
+      left:-@mx-scaledwidth;
+    }
+  }
+  animation-name: @mx-animationname;
+}
+
+/* !!! make sure mx-animationname is a unique value across all LESS! */
+.mixin-divider-slideright(@mx-image-url, @mx-raw-width, @mx-raw-height, @mx-divider-height, @mx-divider-cover-height, @mx-animationname, @mx-animation-time){
+  //- set the background image, repeating width infinitely. default it at 0, it's gonna loop later on
+  background: url(@mx-image-url) repeat-x;
+  background-size: auto 100%;
+
+  //- the image should be the defined hight of the cover area
+  height:@mx-divider-cover-height;
+  //- calcuate the width as if the image was scaled up 1:1 to match the new height (of the cover area)
+  @mx-scaledwidth: @mx-raw-width * (@mx-divider-cover-height / @mx-raw-height);
+  //- image is repeated as wide as the screen + one repitition wider, so it can move to the left just enough to seamlessly loop back
+  width:~"calc(100% + @{mx-scaledwidth})";
+  left:-@mx-scaledwidth;
+
+  //- center the scaled image vertically
+  margin-top:(@mx-divider-cover-height - @mx-divider-height) / -2;
+
+  //- smooth animation
+  animation-duration: @mx-animation-time;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: normal;
+
+  //- since 1 segment wider to the left,
+  //- starting 1 segment to the left, move 1 segment to the right
+  @keyframes @mx-animationname {
+    from {
+      left: -@mx-scaledwidth;
+    }
+    to {
+      left: 0;
+    }
+  }
+  animation-name: @mx-animationname;
+}

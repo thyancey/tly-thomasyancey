@@ -1,0 +1,86 @@
+@import "~themes/variables.less";
+@import "~themes/animation-mixins.less";
+
+.layer-divider{
+  @height-layerdivider:8rem;
+  @height-layerdividercover: 16rem;
+
+  height:@height-layerdivider;
+  // background-color:red;
+
+  .layer-divider-body{
+    position:absolute;
+    pointer-events:none;
+    z-index:@zindex-layerdivider;
+
+    //- these will get overwritten by the animation mixin
+    width:100%;
+    height:@height-layerdividercover;
+    margin-top:(@height-layerdividercover - @height-layerdivider) / -2;
+  }
+}
+
+.layer-divider.dividertheme-clouds-right{
+  /* 
+    original image: 468px x 210px
+    placeholder: 8rem
+    image height: 32rem
+  */
+  height: 8rem;
+
+  .layer-divider-body{
+    filter: drop-shadow(0 0 1rem @color-grey);
+    .mixin-divider-slideright( "~images/dividers/divider-clouds.png", 
+                              46.8rem, 
+                              21rem, 
+                              8rem, 
+                              32rem, 
+                              anim-dividertheme-clouds-right, 
+                              30s
+                            );
+  }
+}
+
+.layer-divider.dividertheme-clouds-left{
+  /* 
+    original image: 468px x 210px
+    placeholder: 8rem
+    image height: 32rem
+  */
+  height: 8rem;
+
+  .layer-divider-body{
+    filter: drop-shadow(0 0 1rem @color-grey);
+    .mixin-divider-slideleft( "~images/dividers/divider-clouds.png", 
+                              46.8rem, 
+                              21rem, 
+                              8rem, 
+                              32rem, 
+                              anim-dividertheme-clouds-left, 
+                              30s
+                            );
+  }
+}
+
+.layer-divider.dividertheme-fretboard-right{
+  /* 
+    original image: 756px x 243px
+    placeholder: 8rem
+    image height: 32rem
+  */
+  height: 2rem;
+
+  .layer-divider-body{
+    box-shadow:0 0 5rem 2rem black;
+    // border: 10rem solid white;
+    //- theres a png here too
+    .mixin-divider-slideright( "~images/dividers/fretboard.jpg", 
+                              75.6rem, 
+                              24.3rem, 
+                              2rem, 
+                              16rem, 
+                              anim-dividertheme-fretboard-left, 
+                              3s
+                            );
+  }
+}

@@ -11,8 +11,7 @@ class ShortCut extends Component {
   }
 
   onShortcutClick(idx){
-    // console.log('onShortcutClick(' + idx + ')');
-    this.props.actions.setLayerIdx(idx);
+    this.props.actions.setTargetLayerIdx(idx);
   }
 
   renderMiddleShortcut(idx, curIdx){
@@ -29,7 +28,6 @@ class ShortCut extends Component {
   renderShortcuts(type, firstIdx, lastIdx, curIdx){
     const retVal = [];
     for(let i = firstIdx; i <= lastIdx; i++){
-      console.log('thats one')
       retVal.push(
         <ShortcutLink idx={i} 
                       key={i} 

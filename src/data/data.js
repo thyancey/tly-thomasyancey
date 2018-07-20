@@ -5,6 +5,8 @@ module.exports = {
     {
       title: "Software Engineer - Mid",
       description: "Bla bla bla",
+      theme: "",
+      dividerTheme: "clouds-right",
       text: "This is some long text about this thing, it might go on for a while. It's probably got a whole bunch of detail and things to talk about. maybe there's links in here I have no idea! But it sure is long. A really long description.",
       company: "ozmo",
       responsibilities: ["one", "two", "three"],
@@ -14,6 +16,8 @@ module.exports = {
     {
       title: "Software Engineer",
       description: "Some other stuff",
+      theme: "",
+      dividerTheme: "clouds-left",
       text: "This is some long text about this thing, it might go on for a while. It's probably got a whole bunch of detail and things to talk about. maybe there's links in here I have no idea! But it sure is long. A really long description.",
       company: "ozmo",
       responsibilities: ["oner", "twor", "threer"],
@@ -44,6 +48,7 @@ module.exports = {
       title: "Guitar App",
       description: "Music theory and learning tool",
       theme: "guitarapp",
+      dividerTheme: "fretboard-right",
       text: "As one of my 10,000 hobbies, playing guitar is something I sorta know how to do, but I'm not very good at. I've been trying to go past chords and tabs and learn some more fundamental concepts of music theory. This is an app I made to learn notes and scales on a guitar",
       company: "ozmo",
       responsibilities: ["oner", "twor", "threer"],

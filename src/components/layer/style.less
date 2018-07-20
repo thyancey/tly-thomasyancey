@@ -1,4 +1,5 @@
 @import "~themes/variables.less";
+@import "~themes/animation-mixins.less";
 
 .layer{
   position:relative;
@@ -12,35 +13,12 @@
   }
 }
 
-.layer-divider{
-  @height-layerdivider:8rem;
-  @height-layerdividercover: 16rem;
-
-  height:@height-layerdivider;
-  background-color:red;
-
-
-  .layer-divider-body{
-    position:absolute;
-    height:@height-layerdividercover;
-    margin-top:(@height-layerdividercover - @height-layerdivider) / -2;
-
-    opacity:.5;
-    width:100%;
-    z-index:@zindex-layerdivider;
-
-    border:.5rem dashed white;
-    background-color:black;
-  }
-}
-
 
 .layer-title{
   position:relative;
   border:5px solid black;
 
   padding: 10rem 0rem;
-
 
   background-color:@color-white;
   border-radius: @border-radius-large;

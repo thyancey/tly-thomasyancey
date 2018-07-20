@@ -12,7 +12,8 @@ export default class Butler extends Component {
   }
 
   render() {
-    let className = 'butler ' + this.props.butlerType;
+    let className = `butler ${this.props.butlerType}`;
+    // let className = 'butler ' + this.props.butlerType;
 
     let butlerHeight = 0
     if(this.props.currentRegion === this.props.region){
