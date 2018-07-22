@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import MenuLinkContainer from 'src/components/menulink/menulink-container';
+
 import { connect } from 'src/store';
 require('./style.less');
 
@@ -35,6 +37,7 @@ class NavBar extends Component {
         </div>
         <div className="nav-bar-slide mod-top"/>
         <div className="nav-bar-slide mod-bottom"/>
+        <MenuLinkContainer curRegion={this.props.currentRegion} />
       </div>
     );
   }

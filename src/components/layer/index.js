@@ -20,7 +20,7 @@ export default class Layer extends Component {
     }
 
     return (
-      <section className={className} data-idx={counter} data-theme={layerObj.theme} >
+      <section className={className} data-idx={this.props.region + '-' + counter} data-theme={layerObj.theme} >
         <div className="layer-title layer-bubble">
           <h1>{layerObj.title}</h1>
           <h2>{layerObj.description}</h2>

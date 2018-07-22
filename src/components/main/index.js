@@ -5,7 +5,6 @@ import Layer from 'src/components/layer/index';
 import LayerDivider from 'src/components/layer/layer-divider';
 import NavBar from 'src/components/navbar';
 import Butler from 'src/components/butler';
-import ShortcutContainer from 'src/components/shortcut';
 
 import Easing from 'src/utils/easing';
 
@@ -31,12 +30,6 @@ class Main extends Component {
     this.scrollIntervalEnd = -1;
     this.scrollTarget = -1;
 
-    this.regionTopFirstIdx = 0;
-    this.regionTopLastIdx = this.regionTopFirstIdx + ProjectData.length - 1;
-    this.regionMiddleIdx = this.regionTopLastIdx + 1;
-    this.regionBottomFirstIdx = this.regionMiddleIdx + 1;
-    this.regionBottomLastIdx = this.regionBottomFirstIdx + JobData.length - 1;
-
     this.state = {
       currentRegion: 'middle'
     }
@@ -49,7 +42,7 @@ class Main extends Component {
 
   componentDidUpdate(prevProps, prevState){
     if(prevProps.targetLayerIdx !== this.props.targetLayerIdx){
-      if(this.props.targetLayerIdx === this.regionMiddleIdx){
+      if(this.props.targetLayerIdx === 'middle'){
         this.scrollToIndex(this.props.targetLayerIdx, true, true);
       }else{
         this.scrollToIndex(this.props.targetLayerIdx, true, false);
@@ -61,7 +54,7 @@ class Main extends Component {
     const centerPoint = this.centerRegionEl.offsetTop - this.refs.element.scrollTop;
     const currentRegion = this.getRegionAtCurrentScrollPosition(this.centerRegionEl.offsetTop, this.refs.element.scrollTop, global.innerHeight);
     const currentLayerObj = this.getLayerAtCurrentScrollPosition(currentRegion, this.centerRegionEl.offsetTop, this.refs.element.scrollTop, global.innerHeight);
-    // console.log('currentLayer:', currentLayer);
+    // console.log('currentLayer:', currentLayerObj.idx);
 
     if(currentLayerObj){
       this.props.actions.setCurrentLayerIdx(currentLayerObj.idx);
@@ -144,23 +137,31 @@ class Main extends Component {
   }
 
   getLayerAtCurrentScrollPosition(region, centerRegionY, scrollAmount, windowHeight){
-    const regionLayers = Array.from(document.querySelectorAll(`#region-${region} .layer`));
+    if(region === 'middle'){
+      return {
+        idx: 'middle',
+        theme: 'middle'
+      }
+    }else{
+      const regionLayers = Array.from(document.querySelectorAll(`#region-${region} .layer`));
 
-    let centerScreen = scrollAmount + (windowHeight / 2);
-    if(centerScreen > centerRegionY){
-      centerScreen = centerScreen - centerRegionY;
-    }
+      let centerScreen = scrollAmount + (windowHeight / 2);
+      if(centerScreen > centerRegionY){
+        centerScreen = centerScreen - centerRegionY;
+      }
 
-    for(let i = regionLayers.length - 1; i >= 0; i--){
-      if(centerScreen > regionLayers[i].offsetTop){
-        return {
-          idx: regionLayers[i].dataset.idx,
-          theme: regionLayers[i].dataset.theme
+      for(let i = regionLayers.length - 1; i >= 0; i--){
+        if(centerScreen > regionLayers[i].offsetTop){
+          return {
+            idx: regionLayers[i].dataset.idx,
+            theme: regionLayers[i].dataset.theme
+          }
         }
       }
+
+      return null;
     }
 
-    return null;
   }
 
   getRegionAtCurrentScrollPosition(centerRegionY, scrollAmount, windowHeight){
@@ -214,10 +215,9 @@ class Main extends Component {
   componentDidMount(){
     this.addListeners();
 
-    this.centerRegionEl = document.querySelector('#region-center');
+    this.centerRegionEl = document.querySelector('#region-middle');
 
-    global.tester = this;
-    this.scrollToIndex(this.regionMiddleIdx, false, true);
+    this.scrollToIndex('middle', false, true);
   }
 
   componentWillUnmount(){
@@ -225,15 +225,15 @@ class Main extends Component {
   }
 
   onMiddleClick(e){
-    this.scrollToIndex(this.regionMiddleIdx, true, true);
+    this.scrollToIndex('middle', true, true);
   }
 
 
-  renderLayers(layerDataArray, startIdx, region){
+  renderLayers(layerDataArray, region){
     const layerList = [];
 
     layerDataArray.forEach((obj, idx) => {
-      layerList.push(<Layer key={idx} layerObj={obj} region={region} counter={startIdx + idx}/>);
+      layerList.push(<Layer key={idx} layerObj={obj} region={region} counter={idx}/>);
       if(idx !== layerDataArray.length - 1){
         layerList.push(<LayerDivider key={'d-' + idx} theme={obj.dividerTheme} region={region} />);
       }
@@ -249,13 +249,13 @@ class Main extends Component {
     return(
       <div ref="element" className={className}>
         <div id="region-top" className="region" >
-          {this.renderLayers(ProjectData, this.regionTopFirstIdx, 'top')}
+          {this.renderLayers(ProjectData, 'top')}
           <Butler currentRegion={this.state.currentRegion} 
                   region="top" 
                   butlerType="topDragon" 
                   butlerHeight={this.state.butlerHeight} />
         </div>
-        <div ref="element" id="region-center" className="region" data-idx={this.regionMiddleIdx} onClick={e => this.onMiddleClick(e)}>
+        <div ref="element" id="region-middle" className="region" data-idx={'middle'} onClick={e => this.onMiddleClick(e)}>
           <NavBar currentRegion={this.state.currentRegion} />
         </div>
         <div id="region-bottom" className="region" >
@@ -264,13 +264,8 @@ class Main extends Component {
                   butlerType="bottomTree" 
                   butlerHeight={this.state.butlerHeight}/>
 
-          {this.renderLayers(JobData, this.regionBottomFirstIdx, 'bottom')}
+          {this.renderLayers(JobData, 'bottom')}
         </div>
-        <ShortcutContainer  topFirstIdx={this.regionTopFirstIdx} 
-                            topLastIdx={this.regionTopLastIdx} 
-                            middleIdx={this.regionMiddleIdx}
-                            bottomFirstIdx={this.regionBottomFirstIdx} 
-                            bottomLastIdx={this.regionBottomLastIdx} />
       </div>
     );
   }

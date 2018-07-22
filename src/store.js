@@ -11,8 +11,8 @@ const store = {
   },
   actions: {
     toggleLoaded: ({ loaded }) => ({ loaded: !loaded }),
-    setTargetLayerIdx: ({targetLayerIdx}, newLayerIdx) => ({targetLayerIdx: parseInt(newLayerIdx)}),
-    setCurrentLayerIdx: ({curLayerIdx}, newLayerIdx) => ({curLayerIdx: parseInt(newLayerIdx)}),
+    setTargetLayerIdx: ({targetLayerIdx}, newLayerIdx) => ({targetLayerIdx: newLayerIdx}),
+    setCurrentLayerIdx: ({curLayerIdx}, newLayerIdx) => ({curLayerIdx: newLayerIdx}),
     setCurrentLayerTheme: ({curLayerTheme}, newLayerTheme) => ({curLayerTheme: newLayerTheme || 'default'}),
     scrollPosition: ({scrollPosition}, newScrollPosition) => ({scrollPosition: newScrollPosition})
   }
