@@ -6,10 +6,12 @@ import LayerDivider from 'src/components/layer/layer-divider';
 import NavBar from 'src/components/navbar';
 import Butler from 'src/components/butler';
 
+import ScrollCover from 'src/components/scrollcover';
 import Easing from 'src/utils/easing';
 
 import { jobs as JobData, projects as ProjectData } from 'src/data/data.js';
 
+// const RevProjectData = ProjectData.reverse();
 require('./style.less');
 
 const SCROLL_INTERVAL_FRAMERATE = 25;
@@ -43,9 +45,9 @@ class Main extends Component {
   componentDidUpdate(prevProps, prevState){
     if(prevProps.targetLayerIdx !== this.props.targetLayerIdx){
       if(this.props.targetLayerIdx === 'middle'){
-        this.scrollToIndex(this.props.targetLayerIdx, true, true);
+        this.scrollToIndex(this.props.targetLayerIdx, false, true);
       }else{
-        this.scrollToIndex(this.props.targetLayerIdx, true, false);
+        this.scrollToIndex(this.props.targetLayerIdx, false, false);
       }
     }
   }
@@ -182,7 +184,8 @@ class Main extends Component {
     this.calcPosition();
   }
 
-  scrollToIndex(index, animate, center){
+  scrollToIndex(index, skipAnimation, center){
+    // console.log('scrollToIndex', index, skipAnimation, center);
     try{
       const foundElement = document.querySelector(`[data-idx="${index}"]`);
       let offset = 0;
@@ -191,10 +194,10 @@ class Main extends Component {
       }
       const scrollTarget = foundElement.getBoundingClientRect().y + this.refs.element.scrollTop  - offset;
 
-      if(animate){
-        this.startScrollInterval(this.refs.element.scrollTop, scrollTarget, 1000);
-      }else{
+      if(skipAnimation){
         this.refs.element.scrollTop = scrollTarget;
+      }else{
+        this.startScrollInterval(this.refs.element.scrollTop, scrollTarget, 1000);
       }
     }catch(e){
       console.error('could not scroll to index ' + index, e);
@@ -217,7 +220,10 @@ class Main extends Component {
 
     this.centerRegionEl = document.querySelector('#region-middle');
 
-    this.scrollToIndex('middle', false, true);
+    //- TODO, make a loader instead
+    window.setTimeout(e => {
+      this.scrollToIndex('middle', true, true);
+    }, 50);
   }
 
   componentWillUnmount(){
@@ -225,17 +231,26 @@ class Main extends Component {
   }
 
   onMiddleClick(e){
-    this.scrollToIndex('middle', true, true);
+    this.scrollToIndex('middle', false, true);
   }
 
 
-  renderLayers(layerDataArray, region){
+  renderLayers(layerDataArray, region, reverseOrder){
     const layerList = [];
 
-    layerDataArray.forEach((obj, idx) => {
-      layerList.push(<Layer key={idx} layerObj={obj} region={region} counter={idx}/>);
-      if(idx !== layerDataArray.length - 1){
-        layerList.push(<LayerDivider key={'d-' + idx} theme={obj.dividerTheme} region={region} />);
+    layerDataArray.forEach((obj, i) => {
+      let idx = i;
+
+      if(!reverseOrder){
+        layerList.push(<Layer key={idx} layerObj={obj} region={region} counter={idx}/>);
+        if(idx !== layerDataArray.length - 1){
+          layerList.push(<LayerDivider key={'d-' + idx} theme={obj.dividerTheme} region={region} />);
+        }
+      }else{
+        if(idx !== 0){
+          layerList.unshift(<LayerDivider key={'d-' + idx} theme={obj.dividerTheme} region={region} />);
+        }
+        layerList.unshift(<Layer key={idx} layerObj={obj} region={region} counter={idx}/>);
       }
     });
 
@@ -249,11 +264,12 @@ class Main extends Component {
     return(
       <div ref="element" className={className}>
         <div id="region-top" className="region" >
-          {this.renderLayers(ProjectData, 'top')}
+          {this.renderLayers(ProjectData, 'top', true)}
           <Butler currentRegion={this.state.currentRegion} 
                   region="top" 
                   butlerType="topDragon" 
                   butlerHeight={this.state.butlerHeight} />
+          <ScrollCover type="top" active={this.state.currentRegion === 'middle'} onScrollButtonClick={e => this.scrollToIndex('top-0')} />
         </div>
         <div ref="element" id="region-middle" className="region" data-idx={'middle'} onClick={e => this.onMiddleClick(e)}>
           <NavBar currentRegion={this.state.currentRegion} />
@@ -263,8 +279,8 @@ class Main extends Component {
                   region="bottom" 
                   butlerType="bottomTree" 
                   butlerHeight={this.state.butlerHeight}/>
-
           {this.renderLayers(JobData, 'bottom')}
+          <ScrollCover type="bottom" active={this.state.currentRegion === 'middle'} onScrollButtonClick={e => this.scrollToIndex('bottom-0')} />
         </div>
       </div>
     );

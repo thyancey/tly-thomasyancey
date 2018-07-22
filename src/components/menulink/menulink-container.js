@@ -39,21 +39,30 @@ class MenuLinks extends Component {
     this.setState({active: true});
   }
 
-  renderMenuLinks(region, layerData, curLayerIdx){
-    const retVal = [];
-    for(let i = 0; i < layerData.length; i++){
-      const layerIdx = region + '-' + i;
+  renderMenuLink(region, layerData, idx, curLayerIdx, ){
+    const layerIdx = region + '-' + idx;
 
-      retVal.push(
-        <MenuLink     idx={layerIdx} 
-                      layerData={layerData[i]}
-                      key={i} 
-                      isCurrent={curLayerIdx === layerIdx}
-                      region={region}
-                      onMenuLink={e => this.onMenuLink(layerIdx)}>
-          {i}
-        </MenuLink>
-      );
+    return (
+      <MenuLink     idx={layerIdx} 
+                    layerData={layerData}
+                    key={idx} 
+                    isCurrent={curLayerIdx === layerIdx}
+                    region={region}
+                    onMenuLink={e => this.onMenuLink(layerIdx)}>
+      </MenuLink>
+    );
+  }
+
+  renderMenuLinks(region, layerData, curLayerIdx, reverseOrder){
+    const retVal = [];
+    if(!reverseOrder){
+      for(let i = 0; i < layerData.length; i++){
+        retVal.push(this.renderMenuLink(region, layerData[i], i, curLayerIdx));
+      }
+    }else{
+      for(let i = layerData.length - 1; i >= 0; i--){
+        retVal.push(this.renderMenuLink(region, layerData[i], i, curLayerIdx));
+      }
     }
 
     return retVal;
@@ -69,11 +78,11 @@ class MenuLinks extends Component {
     return(
       <div className={className} onMouseLeave={e => this.onMenuLeave(e)}>
         <div className="menulinks-button" onMouseEnter={e => this.onMenuButtonEnter(e)}>
-          <h3>{'Jump To'}</h3>
+          <h3>{this.props.curRegion === 'bottom' ? 'Shortcuts ▼' : 'Shortcuts ▲'}</h3>
         </div>
         <div className="menulinks">
           <div className="menulinks-group mod-top">
-            {this.renderMenuLinks('top', ProjectData, this.props.curLayerIdx)}
+            {this.renderMenuLinks('top', ProjectData, this.props.curLayerIdx, true)}
           </div>
           <div className="menulinks-group mod-middle">
             {this.renderMiddleLink(this.props.curLayerIdx)}

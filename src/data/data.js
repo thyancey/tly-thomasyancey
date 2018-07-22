@@ -135,6 +135,7 @@ module.exports = {
       title: "Rotater",
       description: "React component for animating image sequences",
       theme: "",
+      dividerTheme: "clouds-left",
       text: "A million years ago, I used to be really into 3D modeling and animation. I wanted to bring some form of depth into a relatively simple 2d implementation. I made a component that can take a sequence of images, and with the help of a little bit of fake physics, make it come to life",
       company: "ozmo",
       responsibilities: ["oner", "twor", "threer"],

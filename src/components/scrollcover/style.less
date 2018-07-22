@@ -1,0 +1,85 @@
+@import "~themes/variables.less";
+
+
+.scrollcover{
+  position:absolute;
+  height:100%;
+  width:100%;
+
+  z-index:@zindex-middle - 1;
+
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .5s;
+
+  &.mod-active{
+    pointer-events:all;
+    opacity:1;
+    transition:opacity .5s;
+  }
+}
+
+.scrollcover-button{
+  position:absolute;
+  display:block;
+
+  left:50%;
+  transform:translateX(-50%);
+
+  padding:3rem;
+
+  text-align:center;
+  border-radius:@border-radius-large;
+  background-color:@color-black;
+  color:@color-white;
+  transition: color .2s;
+
+  cursor:pointer;
+}
+
+@scrollbutton-offset: 26rem;
+
+#region-top{
+  padding-bottom:12rem;
+  background-color:@color-white;
+
+  .scrollcover{
+    bottom:0rem;
+    background-color:@color-blue;
+    text-align:center;
+
+    .scrollcover-button{
+      color:@color-blue;
+      bottom:@scrollbutton-offset;
+
+      &:hover{
+        color:@color-white;
+        transition: color .2s;
+      }
+    }
+  }
+}
+
+#region-middle{
+
+}
+
+#region-bottom{
+  padding-top:16rem;
+  background-color:@color-blue-dark;
+
+  .scrollcover{
+    top:0;
+    background-color:@color-purple;
+
+    .scrollcover-button{
+      color:@color-purple;
+      top:@scrollbutton-offset;
+
+      &:hover{
+        color:@color-white;
+        transition: color .2s;
+      }
+    }
+  }
+}

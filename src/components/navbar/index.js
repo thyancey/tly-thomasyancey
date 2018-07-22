@@ -2,20 +2,13 @@ import React, { Component } from 'react';
 
 import MenuLinkContainer from 'src/components/menulink/menulink-container';
 
-import { connect } from 'src/store';
 require('./style.less');
 
-class NavBar extends Component {
+export default class NavBar extends Component {
   constructor(){
     super();
 
     this.element = React.createRef();
-  }
-
-  relayPosition(){
-    console.log('RELAY!');
-    console.log(this.element);
-    global.gNavbar = this.element;
   }
 
   render() {
@@ -42,6 +35,3 @@ class NavBar extends Component {
     );
   }
 }
-
-export default connect(state => ({ 
-}))(NavBar);
