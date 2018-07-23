@@ -68,6 +68,56 @@ class MenuLinks extends Component {
     return retVal;
   }
 
+  renderTopMenuLinkGroup(){
+    if(this.props.curRegion === 'middle' || this.props.curRegion === 'top'){
+      return (
+        <div>
+          <p className="menulinks-group-label mod-top" onClick={e => this.onMenuLink('top-0')}>
+            {'projects'}
+          </p>
+          <div className="menulinks-group mod-top">
+            {this.renderMenuLinks('top', ProjectData, this.props.curLayerIdx, true)}
+          </div>
+        </div>
+      );
+    }
+  }
+
+  renderMiddleMenuLinkGroup(){
+    if(this.props.curRegion !== 'middle'){
+      return (
+        <div className="menulinks-group mod-middle">
+          {this.renderMiddleLink(this.props.curLayerIdx)}
+        </div>
+      );
+    }
+  }
+
+  renderBottomMenuLinkGroup(){
+    if(this.props.curRegion === 'middle' || this.props.curRegion === 'bottom'){
+      return (
+        <div>
+          <p className="menulinks-group-label mod-bottom" onClick={e => this.onMenuLink('bottom-0')}>
+            {'career'}
+          </p>
+          <div className="menulinks-group mod-bottom">
+            {this.renderMenuLinks('bottom', JobData, this.props.curLayerIdx)}
+          </div>
+        </div>
+      );
+    }
+  }
+
+  renderMenuLinkGroups(){
+    return (
+      <div className="menulinks">
+        {this.renderTopMenuLinkGroup()}
+        {this.renderMiddleMenuLinkGroup()}
+        {this.renderBottomMenuLinkGroup()}
+      </div>
+    );
+  }
+
 
   render(){
     let className = `menulinks-container region-${this.props.curRegion}`;
@@ -80,17 +130,7 @@ class MenuLinks extends Component {
         <div className="menulinks-button" onMouseEnter={e => this.onMenuButtonEnter(e)}>
           <h3>{this.props.curRegion === 'bottom' ? 'Shortcuts ▼' : 'Shortcuts ▲'}</h3>
         </div>
-        <div className="menulinks">
-          <div className="menulinks-group mod-top">
-            {this.renderMenuLinks('top', ProjectData, this.props.curLayerIdx, true)}
-          </div>
-          <div className="menulinks-group mod-middle">
-            {this.renderMiddleLink(this.props.curLayerIdx)}
-          </div>
-          <div className="menulinks-group mod-bottom">
-            {this.renderMenuLinks('bottom', JobData, this.props.curLayerIdx)}
-          </div>
-        </div>
+        {this.renderMenuLinkGroups()}
       </div>
     )
   }

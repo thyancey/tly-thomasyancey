@@ -7,7 +7,6 @@ export default class MenuLink extends Component {
   render() {
     const { idx, isCurrent, region } = this.props;
     let className = 'menulink';
-    className += ' mod-' + region;
     if(isCurrent){
       className += ' mod-active';
     }
