@@ -33,7 +33,8 @@ class Main extends Component {
     this.scrollTarget = -1;
 
     this.state = {
-      currentRegion: 'middle'
+      currentRegion: 'middle',
+      loaded: false
     }
   }
 
@@ -43,6 +44,9 @@ class Main extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
+    if(this.state.loaded && prevState.loaded !== this.state.loaded){
+      this.onLoaded();
+    }
     if(prevProps.targetLayerIdx !== this.props.targetLayerIdx){
       if(this.props.targetLayerIdx === 'middle'){
         this.scrollToIndex(this.props.targetLayerIdx, false, true);
@@ -102,6 +106,53 @@ class Main extends Component {
   scrollToValue(targetValue, startValue, progress){
     this.refs.element.scrollTop = ((targetValue - startValue) * Easing.easeInOutQuad(progress)) + startValue;
   }
+
+
+
+  killLoadTimeout(){
+    if(this.loadTimeout){
+      global.clearTimeout(this.loadTimeout);
+      this.loadTimeout = null;
+    }
+  }
+
+  startLoadTimeout(){
+    this.killLoadTimeout();
+
+    this.loadTimeout = global.setTimeout(() => {
+      this.onLoadTimeout();
+    }, 50)
+  }
+
+  onLoadTimeout(){
+    // console.log('onLoadTimeout')
+    this.killLoadTimeout();
+
+    // const loadedPercent = 50;
+    const images = Array.from(document.querySelectorAll('img'));
+    const loadedImages = images.filter((i, idx) => (i.complete));
+    const loadedPercent = Math.round((loadedImages.length / images.length) * 100);
+
+    // console.log(`${loadedImages.length}/${images.length} loaded`);
+    if(loadedPercent === 100){
+      this.setState({ 
+        loaded: true,
+        loadedPercent: 100
+      });
+    }else{
+      this.setState({ loadedPercent: loadedPercent });
+      this.startLoadTimeout();
+    }
+  }
+
+
+
+
+
+
+
+
+
 
   startButlerTimer(){
     this.killButlerTimer();
@@ -219,14 +270,22 @@ class Main extends Component {
 
     this.centerRegionEl = document.querySelector('#region-middle');
 
+    this.startLoadTimeout();
+
     //- TODO, make a loader instead
-    window.setTimeout(e => {
-      this.scrollToIndex('middle', true, true);
-    }, 50);
+    // window.setTimeout(e => {
+    //   this.scrollToIndex('middle', true, true);
+    // }, 50);
+  }
+
+  onLoaded(){
+    console.log('onLoaded!')
+    this.scrollToIndex('middle', true, true);
   }
 
   componentWillUnmount(){
     this.removeListeners();
+    this.killLoadTimeout();
   }
 
   onMiddleClick(e){
@@ -256,12 +315,26 @@ class Main extends Component {
     return layerList;
   }
 
+  renderLoader(){
+    // console.log('loaded: ', this.state.loaded)
+    if(!this.state.loaded){
+      return(
+        <div id="loader">
+          <img src={require('src/images/loader/blobloader.gif')} alt={"thomasyancey.com is loading"} />
+        </div>
+      );
+    }else{
+      return null;
+    }
+  }
+
 
   render() {
     let className = `main theme-${this.props.curLayerTheme}`;
 
     return(
       <div ref="element" className={className}>
+        {this.renderLoader()}
         <div id="region-top" className="region" >
           {this.renderLayers(ProjectData, 'top', true)}
           <Butler currentRegion={this.state.currentRegion} 
@@ -287,7 +360,6 @@ class Main extends Component {
 }
 
 export default connect(state => ({ 
-  loaded: state.loaded,
   curLayerIdx: state.curLayerIdx,
   curLayerTheme: state.curLayerTheme,
   targetLayerIdx: state.targetLayerIdx
