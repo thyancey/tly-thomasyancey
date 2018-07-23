@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Icon_Drag from 'src/images/icons/drag-indicator.svg';
 
 require('./style.less');
 
@@ -14,7 +13,7 @@ export default class MenuLink extends Component {
     if(this.props.layerData){
       return(
         <a className={className} onClick={this.props.onMenuLink}>
-          <h4>{this.props.layerData.title}</h4>
+          <h4>{this.props.layerData.linkTitle || this.props.layerData.title}</h4>
         </a>
       );
     }else{
@@ -29,7 +28,3 @@ export default class MenuLink extends Component {
 
   }
 }
-
-
-/* 
-        <h4>{this.props.layerData.title}</h4>*/

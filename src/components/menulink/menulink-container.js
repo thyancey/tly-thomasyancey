@@ -15,6 +15,13 @@ class MenuLinks extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState){
+    //- prevents the menu from staying open when jumping between top -> home -> bottom
+    if(prevProps.curRegion !== this.props.curRegion){
+      this.setState({active:false});
+    }
+  }
+
   onMenuLink(idx){
     this.props.actions.setTargetLayerIdx(idx);
   }
@@ -69,9 +76,9 @@ class MenuLinks extends Component {
   }
 
   renderTopMenuLinkGroup(){
-    if(this.props.curRegion === 'middle' || this.props.curRegion === 'top'){
+    if(this.props.curRegion === 'top'){
       return (
-        <div>
+        <div className="menulinks-group-container" >
           <p className="menulinks-group-label mod-top" onClick={e => this.onMenuLink('top-0')}>
             {'projects'}
           </p>
@@ -86,17 +93,19 @@ class MenuLinks extends Component {
   renderMiddleMenuLinkGroup(){
     if(this.props.curRegion !== 'middle'){
       return (
-        <div className="menulinks-group mod-middle">
-          {this.renderMiddleLink(this.props.curLayerIdx)}
+        <div className="menulinks-group-container" >
+          <div className="menulinks-group mod-middle">
+            {this.renderMiddleLink(this.props.curLayerIdx)}
+          </div>
         </div>
       );
     }
   }
 
   renderBottomMenuLinkGroup(){
-    if(this.props.curRegion === 'middle' || this.props.curRegion === 'bottom'){
+    if(this.props.curRegion === 'bottom'){
       return (
-        <div>
+        <div className="menulinks-group-container" >
           <p className="menulinks-group-label mod-bottom" onClick={e => this.onMenuLink('bottom-0')}>
             {'career'}
           </p>
@@ -110,12 +119,24 @@ class MenuLinks extends Component {
 
   renderMenuLinkGroups(){
     return (
-      <div className="menulinks">
+      <div className="menulinks-menus-container">
         {this.renderTopMenuLinkGroup()}
         {this.renderMiddleMenuLinkGroup()}
         {this.renderBottomMenuLinkGroup()}
       </div>
     );
+  }
+
+  renderMenuLinkButton(){
+    if(this.props.curRegion !== 'middle'){
+      return(
+        <div className="menulinks-openbutton" onMouseEnter={e => this.onMenuButtonEnter(e)}>
+          <h4>{this.props.curRegion === 'bottom' ? 'Home' : 'Home'}</h4>
+        </div>
+      );
+    }else{
+      return null;
+    }
   }
 
 
@@ -127,9 +148,7 @@ class MenuLinks extends Component {
 
     return(
       <div className={className} onMouseLeave={e => this.onMenuLeave(e)}>
-        <div className="menulinks-button" onMouseEnter={e => this.onMenuButtonEnter(e)}>
-          <h3>{this.props.curRegion === 'bottom' ? 'Shortcuts ▼' : 'Shortcuts ▲'}</h3>
-        </div>
+        {this.renderMenuLinkButton()}
         {this.renderMenuLinkGroups()}
       </div>
     )

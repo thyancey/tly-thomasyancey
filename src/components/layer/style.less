@@ -117,6 +117,31 @@
   &.theme-bottom{
   }
 
+  &.theme-vt{
+    @theme-vt-color-maroon: #861f41;
+    @theme-vt-color-orange: #e87722;
+    @theme-vt-color-white: #ffffff;
+    @theme-vt-color-grey: #75787b;
+    @theme-vt-color-black: #231f20;
+
+    background-color:@theme-vt-color-maroon;
+
+    .layer-bubble{
+      background-color:@theme-vt-color-orange;
+      color:@theme-vt-color-black;
+      border-color:@theme-vt-color-white;
+
+      h1{
+        color:@theme-vt-color-maroon;
+      }
+      h2{
+        color:@theme-vt-color-white;
+      }
+      h3{
+        color:@theme-vt-color-white;
+      }
+    }
+  }
 
   &.theme-guitarapp{
     background-color:@color-black;
@@ -125,6 +150,7 @@
       background-color:@color-purple;
       color:@color-white;
       box-shadow: 0 0 40px @color-purple;
+      border-color:@color-purple;
 
       h1{
       }

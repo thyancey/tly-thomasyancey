@@ -70,7 +70,6 @@ class Main extends Component {
     }
   }
 
-
   startScrollInterval(startPosition, target, duration){
     this.scrollStart = startPosition;
     this.scrollTarget = target;
@@ -163,8 +162,8 @@ class Main extends Component {
 
       return null;
     }
-
   }
+
 
   getRegionAtCurrentScrollPosition(centerRegionY, scrollAmount, windowHeight){
     const centerPoint = centerRegionY - scrollAmount;

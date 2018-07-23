@@ -3,8 +3,10 @@
 module.exports = {
   jobs:[
     {
-      title: "Software Engineer - Mid",
-      description: "Bla bla bla",
+      title: "Ozmo",
+      description: "Software Engineer (mid)",
+      linkTitle: "Ozmo - Software Engineer (mid)",
+      date:"Jan 2015 - Present",
       theme: "",
       dividerTheme: "clouds-right",
       text: "This is some long text about this thing, it might go on for a while. It's probably got a whole bunch of detail and things to talk about. maybe there's links in here I have no idea! But it sure is long. A really long description.",
@@ -14,8 +16,10 @@ module.exports = {
       ]
     },
     {
-      title: "Software Engineer",
-      description: "Some other stuff",
+      title: "Modea",
+      description: "Software Engineer",
+      linkTitle: "Modea - Software Engineer",
+      date:"Dec 2012 - Dec 2014",
       theme: "",
       dividerTheme: "clouds-left",
       text: "This is some long text about this thing, it might go on for a while. It's probably got a whole bunch of detail and things to talk about. maybe there's links in here I have no idea! But it sure is long. A really long description.",
@@ -25,8 +29,12 @@ module.exports = {
       ]
     },
     {
-      title: "Content Lead",
-      description: "Some other stuff",
+      title: "Modea",
+      description: "Design and Development Contractor",
+      linkTitle: "Modea - Design and Development Contractor",
+      date:"Feb 2012 - Nov 2012",
+      theme: "",
+      dividerTheme: "clouds-left",
       text: "This is some long text about this thing, it might go on for a while. It's probably got a whole bunch of detail and things to talk about. maybe there's links in here I have no idea! But it sure is long. A really long description.",
       company: "ozmo",
       responsibilities: ["oner", "twor", "threer"],
@@ -34,8 +42,24 @@ module.exports = {
       ]
     },
     {
-      title: "Content Lead",
-      description: "Some other stuff",
+      title: "Modea",
+      description: "Content Developer",
+      linkTitle: "Modea - Content Developer",
+      date:"Oct 2009 - Jan 2012",
+      theme: "",
+      dividerTheme: "clouds-left",
+      text: "This is some long text about this thing, it might go on for a while. It's probably got a whole bunch of detail and things to talk about. maybe there's links in here I have no idea! But it sure is long. A really long description.",
+      company: "ozmo",
+      responsibilities: ["oner", "twor", "threer"],
+      details:[]
+    },
+    {
+      title: "Education",
+      description: "B.F.A, Virginia Tech",
+      linkTitle: "",
+      date:"2007",
+      theme: "vt",
+      dividerTheme: "clouds-left",
       text: "This is some long text about this thing, it might go on for a while. It's probably got a whole bunch of detail and things to talk about. maybe there's links in here I have no idea! But it sure is long. A really long description.",
       company: "ozmo",
       responsibilities: ["oner", "twor", "threer"],
@@ -47,6 +71,7 @@ module.exports = {
     {
       title: "Guitar App",
       description: "Music theory and learning tool",
+      linkTitle: "",
       theme: "guitarapp",
       dividerTheme: "fretboard-right",
       text: "As one of my 10,000 hobbies, playing guitar is something I sorta know how to do, but I'm not very good at. I've been trying to go past chords and tabs and learn some more fundamental concepts of music theory. This is an app I made to learn notes and scales on a guitar",
@@ -134,6 +159,7 @@ module.exports = {
     {
       title: "Rotater",
       description: "React component for animating image sequences",
+      linkTitle: "",
       theme: "",
       dividerTheme: "clouds-left",
       text: "A million years ago, I used to be really into 3D modeling and animation. I wanted to bring some form of depth into a relatively simple 2d implementation. I made a component that can take a sequence of images, and with the help of a little bit of fake physics, make it come to life",

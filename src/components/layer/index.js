@@ -23,7 +23,8 @@ export default class Layer extends Component {
       <section className={className} data-idx={this.props.region + '-' + counter} data-theme={layerObj.theme} >
         <div className="layer-title layer-bubble">
           <h1>{layerObj.title}</h1>
-          <h2>{layerObj.description}</h2>
+          {layerObj.description && (<h2>{layerObj.description}</h2>)}
+          {layerObj.date && (<h3>{layerObj.date}</h3>)}
           <div className="layer-title-text">
             <p>{layerObj.text}</p>
           </div>

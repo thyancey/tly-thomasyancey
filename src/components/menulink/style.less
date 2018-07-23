@@ -1,12 +1,18 @@
 @import "~themes/variables.less";
 
-
-
-.menulinks-button{
-  padding:1rem;
-  color:@color-blue;
-  cursor:pointer;
-}
+/* im embarrassed about this structure atm */
+/*
+.main
+  #region-middle
+    .nav-bar
+      .menulinks-container
+        .menulinks-openbutton //- Home button
+        .menulinks-menus-container
+          .menulinks-group-container  //- each top, middle bottom containers
+            .menulinks-group-label //- "projects" or "career"
+            .menulinks-group
+              .menulink //- each link
+*/
 
 .menulinks-container{
   position:absolute;
@@ -14,31 +20,23 @@
   transform: translateY(-50%);
   width:33%;
 
-
   right:1rem;
   text-align:right;
   color:white;
   z-index:1;
+}
 
-  .menulinks-group-label{
-    color:@color-white;
-    border-color:@color-white;
-    padding:.5rem;
-    text-align:left;
-  }
+.menulinks-openbutton{
+  padding:1.5rem;
+  padding-right:1.75rem;
+  color:@color-blue;
+  cursor:pointer;
+}
 
-  .menulinks{
-    // display:none;
-
+.menulinks-container{
+  .menulinks-menus-container{
+    display:none;
     width:100%;
-  }
-  &.mod-active{
-    .menulinks{
-      display:block;
-    }
-  }
-
-  .menulinks{
     position:absolute;
     right:0;
 
@@ -46,78 +44,83 @@
     padding:1rem;
     border-radius:@border-radius-medium;
   }
+  &.mod-active{
+    .menulinks-menus-container{
+      display:block;
+    }
+  }
 
   &.region-top{
-    .menulinks{
+    .menulinks-menus-container{
       top:auto;
       bottom:-.25rem;
     }
   }
 
   &.region-middle{
-    .menulinks{
+    .menulinks-menus-container{
       top:auto;
       bottom:4rem;
     }
   }
 
   &.region-bottom{
-    .menulinks{
+    .menulinks-menus-container{
       top:-.25rem;
       bottom:auto;
     }
+  }
+}
 
+
+.menulinks-group-label{
+  color:@color-grey-light;
+  border-color:@color-white;
+  padding:.5rem;
+  text-align:left;
+}
+
+.menulinks-group{
+  &.mod-top{
+    border-top: 1px dashed @color-grey-light;
   }
 
-  .menulinks-group{
-    &.mod-top{
-      border-top: 1px dashed @color-grey;
-      // border-bottom: 1px dashed @color-grey;
-    }
+  &.mod-middle{}
 
-    &.mod-middle{
-      .menulink{
-        color:@color-blue;
+  &.mod-bottom{
+    border-top: 1px dashed @color-grey-light;
+  }
+}
+
+.menulink{
+  display:block;
+  margin:.5rem;
+  padding:.25rem;
+  cursor:pointer;
+
+  color:@color-white;
+  background-color:@color-black;
+  transition: all .3s;
+
+  &.mod-active{
+    color:yellow;
+  }
+
+  &:hover{
+    background-color:@color-green;
+    color:@color-black;
+    transition: all .3s;
+  }
+}
+
+.menulinks-group{
+  &.mod-middle{
+    .menulink{
+      color:@color-blue;
+
+      &:hover{
+        color:@color-black;
       }
-
-    }
-
-    &.mod-bottom{
-      border-top: 1px dashed @color-grey;
-    // border-bottom: 1px dashed @color-grey;
-    }
-  }
-
-  .menulinks-group-label{
-    color:@color-grey;
-    &.mod-top{
-      // border-bottom:1px dashed;
-    }
-
-    &.mod-bottom{
-      // border-bottom:1px dashed;
-    }
-  }
-
-  .menulink{
-    display:block;
-    margin:.5rem;
-    padding:.25rem;
-    cursor:pointer;
-
-    color:@color-white;
-      background-color:@color-black;
-      transition: all .3s;
-
-
-    &.mod-active{
-      color:yellow;
-    }
-
-    &:hover{
-      background-color:@color-green;
-      color:black;
-      transition: all .3s;
     }
   }
 }
