@@ -320,7 +320,7 @@ class Main extends Component {
     if(!this.state.loaded){
       return(
         <div id="loader">
-          <img src={require('src/images/loader/blobloader.gif')} alt={"thomasyancey.com is loading"} />
+          <img src={require('images/loader/blobloader.gif')} alt={"thomasyancey.com is loading"} />
         </div>
       );
     }else{
