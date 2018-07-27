@@ -316,16 +316,11 @@ class Main extends Component {
   }
 
   renderLoader(){
-    // console.log('loaded: ', this.state.loaded)
-    if(!this.state.loaded){
-      return(
-        <div id="loader">
-          <img src={require('images/loader/blobloader.gif')} alt={"thomasyancey.com is loading"} />
-        </div>
-      );
-    }else{
-      return null;
-    }
+    return(
+      <div id="loader" className={this.state.loaded ? 'mod-loading' : null }>
+        <img src={require('images/loader/blobloader.gif')} alt={"thomasyancey.com is loading"} />
+      </div>
+    );
   }
 
 

@@ -61,6 +61,15 @@
       &.mod-half{
         width:~"calc(50% - 2rem)";
       }
+      &.mod-quarter{
+        width:~"calc(25% - 2rem)";
+      }
+      &.mod-third{
+        width:~"calc(33% - 2rem)";
+      }
+      &.mod-half{
+        width:~"calc(50% - 2rem)";
+      }
       &.mod-full{
         width:100%;
       }
@@ -162,6 +171,29 @@
 }
 
 
+@media (min-width: @breakpoint-desktop) {
+  #region-top{
+    .layer{
+      padding-left:30rem;
+      padding-right:16rem;
+    }
+
+    .butler{
+      left:4rem;
+    }
+  }
+
+  #region-bottom{
+    .layer{
+      padding-left:16rem;
+      padding-right:30rem;
+    }
+
+    .butler{
+      right:7rem;
+    }
+  }
+}
 
 @media (max-width: @breakpoint-mobile) {
   #region-top{
@@ -194,6 +226,12 @@
       .blorb{
         &.mod-half{
           width:100%;
+        }
+        &.mod-third{
+          width:100%;
+        }
+        &.mod-quarter{
+          width:~"calc(50% - 2rem)";
         }
       }
     }
