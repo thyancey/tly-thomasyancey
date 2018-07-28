@@ -9,6 +9,27 @@ export default class Layer extends Component {
     return detailsArray.map((dt, idx) => (<LayerDetail key={idx} detailObj={dt}/>));
   }
 
+  renderListGroup(listGroup){
+    return (
+      <div className="layer-listgroup">
+        <h3>{listGroup.title}</h3>
+        <ul>
+          {listGroup.items.map((item, idx) => (
+            <li key={idx}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
+  renderLayerDescription(text){
+    return (
+      <div className="layer-title-text">
+        <p>{text}</p>
+      </div>
+    );
+  }
+
   render(){
     const { layerObj, counter } = this.props;
 
@@ -25,9 +46,8 @@ export default class Layer extends Component {
           <h1>{layerObj.title}</h1>
           {layerObj.description && (<h2>{layerObj.description}</h2>)}
           {layerObj.date && (<h3>{layerObj.date}</h3>)}
-          <div className="layer-title-text">
-            <p>{layerObj.text}</p>
-          </div>
+          {layerObj.text && this.renderLayerDescription(layerObj.text)}
+          {layerObj.listGroup && this.renderListGroup(layerObj.listGroup)}
         </div>
         {this.renderDetails(layerObj.details)}
       </section>

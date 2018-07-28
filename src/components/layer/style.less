@@ -5,12 +5,6 @@
   position:relative;
   /* note: padding-top and margin-top for layers is weird so that the shortcut menu jumps with the title in a nice place */;
   padding: 12rem 3rem;
-
-  .layer-title-text{
-    border-top:2px solid black;
-    margin-top:1rem;
-    padding-top:1rem;
-  }
 }
 
 
@@ -49,6 +43,7 @@
   }
 
 }
+
 
 .layer-detail{
   .layer-detail-body{
@@ -93,6 +88,26 @@
   }
 }
 
+.layer-title-text{
+  border-top:2px solid black;
+  margin-top:1rem;
+  padding-top:1rem;
+}
+
+
+.layer-listgroup{
+  border-top:2px solid black;
+  margin-top:1rem;
+  padding-top:1rem;
+
+  ul{
+    margin:0;
+    padding-left:3rem;
+  }
+  li{
+    line-height:2.25rem;
+  }
+}
 
 #region-top{
   .layer{
@@ -204,7 +219,7 @@
     }
 
     .layer-detail{
-      margin:3rem 1rem 3rem 8rem;
+      margin:3rem 1rem 3rem 6rem;
     }
   }
   #region-bottom{
@@ -214,7 +229,7 @@
     }
 
     .layer-detail{
-      margin:3rem 8rem 3rem 1rem;
+      margin:3rem 3rem 3rem 1rem;
     }
   }
 

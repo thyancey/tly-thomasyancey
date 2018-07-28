@@ -3,16 +3,84 @@
 module.exports = {
   jobs:[
     {
-      title: "Ozmzo",
+      title: "Ozmo",
       description: "Software Engineer (mid)",
       linkTitle: "Ozmo - Software Engineer (mid)",
       date:"Jan 2015 - Present",
       theme: "",
       dividerTheme: "clouds-right",
-      text: "This is some long text about this thing, it might go on for a while. It's probably got a whole bunch of detail and things to talk about. maybe there's links in here I have no idea! But it sure is long. A really long description.",
       company: "ozmo",
-      responsibilities: ["one", "two", "three"],
+      listGroup: {
+        title: 'Responsibilities',
+        items:[
+          'develop react applications for SAS product',
+          'ensure rapid deployment and automation through CI pipleline',
+          'interview prospective employees'
+        ]
+      },
       details:[
+        {
+          title: "React Frontend Applications",
+          description: "",
+          blorbs: [
+            {
+              width: "full",
+              text: "Created responsive and interactive applications using the React framework"
+            },
+            {
+              width: "full",
+              image: "job-ozmo/o4a-01.jpg"
+            },
+            {
+              width: "half",
+              text: "Some applications were built to be fully responsive and compatable across a large list of broswers and devices"
+            },
+            {
+              width: "half",
+              image: "job-ozmo/phone-tutorial.jpg"
+            }
+          ]
+        },
+        {
+          title: "Analytics",
+          description: "Develop enhanced reporting data model",
+          blorbs: [
+            {
+              width: "full",
+              text: "Transition basic google analytics implementation to a robust raw data model"
+            },
+            {
+              width: "half",
+              text: "Create multiple dashboards from raw data stream using Google Data Studio"
+            },
+            {
+              width: "half",
+              image: "job-ozmo/datastudio.jpg"
+            },
+            {
+              width: "half",
+              image: "job-ozmo/heatmap.jpg"
+            },
+            {
+              width: "half",
+              text: "I also created an in-house click tracking tool for storing and visualizing where users were interacting with the product"
+            }
+          ]
+        },
+        {
+          title: "CI and Automation with Jenkins",
+          description: "",
+          blorbs: [
+            {
+              width: "full",
+              text: "I have a lot of experience designing and implenting automation pipelines in Jenkins, primarily using bash and node. Many of the scripts alleviate monotonous actions, as well as validate and correct potential issues from user error."
+            },
+            {
+              width: "full",
+              image: "job-ozmo/jenkins.jpg"
+            }
+          ]
+        }
       ]
     },
     {
@@ -24,8 +92,21 @@ module.exports = {
       dividerTheme: "clouds-left",
       text: "This is some long text about this thing, it might go on for a while. It's probably got a whole bunch of detail and things to talk about. maybe there's links in here I have no idea! But it sure is long. A really long description.",
       company: "ozmo",
-      responsibilities: ["oner", "twor", "threer"],
       details:[
+        {
+          title: "",
+          description: "",
+          blorbs: [
+            {
+              width: "half",
+              text: "This represents the neck of a variety of string instruments. The notes dynamically update based on your current key, scale, and/or chord configuration. Clicking the notes on the fretboad will play that MIDI note."
+            },
+            {
+              width: "half",
+              image: "project-guitarapp/guitarapp-03.jpg"
+            }
+          ]
+        }
       ]
     },
     {
