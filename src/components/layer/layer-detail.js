@@ -4,6 +4,16 @@ require('./style.less');
 
 export default class LayerDetail extends Component {
 
+  renderBlorbGroup(blorbGroup, idx){
+    return (
+      <div key={idx} className="blorbgroup">
+        {blorbGroup.map((blorb, bIdx) => (
+          this.renderBlorb(blorb, bIdx)
+        ))}
+      </div>
+    );
+  }
+
   renderBlorb(blorb, idx){
     let blorbSize = 'mod-' + blorb.width;
     if(blorb.text){
@@ -37,7 +47,7 @@ export default class LayerDetail extends Component {
           <h3>{detailObj.description}</h3>
         </div>
         <div className="layer-detail-body">
-          {detailObj.blorbs.map((blorb, idx) => this.renderBlorb(blorb, idx))}
+          {detailObj.blorbs.map((blorb, idx) => this.renderBlorbGroup(blorb, idx))}
         </div>
       </div>
     );
