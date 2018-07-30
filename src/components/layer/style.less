@@ -85,6 +85,12 @@
   &.mod-half{
     width:~"calc(50% - 2rem)";
   }
+  &.mod-twothird{
+    width:~"calc(66% - 2rem)";
+  }
+  &.mod-threequarter{
+    width:~"calc(75% - 2rem)";
+  }
   &.mod-full{
     width:100%;
   }
@@ -93,6 +99,11 @@
     cursor:pointer;
     border: @border-thickness-medium solid @color-white;
     box-shadow: @shadow-z3;
+
+    &.mod-nostyle{
+      border:none;
+      box-shadow:none;
+    }
 
     img{
       display:block;
@@ -216,21 +227,40 @@
 
 
 @media (min-width: @breakpoint-desktop) {
+
+  .layer-title{
+    max-width:100rem;
+  }
+  .layer-detail{
+    max-width:80rem;
+  }
+
   #region-top{
     .layer{
       padding-left:30rem;
       padding-right:16rem;
+
+      >div{
+        margin-left:auto;
+        margin-right:auto;
+      }
     }
 
     .butler{
       left:4rem;
     }
+
   }
 
   #region-bottom{
     .layer{
       padding-left:16rem;
       padding-right:30rem;
+
+      >div{
+        margin-left:auto;
+        margin-right:auto;
+      }
     }
 
     .butler{

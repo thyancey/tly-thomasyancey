@@ -19,16 +19,29 @@ export default class LayerDetail extends Component {
     if(blorb.text){
       return (
         <div key={idx} className={`blorb blorb-text ${blorbSize}`}>
+          {blorb.title && (<h4>{blorb.title}</h4>)}
           <p>{blorb.text}</p>
         </div>
       );
     }else if(blorb.image){
+      let modClass = '';
+      if(blorb.mod){
+        modClass = 'mod-' + blorb.mod;
+      }
       return (
-        <div key={idx} className={`blorb blorb-image ${blorbSize}`}>
+        <div key={idx} className={`blorb blorb-image ${blorbSize} ${modClass}`}>
           <img src={require('src/images/layers/' + blorb.image)}/>
         </div>
       );
-    }else{
+    }else if(blorb.bullets){
+      return (
+        <ul key={idx}>
+          {blorb.bullets.map((item, bIdx) => (
+            <li key={bIdx}>{item}</li>
+          ))}
+        </ul>
+      );
+    }{
       console.error('blorbs must either have text or an image.');
       return null;
     } 
