@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import { connect } from 'src/store';
 
 import MenuLink from './menulink';
-import { jobs as JobData, projects as ProjectData } from 'src/data/data.js';
+import JobData from 'src/data/jobdata.js';
+import ProjectData from 'src/data/projectdata.js';
+
 require('./style.less');
 
 class MenuLinks extends Component {

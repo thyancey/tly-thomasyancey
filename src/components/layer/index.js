@@ -9,9 +9,9 @@ export default class Layer extends Component {
     return detailsArray.map((dt, idx) => (<LayerDetail key={idx} detailObj={dt}/>));
   }
 
-  renderListGroup(listGroup){
+  renderListGroup(listGroup, idx){
     return (
-      <div className="layer-listgroup">
+      <div className="layer-listgroup" key={idx}>
         <h3>{listGroup.title}</h3>
         <ul>
           {listGroup.items.map((item, idx) => (
@@ -20,6 +20,10 @@ export default class Layer extends Component {
         </ul>
       </div>
     );
+  }
+
+  renderListGroups(listGroups){
+    return listGroups.map((lg, idx) => this.renderListGroup(lg, idx));
   }
 
   renderLayerDescription(text){
@@ -47,7 +51,7 @@ export default class Layer extends Component {
           {layerObj.description && (<h2>{layerObj.description}</h2>)}
           {layerObj.date && (<h3>{layerObj.date}</h3>)}
           {layerObj.text && this.renderLayerDescription(layerObj.text)}
-          {layerObj.listGroup && this.renderListGroup(layerObj.listGroup)}
+          {layerObj.listGroups && this.renderListGroups(layerObj.listGroups)}
         </div>
         {this.renderDetails(layerObj.details)}
       </section>

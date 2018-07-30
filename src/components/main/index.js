@@ -9,7 +9,9 @@ import Butler from 'src/components/butler';
 import ScrollCover from 'src/components/scrollcover';
 import Easing from 'src/utils/easing';
 
-import { jobs as JobData, projects as ProjectData } from 'src/data/data.js';
+// import { jobs as JobData } from 'src/data/data.js';
+import JobData from 'src/data/jobdata.js';
+import ProjectData from 'src/data/projectdata.js';
 
 // const RevProjectData = ProjectData.reverse();
 require('./style.less');
