@@ -254,12 +254,13 @@ module.exports = [
         blorbs: [
           [
             {
-              width: "third",
+              width: "full",
               text: "This website was built in Adobe Flash using actionscript on the timeline. I had an interest in rendering 3d environments on a simple 2d plane. Since it was over 10 years ago, a lot of the copy on it makes me cringe, but I still think the overall expereince is pretty neat."
             },
             {
-              width: "twothird",
-              image: "job-education/awesome3d.jpg"
+              width: "full",
+              image: "job-education/awesome3d.jpg",
+              link: "http://www.awesome3d.net"
             }
           ]
         ]

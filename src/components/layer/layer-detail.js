@@ -28,8 +28,20 @@ export default class LayerDetail extends Component {
       if(blorb.mod){
         modClass = 'mod-' + blorb.mod;
       }
+
+      let activeClass = '';
+
+      let clickHandler = null;
+      if(blorb.link){
+        clickHandler = ( e => { global.open(blorb.link, '_blank') } );
+      }
+
+      if(clickHandler){
+        activeClass = 'mod-active';
+      }
+
       return (
-        <div key={idx} className={`blorb blorb-image ${blorbSize} ${modClass}`}>
+        <div key={idx} className={`blorb blorb-image ${blorbSize} ${modClass} ${activeClass}`} onClick={clickHandler}>
           <img src={require('src/images/layers/' + blorb.image)}/>
         </div>
       );

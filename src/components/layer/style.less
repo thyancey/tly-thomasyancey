@@ -96,7 +96,6 @@
   }
 
   &.blorb-image{
-    cursor:pointer;
     border: @border-thickness-medium solid @color-white;
     box-shadow: @shadow-z3;
 
@@ -110,10 +109,18 @@
       width:100%;
     }
 
-    &:hover{
-      border-width: 0rem;
-      transition: border-width .2s;
+    &.mod-active{
+      img{
+        
+      }
+
+      &:hover{
+        cursor:pointer;
+        border-width: 0rem;
+        transition: border-width .2s;
+      }
     }
+
   }
 }
 
@@ -273,8 +280,8 @@
   #region-top{
     .layer{
       padding-left:16rem;
-      margin-top:12rem;
-      padding-top:4rem;
+      // margin-top:12rem;
+      padding-top:16rem;
     }
 
     .layer-detail{

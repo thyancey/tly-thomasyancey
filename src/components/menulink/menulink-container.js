@@ -24,7 +24,9 @@ class MenuLinks extends Component {
     }
   }
 
-  onMenuLink(idx){
+  onMenuLink(e, idx){
+    /* the propagation rules are here so that when a current menu item is clicked that happens to be over the middle nav, it doesnt trigger a middle menu click */
+    e.stopPropagation();
     this.props.actions.setTargetLayerIdx(idx);
   }
 
@@ -33,7 +35,7 @@ class MenuLinks extends Component {
         <MenuLink   isCurrent={curIdx === 'middle'}
                     region={'middle'}
                     id={'middle'}
-                    onMenuLink={e => this.onMenuLink('middle')}>
+                    onMenuLink={e => this.onMenuLink(e, 'middle')}>
         </MenuLink>
     );
   }
@@ -48,8 +50,9 @@ class MenuLinks extends Component {
     this.setState({active: true});
   }
 
-  renderMenuLink(region, layerData, idx, curLayerIdx, ){
+  renderMenuLink(region, layerData, idx, curLayerIdx){
     const layerIdx = region + '-' + idx;
+    // console.log(curLayerIdx, layerIdx)
 
     return (
       <MenuLink     idx={layerIdx} 
@@ -57,13 +60,14 @@ class MenuLinks extends Component {
                     key={idx} 
                     isCurrent={curLayerIdx === layerIdx}
                     region={region}
-                    onMenuLink={e => this.onMenuLink(layerIdx)}>
+                    onMenuLink={e => this.onMenuLink(e, layerIdx)}>
       </MenuLink>
     );
   }
 
   renderMenuLinks(region, layerData, curLayerIdx, reverseOrder){
     const retVal = [];
+    // console.log(curLayerIdx);
     if(!reverseOrder){
       for(let i = 0; i < layerData.length; i++){
         retVal.push(this.renderMenuLink(region, layerData[i], i, curLayerIdx));
@@ -81,7 +85,7 @@ class MenuLinks extends Component {
     if(this.props.curRegion === 'top'){
       return (
         <div className="menulinks-group-container" >
-          <p className="menulinks-group-label mod-top" onClick={e => this.onMenuLink('top-0')}>
+          <p className="menulinks-group-label mod-top" onClick={e => this.onMenuLink(e, 'top-0')}>
             {'projects'}
           </p>
           <div className="menulinks-group mod-top">
@@ -108,7 +112,7 @@ class MenuLinks extends Component {
     if(this.props.curRegion === 'bottom'){
       return (
         <div className="menulinks-group-container" >
-          <p className="menulinks-group-label mod-bottom" onClick={e => this.onMenuLink('bottom-0')}>
+          <p className="menulinks-group-label mod-bottom" onClick={e => this.onMenuLink(e, 'bottom-0')}>
             {'career'}
           </p>
           <div className="menulinks-group mod-bottom">
@@ -133,7 +137,7 @@ class MenuLinks extends Component {
     if(this.props.curRegion !== 'middle'){
       return(
         <div className="menulinks-openbutton" onMouseEnter={e => this.onMenuButtonEnter(e)}>
-          <h4>{this.props.curRegion === 'bottom' ? 'Home' : 'Home'}</h4>
+          <h4>{'Skip to...'}</h4>
         </div>
       );
     }else{

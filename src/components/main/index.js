@@ -49,7 +49,8 @@ class Main extends Component {
     if(this.state.loaded && prevState.loaded !== this.state.loaded){
       this.onLoaded();
     }
-    if(prevProps.targetLayerIdx !== this.props.targetLayerIdx){
+    if(prevProps.targetLayerIdx !== this.props.targetLayerIdx && this.props.targetLayerIdx !== -1){
+    // if(this.state.loaded && this.props.targetLayerIdx){
       if(this.props.targetLayerIdx === 'middle'){
         this.scrollToIndex(this.props.targetLayerIdx, false, true);
       }else{
@@ -62,7 +63,9 @@ class Main extends Component {
     const centerPoint = this.centerRegionEl.offsetTop - this.refs.element.scrollTop;
     const currentRegion = this.getRegionAtCurrentScrollPosition(this.centerRegionEl.offsetTop, this.refs.element.scrollTop, global.innerHeight);
     const currentLayerObj = this.getLayerAtCurrentScrollPosition(currentRegion, this.centerRegionEl.offsetTop, this.refs.element.scrollTop, global.innerHeight);
-    // console.log('currentLayer:', currentLayerObj.idx);
+    // console.log('currentRegion:', currentRegion);
+
+    // console.log("curLayerIdx:", currentLayerObj.idx)
 
     if(currentLayerObj){
       this.props.actions.setCurrentLayerIdx(currentLayerObj.idx);
@@ -212,6 +215,29 @@ class Main extends Component {
           }
         }
       }
+      /*
+      if(region === 'top'){
+        for(let i = regionLayers.length - 1; i >= 0; i--){
+          if(centerScreen > regionLayers[i].offsetTop){
+            return {
+                    //TODO, had to put this weird logic in cause I overcomplicated the order of how you read these things. Probably needs an overall design refactor before the logic can be simplified
+              idx: regionLayers[i].lastElementChild.dataset.idx,
+              theme: regionLayers[i].dataset.theme
+            }
+          }
+        }
+      }else{
+        for(let i = regionLayers.length - 1; i >= 0; i--){
+          if(centerScreen > regionLayers[i].offsetTop){
+            return {
+              idx: regionLayers[i].dataset.idx,
+              theme: regionLayers[i].dataset.theme
+            }
+          }
+        }
+      }
+*/
+
 
       return null;
     }
@@ -244,7 +270,14 @@ class Main extends Component {
       if(center){
         offset = global.innerHeight / 2;
       }
-      const scrollTarget = foundElement.getBoundingClientRect().y + this.refs.element.scrollTop  - offset;
+      let scrollTarget = foundElement.getBoundingClientRect().y + this.refs.element.scrollTop  - offset;
+
+      //- these elements have a 50px margin above them, this helps frame them correctly when jumping to them
+      if(index.indexOf('top') > -1){
+        scrollTarget -= 40;
+      }
+
+      this.props.actions.setTargetLayerIdx(-1);
 
       if(skipAnimation){
         this.refs.element.scrollTop = scrollTarget;
@@ -281,7 +314,7 @@ class Main extends Component {
   }
 
   onLoaded(){
-    console.log('onLoaded!')
+    // console.log('onLoaded!')
     this.scrollToIndex('middle', true, true);
   }
 
@@ -291,6 +324,7 @@ class Main extends Component {
   }
 
   onMiddleClick(e){
+    // console.log('on middleclick')
     this.scrollToIndex('middle', false, true);
   }
 
