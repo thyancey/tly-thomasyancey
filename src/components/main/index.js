@@ -215,29 +215,6 @@ class Main extends Component {
           }
         }
       }
-      /*
-      if(region === 'top'){
-        for(let i = regionLayers.length - 1; i >= 0; i--){
-          if(centerScreen > regionLayers[i].offsetTop){
-            return {
-                    //TODO, had to put this weird logic in cause I overcomplicated the order of how you read these things. Probably needs an overall design refactor before the logic can be simplified
-              idx: regionLayers[i].lastElementChild.dataset.idx,
-              theme: regionLayers[i].dataset.theme
-            }
-          }
-        }
-      }else{
-        for(let i = regionLayers.length - 1; i >= 0; i--){
-          if(centerScreen > regionLayers[i].offsetTop){
-            return {
-              idx: regionLayers[i].dataset.idx,
-              theme: regionLayers[i].dataset.theme
-            }
-          }
-        }
-      }
-*/
-
 
       return null;
     }
@@ -306,11 +283,6 @@ class Main extends Component {
     this.centerRegionEl = document.querySelector('#region-middle');
 
     this.startLoadTimeout();
-
-    //- TODO, make a loader instead
-    // window.setTimeout(e => {
-    //   this.scrollToIndex('middle', true, true);
-    // }, 50);
   }
 
   onLoaded(){
@@ -361,7 +333,7 @@ class Main extends Component {
 
 
   render() {
-    let className = `main theme-${this.props.curLayerTheme}`;
+    let className = `main theme-${this.props.curLayerTheme} curregion-${this.state.currentRegion}`;
 
     return(
       <div ref="element" className={className}>

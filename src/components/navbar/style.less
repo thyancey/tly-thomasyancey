@@ -7,76 +7,16 @@
 @blob-bar-scale: 1;
 
 
-
 .nav-bar{
   z-index:@zindex-middle;
-
-  &.position-floating{
-    position:absolute;
-    height:20rem;
-    margin-top:-10rem;
-  }
-  &.position-bottom{
-    position:fixed;
-    bottom:0;
-    height:12rem;
-  }
-  &.position-top{
-    position:fixed;
-    top:0;
-    height:12rem;
-  }
-
-  &.position-bottom, &.position-top{
-    @blob-bar-scale: .4;
-
-    .nav-bar-slide{
-      background: @blob-bar-background;
-      background-size: auto 100%;
-      height: calc(@blob-bar-scale * @blob-bar-height);
-      width: calc(@blob-bar-scale * 7 * @blob-bar-width);
-
-      @keyframes tiny-slideleft {
-        from {
-          left: 0px;
-        }
-        to {
-          left: calc(@blob-bar-scale * -@blob-bar-width);
-        }
-      }
-
-      &.mod-top{
-        top: calc(@blob-bar-scale * -@blob-bar-offset);
-        animation-name: tiny-slideleft;
-      }
-
-
-      @keyframes tiny-slideright {
-        from {
-          left: calc(@blob-bar-scale * -@blob-bar-width);
-        }
-        to {
-          left: 0px;
-        }
-      }
-
-      &.mod-bottom{
-        left: calc(@blob-bar-scale * -@blob-bar-width);
-        bottom: calc(@blob-bar-scale * -@blob-bar-offset);
-
-        animation-name: tiny-slideright;
-      }
-    }
-  }
-}
-
-
-
-.nav-bar{
   width:100%;
   height:20rem;
   background-color:@color-black;
   position:relative;
+
+  &:hover{
+    box-shadow:10px 10px 10px green;
+  }
 
   .nav-bar-text{
     padding-top:1rem;
@@ -151,6 +91,88 @@
 }
 
 
+/* Top and bottom specific stuff */
+
+.curregion-top{
+  .nav-bar{
+    position:fixed;
+    bottom:0;
+    height:12rem;
+    .mixin-tiny-nav-slide;
+  }
+}
+
+.curregion-middle{
+  .nav-bar{
+    position:absolute;
+    height:20rem;
+    margin-top:-10rem;
+
+    .nav-bar-text{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+    }
+  }
+}
+
+.curregion-bottom{
+  .nav-bar{
+    position:fixed;
+    top:0;
+    height:12rem;
+    .mixin-tiny-nav-slide;
+  }
+}
+
+.curregion-top,.curregion-bottom{
+  .nav-bar{
+    @blob-bar-scale: .4;
+
+    cursor:pointer;
+    .nav-bar-slide{
+      background: @blob-bar-background;
+      background-size: auto 100%;
+      height: calc(@blob-bar-scale * @blob-bar-height);
+      width: calc(@blob-bar-scale * 7 * @blob-bar-width);
+
+      @keyframes tiny-slideleft {
+        from {
+          left: 0px;
+        }
+        to {
+          left: calc(@blob-bar-scale * -@blob-bar-width);
+        }
+      }
+
+      &.mod-top{
+        top: calc(@blob-bar-scale * -@blob-bar-offset);
+        animation-name: tiny-slideleft;
+      }
+
+
+      @keyframes tiny-slideright {
+        from {
+          left: calc(@blob-bar-scale * -@blob-bar-width);
+        }
+        to {
+          left: 0px;
+        }
+      }
+
+      &.mod-bottom{
+        left: calc(@blob-bar-scale * -@blob-bar-width);
+        bottom: calc(@blob-bar-scale * -@blob-bar-offset);
+
+        animation-name: tiny-slideright;
+      }
+    }
+  }
+}
+
+
+
+
 
 .mixin-tiny-nav-slide(){
   @blob-bar-scale: .4;
@@ -194,13 +216,6 @@
   }
 }
 
-
-/* when scrolling past, get a tiny nav */
-.nav-bar{
-  &.position-bottom,&.position-top{
-    .mixin-tiny-nav-slide;
-  }
-}
 
 /* when mobile, get a tiny nav all the time */
 @media (max-width: @breakpoint-mobile) {
