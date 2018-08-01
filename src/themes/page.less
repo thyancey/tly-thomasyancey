@@ -8,7 +8,7 @@
 *{
   box-sizing:border-box;
 }
-p, span, h1, h2, h3, h4, h5, h6{
+p, span, h1, h2, h3, h4, h5, h6, ul{
   margin:0;
   padding:0;
 }
@@ -33,42 +33,64 @@ p{
   line-height:2rem;
 }
 
+a{
+  font-family: @font-style-body;
+  font-weight:bold;
+}
+
+li{
+}
+
 
 h1 {
   font-size: 6.5rem;
-  line-height: 6rem;
+  line-height: 6.75rem;
   font-family: @font-style-heading;
+  margin-bottom:1rem;
 }
 
 h2 {
   font-size: 3rem;
-  line-height:2.75rem;
-  // font-family: @font-style-heading;
+  line-height:3.25rem;
+  margin-bottom:.75rem;
 }
 
 h3 {
   font-size: 2rem;
-  // font-family: @font-style-heading;
+  line-height:2.25rem;
+  margin-bottom:1rem;
 }
 
+h4{
+  font-size: 1.8rem;
+  line-height:1.9rem;
+}
 
 
 @media (max-width: @breakpoint-mobile) {
   h1{
     font-size:5rem;
-    line-height:4rem;
+    line-height:5.25rem;
   }
 
   h2{
     font-size:2.5rem;
-    line-height: 2.25rem;
+    line-height: 2.75rem;
   }
 
   h3 {
     font-size: 1.8rem;
-    line-height: 1.6rem;
+    line-height: 2rem;
   }
 
+  p,li{
+    font-size:1.5rem;
+    line-height:1.75rem;
+  }
+
+  li{
+    margin-bottom:1rem;
+  }
 }
 
 svg{

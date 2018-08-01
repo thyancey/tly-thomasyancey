@@ -89,7 +89,7 @@ class MenuLinks extends Component {
             {'projects'}
           </p>
           <div className="menulinks-group mod-top">
-            {this.renderMenuLinks('top', ProjectData, this.props.curLayerIdx, true)}
+            {this.renderMenuLinks('top', ProjectData, this.props.curLayerIdx)}
           </div>
         </div>
       );

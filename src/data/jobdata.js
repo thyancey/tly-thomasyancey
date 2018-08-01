@@ -8,17 +8,28 @@ module.exports = [
     date:"",
     theme:"",
     dividerTheme:"clouds-right",
-    company:"",
     listGroups:[
       {
         title: "Skills",
         items:[
-          "Languages: JS/Node (jQuery, Backbone, React), HTML/CSS, Bash, Ruby/Rails, As3, C#",
-          "Cloud Architecture with AWS (S3, Route53, EC2, ELB, QuickSight)",
-          "CI and Automation design",
-          "Agile and Kanban LEAN practices",
-          "Enough UX and design to get by",
-          "I have great soft skills (I'm also very humble)"
+          {
+            text: "Languages: JS/Node (jQuery, Backbone, React), HTML/CSS, Bash, Ruby/Rails, As3, C#"
+          },
+          {
+            text: "Cloud Architecture with AWS (S3, Route53, EC2, ELB, QuickSight)"
+          },
+          {
+            text: "CI and Automation design"
+          },
+          {
+            text: "Agile and Kanban LEAN practices"
+          },
+          {
+            text: "Enough UX and design to get by"
+          },
+          {
+            text: "I have great soft skills (I'm also very humble)"
+          }
         ]
       }
     ],
@@ -51,7 +62,7 @@ module.exports = [
                 "Positive, enthusiastic attitude with strong communication and risk assessment skills",
                 "Plenty of experience with interviewing, training, and mentoring peers",
                 "Strong drive for developing standards and processes",
-                "Company culture fanatic"
+                "I care a lot about company culture, and want everyone to have a great time at work"
               ]
             }
           ]
@@ -66,22 +77,33 @@ module.exports = [
     date:"Jan 2015 - Present",
     theme: "",
     dividerTheme: "clouds-right",
-    company: "ozmo",
     listGroups: [
       {
         title: "Responsibilities",
         items:[
-          "develop react applications for SaaS products",
-          "implement robust reporting solutions",
-          "develop CI pipelines for rapid deployment and automation",
-          "engage in peer review, unit testing, and documentation",
-          "interview prospective employees"
+          {
+            text:"develop react applications for SaaS products" 
+          },
+          {
+            text: "implement robust reporting solutions"
+          },
+          {
+            text: "develop CI pipelines for rapid deployment and automation"
+          },
+          {
+            text: "engage in peer review, unit testing, and documentation"
+          },
+          {
+            text: "interview prospective employees"
+          }
         ]
       },
       {
         title: "Accolades",
         items:[
-          "Employee of the Year, 2015"
+          {
+            text: "Employee of the Year, 2015"
+          }
         ]
       }
     ],
@@ -147,17 +169,28 @@ module.exports = [
     theme: "",
     dividerTheme: "clouds-left",
     text: "",
-    company: "modea",
     listGroups: [
       {
         title: "Responsibilities",
         items:[
-          "Developed an MVP product to prepare the business for a new SaaS model",
-          "Helped grow team from 4 for 30+ members",
-          "Led team of content developers, created standards, managed team leads",
-          "Interviewed, trained, and mentored team members",
-          "Resolved implementation issues with clients",
-          "Served as a liason between engineers, project managers, content developers, and quality assurance"
+          {
+            text: "Developed an MVP product to prepare the business for a new SaaS model"
+          },
+          {
+            text: "Helped grow team from 4 for 30+ members"
+          },
+          {
+            text: "Led team of content developers, created standards, managed team leads"
+          },
+          {
+            text: "Interviewed, trained, and mentored team members"
+          },
+          {
+            text: "Resolved implementation issues with clients"
+          },
+          {
+            text: "Served as a liason between engineers, project managers, content developers, and quality assurance"
+          }
         ]
       }
     ],
@@ -171,13 +204,16 @@ module.exports = [
     theme: "",
     dividerTheme: "clouds-left",
     text: "",
-    company: "modea",
     listGroups: [
       {
         title: "Responsibilities",
         items:[
-          "Developed interactive advertising content",
-          "Maintained multiple As3 frameworks"
+          {
+            text: "Developed interactive advertising content"
+          },
+          {
+            text: "Maintained multiple As3 frameworks"
+          }
         ]
       }
     ],
@@ -191,15 +227,22 @@ module.exports = [
     theme: "",
     dividerTheme: "clouds-left",
     text: "",
-    company: "ozmo",
     listGroups: [
       {
         title: "Responsibilities",
         items:[
-          "Estimated and managed a consistent delivery of a large volume of independent projects",
-          "Maintained multiple As3 frameworks",
-          "Interviewed, trained and mentored team members",
-          "Implemented a standardized process across all team members"
+          {
+            text:"Estimated and managed a consistent delivery of a large volume of independent projects"
+          },
+          {
+            text:"Maintained multiple As3 frameworks"
+          },
+          {
+            text:"Interviewed, trained and mentored team members"
+          },
+          {
+            text:"Implemented a standardized process across all team members"
+          }
         ]
       }
     ],
@@ -213,12 +256,13 @@ module.exports = [
     theme: "vt",
     dividerTheme: "clouds-left",
     text: "I had a strong focus on 3d animation and modeling. Although that didn't really pan out in the real world, I had a lot of exposure to web development and digital media. I also learned the value of peer critiques, constant improvement, and thinking outside of the box",
-    company: "ozmo",
     listGroups: [
       {
         title: "Accolades",
         items:[
-          "Outstanding Graduating Senior for Creative Technology/Digital Media"
+          {
+            text:"Outstanding Graduating Senior for Creative Technology/Digital Media"
+          }
         ]
       }
     ],
@@ -235,9 +279,7 @@ module.exports = [
             {
               width: "half",
               image: "job-education/model-cheese.jpg"
-            }
-          ],
-          [
+            },
             {
               width: "half",
               image: "job-education/model-ipods.jpg"

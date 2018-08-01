@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Icon_GoBackUp from '../../images/icons/expand-less.svg';
 
 require('./style.less');
 
@@ -17,10 +18,14 @@ export default class LayerDetail extends Component {
   renderBlorb(blorb, idx){
     let blorbSize = 'mod-' + blorb.width;
     if(blorb.text){
+      //- this text node can be a string or an array. a <p> will be made for each text item
+      if(blorb.text.constructor !== Array){
+        blorb.text = [ blorb.text ];
+      }
       return (
         <div key={idx} className={`blorb blorb-text ${blorbSize}`}>
           {blorb.title && (<h4>{blorb.title}</h4>)}
-          <p>{blorb.text}</p>
+          {blorb.text.map((t, idx) => (<p key={idx}>{t}</p>))}
         </div>
       );
     }else if(blorb.image){
@@ -69,7 +74,15 @@ export default class LayerDetail extends Component {
       <div className={className}>
         <div className="layer-detail-headers">
           <h2>{detailObj.title}</h2>
-          <h3>{detailObj.description}</h3>
+          {detailObj.description && (<h3>{detailObj.description}</h3>)}
+          <a  className="layer-detail-jumptop" 
+              title={this.props.layerTitle} 
+              onClick={e => this.props.skipToTop()}>
+            <p>{this.props.layerTitle}</p>
+            <div className="icon-container">
+              <Icon_GoBackUp />
+            </div>
+          </a>
         </div>
         <div className="layer-detail-body">
           {detailObj.blorbs.map((blorb, idx) => this.renderBlorbGroup(blorb, idx))}

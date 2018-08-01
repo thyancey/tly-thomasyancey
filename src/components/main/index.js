@@ -306,9 +306,14 @@ class Main extends Component {
 
     layerDataArray.forEach((obj, i) => {
       let idx = i;
+      const scrollIndex = `${region}-${idx}`;
 
       if(!reverseOrder){
-        layerList.push(<Layer key={idx} layerObj={obj} region={region} counter={idx}/>);
+        layerList.push(<Layer key={idx} 
+                              layerObj={obj} 
+                              region={region} 
+                              scrollIndex={scrollIndex}
+                              scrollToIndex={() => this.scrollToIndex(scrollIndex)} />);
         if(idx !== layerDataArray.length - 1){
           layerList.push(<LayerDivider key={'d-' + idx} theme={obj.dividerTheme} region={region} />);
         }
@@ -316,7 +321,11 @@ class Main extends Component {
         if(idx !== 0){
           layerList.unshift(<LayerDivider key={'d-' + idx} theme={obj.dividerTheme} region={region} />);
         }
-        layerList.unshift(<Layer key={idx} layerObj={obj} region={region} counter={idx}/>);
+        layerList.unshift(<Layer  key={idx} 
+                                  layerObj={obj} 
+                                  region={region} 
+                                  scrollIndex={scrollIndex}
+                                  scrollToIndex={() => this.scrollToIndex(scrollIndex)} />);
       }
     });
 
@@ -339,7 +348,7 @@ class Main extends Component {
       <div ref="element" className={className}>
         {this.renderLoader()}
         <div id="region-top" className="region" >
-          {this.renderLayers(ProjectData, 'top', true)}
+          {this.renderLayers(ProjectData, 'top')}
           <Butler currentRegion={this.state.currentRegion} 
                   region="top" 
                   butlerType="topDragon" 

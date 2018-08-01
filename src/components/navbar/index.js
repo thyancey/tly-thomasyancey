@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Icon_Email from '../../images/icons/email.svg';
+import Icon_GitHub from '../../images/icons/octicon-code.svg';
+import Icon_LinkedIn from '../../images/icons/linkedin.svg';
 
 import MenuLinkContainer from 'src/components/menulink/menulink-container';
 
@@ -27,6 +30,19 @@ export default class NavBar extends Component {
         <div className="nav-bar-text">
           <h1>{'Tom Yancey'}</h1>
           <h2>{'Interactive Developer'}</h2>
+          <div className="nav-bar-buttons">
+            <a className="nav-bar-button" title="email me" href="mailto:thyancey@gmail.com" target="_blank">
+              <Icon_Email />
+            </a>
+            <a className="nav-bar-button" title="my GitHub" href="https://github.com/thyancey" target="_blank">
+              <Icon_GitHub />
+            </a>
+            {/*
+            <a className="nav-bar-button mod-linkedin" title="my LinkedIn" href="https://www.linkedin.com/in/tom-yancey" target="_blank">
+              <Icon_LinkedIn />
+            </a>
+            */}
+          </div>
         </div>
         <div className="nav-bar-slide mod-top"/>
         <div className="nav-bar-slide mod-bottom"/>

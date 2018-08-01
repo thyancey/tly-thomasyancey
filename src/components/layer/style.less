@@ -7,6 +7,10 @@
   padding: 12rem 3rem;
 }
 
+.layer-listitem-link{
+  margin-bottom:0;
+}
+
 
 .layer-title{
   position:relative;
@@ -19,6 +23,14 @@
   border: @border-thickness-medium solid @color-grey;
   box-shadow: @shadow-z3;
   padding:3rem;
+
+}
+
+.blorbgroup{
+  ul{
+    margin-top:1rem;
+    padding-left:3rem;
+  }
 }
 
 #region-top{
@@ -69,15 +81,50 @@
   }
 
   .layer-detail-headers{
-    border-bottom:2px solid black;
-    padding-bottom:1rem;
+    border-bottom:2px dashed black;
+    // padding-bottom:1rem;
+    position:relative;
+  }
+
+  .layer-detail-jumptop{
+    opacity:.3;
+    display:block;
+    position:absolute;
+    left:-.5rem;
+    top:-3rem;
+    // margin:0 auto;
+    // width:100%;
+    // text-align:center;
+
+    cursor:pointer;
+
+    color:@color-black;
+    fill:@color-black;
+
+    &:hover{
+      // color:@color-white;
+      // fill:@color-white;
+      opacity:1;
+    }
+
+    p{
+      display:inline-block;
+      vertical-align:middle;
+      font-size:1.5rem;
+    }
+    .icon-container{
+      width:2.5rem;
+      height:2.5rem;
+      display:inline-block;
+      vertical-align:middle;
+    }
   }
 
 }
 
 .blorbgroup{
   border-top:.15rem dashed;
-  padding-top:1rem;
+  // padding-top:1rem;
 
   &:first-child{
     border-top:none;
@@ -102,7 +149,6 @@
   display:inline-block;
   vertical-align:top;
   margin:1rem;
-  margin-bottom:3rem;
 
   &.mod-half{
     width:~"calc(50% - 2rem)";
@@ -153,6 +199,16 @@
     }
 
   }
+
+  &.blorb-text{
+    p{
+      margin-top:2rem;
+
+      &:first-child{
+        margin-top:0;
+      }
+    }
+  }
 }
 
 
@@ -165,12 +221,12 @@
 .layer-title-text{
   // border-top:2px solid black;
   // margin-top:1rem;
-  padding-top:1rem;
+  // padding-top:1rem;
 }
 
 
 .layer-listgroup{
-  border-top:2px solid black;
+  border-top:2px dashed @color-black;
   margin-top:1rem;
   padding-top:1rem;
 
@@ -179,7 +235,44 @@
     padding-left:3rem;
   }
   li{
-    line-height:2.25rem;
+    // line-height:2.25rem;
+  }
+
+
+}
+
+.layer-listitem-link{
+  color:@color-green;
+
+  a{
+    color:@color-green;
+    fill:@color-green;
+    &:visited{
+      color: @color-green;
+    }
+
+    >*{
+      display:inline-block;
+      vertical-align:middle;
+    }
+
+    &:hover{
+      color:@color-white;
+      fill:@color-white;
+
+      p{
+        text-decoration:underline;
+      }
+    }
+  }
+
+  .icon-container{
+    display:inline-block;
+    vertical-align:middle;
+
+    width:2.5rem;
+    height:2.5rem;
+    margin-left:1rem;
   }
 }
 
@@ -209,7 +302,26 @@
   &.theme-top{
     .layer-bubble{
       background-color:@color-blue;
+      border:.5rem solid @color-grey;
     }
+
+    .layer-listitem-link{
+      color:@color-black;
+      
+      a{
+        color:@color-black;
+        fill:@color-black;
+        &:visited{
+          color: @color-black;
+        }
+
+        &:hover{
+          color:@color-white;
+          fill:@color-white;
+        }
+      }
+    }
+
   }
 
   &.theme-bottom{
@@ -276,6 +388,7 @@
 }
 
 
+/* BIG DESKTOP */
 @media (min-width: @breakpoint-desktop) {
 
   .layer-title{
@@ -319,12 +432,19 @@
   }
 }
 
+
+
+/* NORMAL STUFF HERE */
+
+
+
+/* LARGE MOBILE */
 @media (max-width: @breakpoint-mobile) {
   #region-top{
     .layer{
       padding-left:16rem;
-      // margin-top:12rem;
       padding-top:16rem;
+      padding-right:1rem;
     }
 
     .layer-detail{
@@ -335,6 +455,7 @@
     .layer{
       padding-right:16rem;
       padding-top:16rem;
+      padding-left:1rem;
     }
 
     .layer-detail{
@@ -350,6 +471,7 @@
     }
   }
 
+
   .blorb{
     &.mod-half{
       width:100%;
@@ -364,5 +486,62 @@
       width:~"calc(50% - 2rem)";
     }
   }
+
+}
+
+
+/* TINY MOBILE */
+@media (max-width: @breakpoint-lilmobile) {
+
+  .layer-title{
+    padding:1.5rem;
+    border-radius: @border-radius-medium;
+  }
+
+  .layer-detail{
+    padding-left:1.5rem;
+    padding-right:1.5rem;
+    padding-bottom:0;
+
+    border-radius: @border-radius-medium;
+  }
+
+  .blorb{
+    // margin:0 0 2rem 0;
+    margin:0;
+    margin-top:1rem;
+
+    &:last-child{
+      margin-bottom:2rem;
+    }
+  }
+
+  #region-top{
+    .layer{
+      padding-left:9rem;
+    }
+
+    .layer-detail{
+      margin:3rem 0rem 3rem 2rem;
+    }
+
+    .butler{
+      left:-17rem;
+    }
+  }
+  #region-bottom{
+    .layer{
+      padding-right:8rem;
+    }
+
+    .layer-detail{
+      margin:3rem 2rem 3rem 0rem;
+    }
+
+    .butler{
+      right:-16rem;
+    }
+  }
+
 
 }

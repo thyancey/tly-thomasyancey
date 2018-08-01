@@ -24,9 +24,39 @@
 
     h1{
       color:@color-blue;
+      margin-bottom:0;
     }
     h2{
       color:@color-white;
+      margin-bottom:0;
+    }
+  }
+
+  .nav-bar-buttons{
+
+  }
+
+  .nav-bar-button{
+    display:inline-block;
+    vertical-align:middle;
+
+    margin:1rem 1rem 1rem 0rem;
+    width:4rem;
+    height:4rem;
+
+    cursor:pointer;
+    fill:@color-grey;
+    transition: fill .3s;
+
+    &:hover{
+      fill:@color-green;
+      transition: fill .3s;
+    }
+
+    &.mod-linkedin{
+      padding: .5rem;
+      padding-left:0;
+      padding-top: 0;
     }
   }
 
@@ -165,6 +195,27 @@
         bottom: calc(@blob-bar-scale * -@blob-bar-offset);
 
         animation-name: tiny-slideright;
+      }
+    }
+
+    h2{
+      display:inline-block;
+      vertical-align:bottom;
+    }
+
+    .nav-bar-buttons{
+      display:inline-block;
+      vertical-align:bottom;
+      margin-left:.5rem;
+    }
+    .nav-bar-button{
+      width:2.5rem;
+      height:2.5rem;
+      margin:0 0 0 1rem;
+
+      &.mod-linkedin{
+        padding:.15rem;
+        margin-top:-1rem;
       }
     }
   }
