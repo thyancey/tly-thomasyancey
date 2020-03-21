@@ -3,7 +3,7 @@
 module.exports = [
   {
     title: "About My Career",
-    description: "9 years of experience in a changing landscape",
+    description: "10 years of experience in a changing landscape",
     linkTitle:"About My Career",
     date:"",
     theme:"",
@@ -72,8 +72,8 @@ module.exports = [
   },
   {
     title: "Ozmo",
-    description: "Software Engineer (mid)",
-    linkTitle: "Ozmo - Software Engineer (mid)",
+    description: "Software Engineer (senior)",
+    linkTitle: "Ozmo - Software Engineer (senior)",
     date:"Jan 2015 - Present",
     theme: "",
     dividerTheme: "clouds-right",
