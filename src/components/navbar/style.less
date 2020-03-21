@@ -7,6 +7,41 @@
 @blob-bar-scale: 1;
 
 
+@keyframes slideleft {
+  0% {
+    transform: translate3d(0, 0, 0)
+  }
+  100% {
+    transform: translate3d(calc(@blob-bar-scale * -@blob-bar-width), 0, 0)
+  }
+}
+@keyframes slideleft_flipped {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1, -1)
+  }
+  100% {
+    transform: translate3d(calc(@blob-bar-scale * -@blob-bar-width), 0, 0) scale(1, -1)
+  }
+}
+
+@keyframes slideright {
+  0% {
+    transform: translate3d(0, 0, 0)
+  }
+  100% {
+    transform: translate3d(calc(@blob-bar-scale * -@blob-bar-width), 0, 0)
+  }
+}
+@keyframes slideright_flipped {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1, -1)
+  }
+  100% {
+    transform: translate3d(calc(@blob-bar-scale * -@blob-bar-width), 0, 0) scale(1, -1)
+  }
+}
+
+
 .nav-bar{
   z-index:@zindex-middle;
   width:100%;
@@ -77,15 +112,6 @@
     animation-timing-function: linear;
     animation-direction: normal;
 
-    @keyframes slideleft {
-      from {
-        left: 0px;
-      }
-      to {
-        left: calc(@blob-bar-scale * -@blob-bar-width);
-      }
-    }
-
     &.mod-top{
       left:0px;
       top: calc(@blob-bar-scale * -@blob-bar-offset);
@@ -93,27 +119,17 @@
       animation-name: slideleft;
     }
 
-
-    @keyframes slideright {
-      from {
-            left: calc(@blob-bar-scale * -@blob-bar-width);
-      }
-      to {
-        left: 0px;
-      }
-    }
-
     &.mod-bottom{
       left: calc(@blob-bar-scale * -@blob-bar-width);
       bottom: calc(@blob-bar-scale * -@blob-bar-offset);
-      animation-name: slideright;
+      animation-name: slideright_flipped;
 
-      -moz-transform: scaleY(-1);
-      -o-transform: scaleY(-1);
-      -webkit-transform: scaleY(-1);
-      transform: scaleY(-1);
-      filter: FlipV;
-      -ms-filter: "FlipV";
+      // -moz-transform: scaleY(-1);
+      // -o-transform: scaleY(-1);
+      // -webkit-transform: scaleY(-1);
+      // transform: scaleY(-1);
+      // filter: FlipV;
+      // -ms-filter: "FlipV";
     }
 
   }
@@ -165,36 +181,16 @@
       background-size: auto 100%;
       height: calc(@blob-bar-scale * @blob-bar-height);
       width: calc(@blob-bar-scale * 7 * @blob-bar-width);
-
-      @keyframes tiny-slideleft {
-        from {
-          left: 0px;
-        }
-        to {
-          left: calc(@blob-bar-scale * -@blob-bar-width);
-        }
-      }
-
       &.mod-top{
         top: calc(@blob-bar-scale * -@blob-bar-offset);
-        animation-name: tiny-slideleft;
-      }
-
-
-      @keyframes tiny-slideright {
-        from {
-          left: calc(@blob-bar-scale * -@blob-bar-width);
-        }
-        to {
-          left: 0px;
-        }
+        animation-name: slideright;
       }
 
       &.mod-bottom{
         left: calc(@blob-bar-scale * -@blob-bar-width);
         bottom: calc(@blob-bar-scale * -@blob-bar-offset);
 
-        animation-name: tiny-slideright;
+        animation-name: slideleft_flipped;
       }
     }
 
@@ -234,35 +230,16 @@
     height: calc(@blob-bar-scale * @blob-bar-height);
     width: calc(@blob-bar-scale * 7 * @blob-bar-width);
 
-    @keyframes tiny-slideleft {
-      from {
-        left: 0px;
-      }
-      to {
-        left: calc(@blob-bar-scale * -@blob-bar-width);
-      }
-    }
-
     &.mod-top{
       top: calc(@blob-bar-scale * -@blob-bar-offset);
-      animation-name: tiny-slideleft;
-    }
-
-
-    @keyframes tiny-slideright {
-      from {
-        left: calc(@blob-bar-scale * -@blob-bar-width);
-      }
-      to {
-        left: 0px;
-      }
+      animation-name: slideright;
     }
 
     &.mod-bottom{
       left: calc(@blob-bar-scale * -@blob-bar-width);
       bottom: calc(@blob-bar-scale * -@blob-bar-offset);
 
-      animation-name: tiny-slideright;
+      animation-name: slideleft_flipped;
     }
   }
 }

@@ -26,14 +26,23 @@
   //- since 1 segment wider to the right, move 1 segment to the left then warp back
   @keyframes @mx-animationname {
     from {
-      left: 0px;
+      transform: translate3d(0, 0, 0)
     }
     to {
-      left:-@mx-scaledwidth;
+      transform: translate3d(-@mx-scaledwidth, 0, 0)
     }
   }
+  // @keyframes @mx-animationname {
+  //   from {
+  //     left: 0px;
+  //   }
+  //   to {
+  //     left:-@mx-scaledwidth;
+  //   }
+  // }
   animation-name: @mx-animationname;
 }
+
 
 /* !!! make sure mx-animationname is a unique value across all LESS! */
 .mixin-divider-slideright(@mx-image-url, @mx-raw-width, @mx-raw-height, @mx-divider-height, @mx-divider-cover-height, @mx-animationname, @mx-animation-time){
@@ -62,11 +71,20 @@
   //- starting 1 segment to the left, move 1 segment to the right
   @keyframes @mx-animationname {
     from {
-      left: -@mx-scaledwidth;
+      transform: translate3d(0, 0, 0)
     }
     to {
-      left: 0;
+      transform: translate3d(@mx-scaledwidth, 0, 0)
     }
   }
+
+  // @keyframes @mx-animationname {
+  //   from {
+  //     left: -@mx-scaledwidth;
+  //   }
+  //   to {
+  //     left: 0;
+  //   }
+  // }
   animation-name: @mx-animationname;
 }
