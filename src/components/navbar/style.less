@@ -26,18 +26,18 @@
 
 @keyframes slideright {
   0% {
-    transform: translate3d(0, 0, 0)
+    transform: translate3d(calc(@blob-bar-scale * -@blob-bar-width), 0, 0)
   }
   100% {
-    transform: translate3d(calc(@blob-bar-scale * -@blob-bar-width), 0, 0)
+    transform: translate3d(0, 0, 0)
   }
 }
 @keyframes slideright_flipped {
   0% {
-    transform: translate3d(0, 0, 0) scale(1, -1)
+    transform: translate3d(calc(@blob-bar-scale * -@blob-bar-width), 0, 0) scale(1, -1)
   }
   100% {
-    transform: translate3d(calc(@blob-bar-scale * -@blob-bar-width), 0, 0) scale(1, -1)
+    transform: translate3d(0, 0, 0) scale(1, -1)
   }
 }
 
@@ -116,25 +116,20 @@
       left:0px;
       top: calc(@blob-bar-scale * -@blob-bar-offset);
 
-      animation-name: slideleft;
+      animation-name: slideright;
     }
 
     &.mod-bottom{
       left: calc(@blob-bar-scale * -@blob-bar-width);
       bottom: calc(@blob-bar-scale * -@blob-bar-offset);
-      animation-name: slideright_flipped;
-
-      // -moz-transform: scaleY(-1);
-      // -o-transform: scaleY(-1);
-      // -webkit-transform: scaleY(-1);
-      // transform: scaleY(-1);
-      // filter: FlipV;
-      // -ms-filter: "FlipV";
+      animation-name: slideleft_flipped;
     }
 
   }
 
 }
+
+
 
 
 /* Top and bottom specific stuff */
@@ -229,18 +224,6 @@
     background-size: auto 100%;
     height: calc(@blob-bar-scale * @blob-bar-height);
     width: calc(@blob-bar-scale * 7 * @blob-bar-width);
-
-    &.mod-top{
-      top: calc(@blob-bar-scale * -@blob-bar-offset);
-      animation-name: slideright;
-    }
-
-    &.mod-bottom{
-      left: calc(@blob-bar-scale * -@blob-bar-width);
-      bottom: calc(@blob-bar-scale * -@blob-bar-offset);
-
-      animation-name: slideleft_flipped;
-    }
   }
 }
 
