@@ -5,13 +5,17 @@ const store = {
     loaded:false,
     targetLayerIdx:-1,
     curLayerIdx:-1,
-    curLayerTheme:'default'
+    curLayerTheme:'default',
+    curLayerTitle:'not set'
   },
   actions: {
     toggleLoaded: ({ loaded }) => ({ loaded: !loaded }),
     setTargetLayerIdx: ({targetLayerIdx}, newLayerIdx) => ({targetLayerIdx: newLayerIdx}),
-    setCurrentLayerIdx: ({curLayerIdx}, newLayerIdx) => ({curLayerIdx: newLayerIdx}),
-    setCurrentLayerTheme: ({curLayerTheme}, newLayerTheme) => ({curLayerTheme: newLayerTheme || 'default'})
+    setCurrentLayer: ({curLayerIdx,curLayerTheme,curLayerTitle}, newLayerObj) => ({
+      curLayerIdx: newLayerObj.idx,
+      curLayerTheme: newLayerObj.theme || 'default',
+      curLayerTitle: newLayerObj.title
+    })
   }
 };
  

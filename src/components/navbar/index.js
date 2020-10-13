@@ -28,8 +28,17 @@ export default class NavBar extends Component {
     return (
       <div className={className} ref={this.element}>
         <div className="nav-bar-text">
-          <h1>{'Tom Yancey'}</h1>
-          <h2>{'Interactive Developer'}</h2>
+          { this.props.curLayerTitle ? (
+            <React.Fragment>
+              <h1>{this.props.curLayerTitle}</h1>
+              <h2>{'thomasyancey.com'}</h2>
+            </React.Fragment>
+          ): (
+            <React.Fragment>
+              <h1>{'Tom Yancey'}</h1>
+              <h2>{'Interactive Developer'}</h2>
+            </React.Fragment>
+          )}
           <div className="nav-bar-buttons">
             <a className="nav-bar-button" title="email me" href="mailto:thyancey@gmail.com" target="_blank">
               <Icon_Email />

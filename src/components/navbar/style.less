@@ -3,6 +3,7 @@
 @blob-bar-background: url("~images/dividers/blackblob1.png") repeat-x;
 @blob-bar-height: 13rem;
 @blob-bar-offset: 12rem;
+@blob-bar-offset-tiny: 12rem;
 @blob-bar-width: 1390px;
 @blob-bar-scale: 1;
 
@@ -224,6 +225,14 @@
     background-size: auto 100%;
     height: calc(@blob-bar-scale * @blob-bar-height);
     width: calc(@blob-bar-scale * 7 * @blob-bar-width);
+
+    &.mod-top{
+      top: calc(@blob-bar-scale * -@blob-bar-offset-tiny);
+    }
+
+    &.mod-bottom{
+      bottom: calc(@blob-bar-scale * -@blob-bar-offset-tiny);
+    }
   }
 }
 

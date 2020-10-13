@@ -6,8 +6,12 @@ import LayerDetail from './layer-detail';
 require('./style.less');
 
 export default class Layer extends Component {
-  renderDetails(detailsArray){
-    return detailsArray.map((dt, idx) => (<LayerDetail key={idx} layerTitle={this.props.layerObj.title} detailObj={dt} skipToTop={this.props.scrollToIndex} />));
+  renderDetails(detailsArray, reverseOrder){
+    if(reverseOrder){
+      return detailsArray.map((dt, idx) => (<LayerDetail key={idx} layerTitle={this.props.layerObj.title} detailObj={dt} skipToTop={this.props.scrollToIndex} />)).reverse();
+    }else{
+      return detailsArray.map((dt, idx) => (<LayerDetail key={idx} layerTitle={this.props.layerObj.title} detailObj={dt} skipToTop={this.props.scrollToIndex} />));
+    }
   }
 
 
@@ -80,7 +84,7 @@ export default class Layer extends Component {
   }
 
   render(){
-    const { layerObj, region, scrollIndex } = this.props;
+    const { layerObj, region, scrollIndex, reverseOrder } = this.props;
 
     let className = 'layer';
     if(layerObj.theme){
@@ -91,6 +95,7 @@ export default class Layer extends Component {
 
     return (
       <section className={className} data-idx={scrollIndex} data-theme={layerObj.theme} >
+        { reverseOrder && this.renderDetails(layerObj.details, reverseOrder)}
         <div className="layer-title layer-bubble">
           <h1>{layerObj.title}</h1>
           {layerObj.description && (<h2>{layerObj.description}</h2>)}
@@ -99,7 +104,7 @@ export default class Layer extends Component {
           {layerObj.linkGroups && this.renderLinkGroups(layerObj.linkGroups)}
           {layerObj.listGroups && this.renderListGroups(layerObj.listGroups)}
         </div>
-        {this.renderDetails(layerObj.details)}
+        { !reverseOrder && this.renderDetails(layerObj.details, reverseOrder)}
       </section>
     );
   }

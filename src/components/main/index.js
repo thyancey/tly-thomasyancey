@@ -9,14 +9,14 @@ import Butler from 'src/components/butler';
 import ScrollCover from 'src/components/scrollcover';
 import Easing from 'src/utils/easing';
 
-// import { jobs as JobData } from 'src/data/data.js';
 import JobData from 'src/data/jobdata.js';
 import ProjectData from 'src/data/projectdata.js';
 
-// const RevProjectData = ProjectData.reverse();
 require('./style.less');
 
 const SCROLL_INTERVAL_FRAMERATE = 25;
+
+global.PJ = ProjectData;
 
 class Main extends Component {
   constructor(){
@@ -65,11 +65,8 @@ class Main extends Component {
     const currentLayerObj = this.getLayerAtCurrentScrollPosition(currentRegion, this.centerRegionEl.offsetTop, this.refs.element.scrollTop, global.innerHeight);
     // console.log('currentRegion:', currentRegion);
 
-    // console.log("curLayerIdx:", currentLayerObj.idx)
-
-    if(currentLayerObj){
-      this.props.actions.setCurrentLayerIdx(currentLayerObj.idx);
-      this.props.actions.setCurrentLayerTheme(currentLayerObj.theme);
+    if(currentLayerObj && currentLayerObj.idx !== this.props.curLayerIdx){
+      this.props.actions.setCurrentLayer(currentLayerObj);
     }
 
     this.startButlerTimer();
@@ -211,7 +208,8 @@ class Main extends Component {
         if(centerScreen > regionLayers[i].offsetTop){
           return {
             idx: regionLayers[i].dataset.idx,
-            theme: regionLayers[i].dataset.theme
+            theme: regionLayers[i].dataset.theme,
+            title: this.getTitleFromIndex(+regionLayers[i].dataset.idx.split('-')[1], region)
           }
         }
       }
@@ -242,7 +240,7 @@ class Main extends Component {
   scrollToIndex(index, skipAnimation, center){
     // console.log('scrollToIndex', index, skipAnimation, center);
     try{
-      const foundElement = document.querySelector(`[data-idx="${index}"]`);
+      const foundElement = document.querySelector(`[data-idx="${index}"] .layer-title`) || document.querySelector(`[data-idx="${index}"]`);
       let offset = 0;
       if(center){
         offset = global.innerHeight / 2;
@@ -251,7 +249,9 @@ class Main extends Component {
 
       //- these elements have a 50px margin above them, this helps frame them correctly when jumping to them
       if(index.indexOf('top') > -1){
-        scrollTarget -= 40;
+        scrollTarget -= 20;
+      }else if(index.indexOf('bottom') > -1){
+        scrollTarget -= 180;
       }
 
       this.props.actions.setTargetLayerIdx(-1);
@@ -300,6 +300,15 @@ class Main extends Component {
     this.scrollToIndex('middle', false, true);
   }
 
+  getTitleFromIndex(idx, region){
+    if(region === 'top'){
+      return ProjectData[idx].title;
+    }else if(region === 'bottom'){
+      return JobData[idx].title;
+    }else{
+      return 'No title';
+    }
+  }
 
   renderLayers(layerDataArray, region, reverseOrder){
     const layerList = [];
@@ -313,7 +322,8 @@ class Main extends Component {
                               layerObj={obj} 
                               region={region} 
                               scrollIndex={scrollIndex}
-                              scrollToIndex={() => this.scrollToIndex(scrollIndex)} />);
+                              scrollToIndex={() => this.scrollToIndex(scrollIndex)} 
+                              reverseOrder={reverseOrder} />);
         if(idx !== layerDataArray.length - 1){
           layerList.push(<LayerDivider key={'d-' + idx} theme={obj.dividerTheme} region={region} />);
         }
@@ -325,7 +335,8 @@ class Main extends Component {
                                   layerObj={obj} 
                                   region={region} 
                                   scrollIndex={scrollIndex}
-                                  scrollToIndex={() => this.scrollToIndex(scrollIndex)} />);
+                                  scrollToIndex={() => this.scrollToIndex(scrollIndex)} 
+                                  reverseOrder={reverseOrder}/>);
       }
     });
 
@@ -348,7 +359,7 @@ class Main extends Component {
       <div ref="element" className={className}>
         {this.renderLoader()}
         <div id="region-top" className="region" >
-          {this.renderLayers(ProjectData, 'top')}
+          {this.renderLayers(ProjectData, 'top', true)}
           <Butler currentRegion={this.state.currentRegion} 
                   region="top" 
                   butlerType="topDragon" 
@@ -356,7 +367,7 @@ class Main extends Component {
           <ScrollCover type="top" active={this.state.currentRegion === 'middle'} onScrollButtonClick={e => this.scrollToIndex('top-0')} />
         </div>
         <div ref="element" id="region-middle" className="region" data-idx={'middle'} onClick={e => this.onMiddleClick(e)}>
-          <NavBar currentRegion={this.state.currentRegion} />
+          <NavBar currentRegion={this.state.currentRegion} curLayerTitle={this.props.curLayerTitle} />
         </div>
         <div id="region-bottom" className="region" >
           <Butler currentRegion={this.state.currentRegion} 
@@ -374,5 +385,6 @@ class Main extends Component {
 export default connect(state => ({ 
   curLayerIdx: state.curLayerIdx,
   curLayerTheme: state.curLayerTheme,
+  curLayerTitle: state.curLayerTitle,
   targetLayerIdx: state.targetLayerIdx
 }))(Main);

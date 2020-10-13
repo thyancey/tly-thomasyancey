@@ -58,7 +58,30 @@ export default class LayerDetail extends Component {
           ))}
         </ul>
       );
-    }{
+    }else if(blorb.link){
+      
+      let modClass = '';
+      if(blorb.mod){
+        modClass = 'mod-' + blorb.mod;
+      }
+
+      let activeClass = '';
+
+      let clickHandler = null;
+      if(blorb.link){
+        clickHandler = ( e => { global.open(blorb.link, '_blank') } );
+      }
+
+      if(clickHandler){
+        activeClass = 'mod-active';
+      }
+
+      return (
+        <div key={idx} className={`blorb blorb-link ${blorbSize} ${modClass} ${activeClass}`} onClick={clickHandler}>
+          <a href={blorb.link} target="_blank">{blorb.linkText || blorb.link}</a>
+        </div>
+      );
+    }else{
       console.error('blorbs must either have text or an image.');
       return null;
     } 
