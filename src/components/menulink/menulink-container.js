@@ -5,6 +5,7 @@ import { connect } from 'src/store';
 import MenuLink from './menulink';
 import JobData from 'src/data/jobdata.js';
 import ProjectData from 'src/data/projectdata.js';
+import BlogData from 'src/data/blogdata.js';
 
 require('./style.less');
 
@@ -34,6 +35,7 @@ class MenuLinks extends Component {
     return (
         <MenuLink   isCurrent={curIdx === 'middle'}
                     region={'middle'}
+                    title={null}
                     id={'middle'}
                     onMenuLink={e => this.onMenuLink(e, 'middle')}>
         </MenuLink>
@@ -50,13 +52,13 @@ class MenuLinks extends Component {
     this.setState({active: true});
   }
 
-  renderMenuLink(region, layerData, idx, curLayerIdx){
+  renderMenuLink(region, title, idx, curLayerIdx){
     const layerIdx = region + '-' + idx;
     // console.log(curLayerIdx, layerIdx)
 
     return (
       <MenuLink     idx={layerIdx} 
-                    layerData={layerData}
+                    title={title}
                     key={idx} 
                     isCurrent={curLayerIdx === layerIdx}
                     region={region}
@@ -65,16 +67,16 @@ class MenuLinks extends Component {
     );
   }
 
-  renderMenuLinks(region, layerData, curLayerIdx, reverseOrder){
+  renderMenuLinks(region, linkLabels, curLayerIdx, reverseOrder){
     const retVal = [];
     // console.log(curLayerIdx);
     if(!reverseOrder){
-      for(let i = 0; i < layerData.length; i++){
-        retVal.push(this.renderMenuLink(region, layerData[i], i, curLayerIdx));
+      for(let i = 0; i < linkLabels.length; i++){
+        retVal.push(this.renderMenuLink(region, linkLabels[i], i, curLayerIdx));
       }
     }else{
-      for(let i = layerData.length - 1; i >= 0; i--){
-        retVal.push(this.renderMenuLink(region, layerData[i], i, curLayerIdx));
+      for(let i = linkLabels.length - 1; i >= 0; i--){
+        retVal.push(this.renderMenuLink(region, linkLabels[i], i, curLayerIdx));
       }
     }
 
@@ -83,13 +85,14 @@ class MenuLinks extends Component {
 
   renderTopMenuLinkGroup(){
     if(this.props.curRegion === 'top'){
+      const linkLabels = ProjectData.map(pd => pd.linkTitle || pd.title);
       return (
         <div className="menulinks-group-container" >
           <p className="menulinks-group-label mod-top" onClick={e => this.onMenuLink(e, 'top-0')}>
             {'projects'}
           </p>
           <div className="menulinks-group mod-top">
-            {this.renderMenuLinks('top', ProjectData, this.props.curLayerIdx, true)}
+            {this.renderMenuLinks('top', linkLabels, this.props.curLayerIdx, true)}
           </div>
         </div>
       );
@@ -108,31 +111,30 @@ class MenuLinks extends Component {
     }
   }
 
-  renderBottomMenuLinkGroup(){
+  renderBottomMenuLinkGroup(bottomMode){
     if(this.props.curRegion === 'bottom'){
+      let linkLabels;
+      let label;
+      if(bottomMode === 'job'){
+        label = 'career';
+        linkLabels = JobData.map(pd => pd.linkTitle || pd.title);
+      }else{
+        label = 'blog';
+        linkLabels = BlogData.map(pd => pd.linkTitle || pd.title);
+      }
       return (
         <div className="menulinks-group-container" >
           <p className="menulinks-group-label mod-bottom" onClick={e => this.onMenuLink(e, 'bottom-0')}>
-            {'career'}
+            {label}
           </p>
           <div className="menulinks-group mod-bottom">
-            {this.renderMenuLinks('bottom', JobData, this.props.curLayerIdx)}
+            {this.renderMenuLinks('bottom', linkLabels, this.props.curLayerIdx)}
           </div>
         </div>
       );
     }
   }
-
-  renderMenuLinkGroups(){
-    return (
-      <div className="menulinks-menus-container">
-        {this.renderTopMenuLinkGroup()}
-        {this.renderMiddleMenuLinkGroup()}
-        {this.renderBottomMenuLinkGroup()}
-      </div>
-    );
-  }
-
+  
   renderMenuLinkButton(){
     if(this.props.curRegion !== 'middle'){
       return(
@@ -155,7 +157,11 @@ class MenuLinks extends Component {
     return(
       <div className={className} onMouseLeave={e => this.onMenuLeave(e)}>
         {this.renderMenuLinkButton()}
-        {this.renderMenuLinkGroups()}
+        <div className="menulinks-menus-container">
+          {this.renderTopMenuLinkGroup()}
+          {this.renderMiddleMenuLinkGroup()}
+          {this.renderBottomMenuLinkGroup(this.props.bottomMode)}
+        </div>
       </div>
     )
   }
@@ -163,5 +169,6 @@ class MenuLinks extends Component {
 }
 
 export default connect(state => ({ 
+  bottomMode: state.bottomMode,
   curLayerIdx: state.curLayerIdx
 }))(MenuLinks);

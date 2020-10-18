@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'src/store';
 import Layer from 'src/components/layer/index';
 import LayerDivider from 'src/components/layer/layer-divider';
+import BlogEntry from 'src/components/layer/blog-entry';
+import BlogTagMenu from 'src/components/layer/blog-tag-menu';
 import NavBar from 'src/components/navbar';
 import Butler from 'src/components/butler';
 
@@ -11,6 +13,7 @@ import Easing from 'src/utils/easing';
 
 import JobData from 'src/data/jobdata.js';
 import ProjectData from 'src/data/projectdata.js';
+import BlogData from 'src/data/blogdata.js';
 
 require('./style.less');
 
@@ -277,8 +280,21 @@ class Main extends Component {
     global.removeEventListener('resize', this.onResizeHandler);
   }
 
+  setAllTags(){
+    let allTags = [];
+    BlogData.forEach(b => {
+      b.tags && b.tags.forEach(t => {
+        if(allTags.indexOf(t) === -1) allTags.push(t);
+      });
+    });
+
+    this.props.actions.setAllTags(allTags);
+  }
+
   componentDidMount(){
     this.addListeners();
+
+    this.setAllTags();
 
     this.centerRegionEl = document.querySelector('#region-middle');
 
@@ -308,6 +324,31 @@ class Main extends Component {
     }else{
       return 'No title';
     }
+  }
+
+  renderBlog(blogDataArray, currentTags, region){
+    return (
+      <div className="blog-area">
+        { this.state.currentRegion === region && (
+          <BlogTagMenu 
+            allTags={this.props.allTags}
+            currentTags={this.props.currentTags} 
+            onTagClicked={this.props.actions.toggleTag} />
+        ) }
+        <ul className="blog-posts">
+          { blogDataArray.map((b, i) => (
+            <BlogEntry 
+              key={i}
+              data={b} 
+              region={region} 
+              scrollIndex={`${region}-${i}`}
+              scrollToIndex={() => this.scrollToIndex(scrollIndex)}
+              currentTags={currentTags}
+              onTagClicked={this.props.actions.toggleTag} />
+          )) }
+        </ul>
+      </div>
+    )
   }
 
   renderLayers(layerDataArray, region, reverseOrder){
@@ -364,18 +405,27 @@ class Main extends Component {
                   region="top" 
                   butlerType="topDragon" 
                   butlerHeight={this.state.butlerHeight} />
-          <ScrollCover type="top" active={this.state.currentRegion === 'middle'} onScrollButtonClick={e => this.scrollToIndex('top-0')} />
+          <ScrollCover type="top" label="projects" active={this.state.currentRegion === 'middle'} onScrollButtonClick={e => this.scrollToIndex('top-0')} />
         </div>
         <div ref="element" id="region-middle" className="region" data-idx={'middle'} onClick={e => this.onMiddleClick(e)}>
           <NavBar currentRegion={this.state.currentRegion} curLayerTitle={this.props.curLayerTitle} />
         </div>
         <div id="region-bottom" className="region" >
-          <Butler currentRegion={this.state.currentRegion} 
-                  region="bottom" 
-                  butlerType="bottomTree" 
-                  butlerHeight={this.state.butlerHeight}/>
-          {this.renderLayers(JobData, 'bottom')}
-          <ScrollCover type="bottom" active={this.state.currentRegion === 'middle'} onScrollButtonClick={e => this.scrollToIndex('bottom-0')} />
+          {this.props.bottomMode === 'job' ? (
+            <React.Fragment>
+              <Butler currentRegion={this.state.currentRegion} 
+                      region="bottom" 
+                      butlerType="bottomTree" 
+                      butlerHeight={this.state.butlerHeight}/>
+              {this.renderLayers(JobData, 'bottom')}
+              <ScrollCover type="bottom" label="career" active={this.state.currentRegion === 'middle'} onScrollButtonClick={e => this.scrollToIndex('bottom-0')} />
+            </React.Fragment>
+          ):(
+            <React.Fragment>
+              {this.renderBlog(BlogData, this.props.currentTags, 'bottom')}
+              <ScrollCover type="bottom" label="blog" active={this.state.currentRegion === 'middle'} onScrollButtonClick={e => this.scrollToIndex('bottom-0')} />
+            </React.Fragment>
+          )}
         </div>
       </div>
     );
@@ -383,8 +433,11 @@ class Main extends Component {
 }
 
 export default connect(state => ({ 
+  bottomMode: state.bottomMode,
   curLayerIdx: state.curLayerIdx,
   curLayerTheme: state.curLayerTheme,
   curLayerTitle: state.curLayerTitle,
-  targetLayerIdx: state.targetLayerIdx
+  targetLayerIdx: state.targetLayerIdx,
+  currentTags: state.currentTags,
+  allTags: state.allTags,
 }))(Main);
