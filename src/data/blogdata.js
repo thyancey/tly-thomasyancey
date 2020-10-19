@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: "Making a dog raft among other things",
+    title: "Making a dog raft",
     theme: "",
     date: "Oct 18th, 2020",
     description: "",
@@ -27,7 +27,7 @@ module.exports = [
     ]
   },
   {
-    title: "Mini kalimbas",
+    title: "Kalimbas",
     theme: "",
     date: "Oct 14th, 2020",
     description: "Blabla bla bla here's something about making kalimbas",
@@ -37,11 +37,21 @@ module.exports = [
       [
         {
           width: "half",
-          text: "It floats!"
+          text: "First I made a few small ones"
         }, 
         {
           width: "half",
-          image: "project-guitarapp/guitarapp-02.jpg"
+          image: "https://s3.amazonaws.com/tly-blog-images/temp/mini-kalimbas.jpg"
+        }
+      ],
+      [
+        {
+          width: "half",
+          image: "https://s3.amazonaws.com/tly-blog-images/temp/big-kalimba.jpg"
+        }, 
+        {
+          width: "half",
+          text: "Then I made this big boy"
         }
       ],
     ]
@@ -56,12 +66,26 @@ module.exports = [
     blorbs: [
       [
         {
-          width: "half",
-          text: "It floats!"
+          width: "full",
+          text: "This was my first time making real pixel art since using KidPix way back in the 90s"
+        }, 
+        {
+          width: "full",
+          image: "https://s3.amazonaws.com/tly-blog-images/temp/aseprite.gif"
+        }
+      ],
+      [
+        {
+          width: "full",
+          text: "This was my first time making real pixel art since using KidPix way back in the 90s"
         }, 
         {
           width: "half",
-          image: "project-guitarapp/guitarapp-02.jpg"
+          image: "https://s3.amazonaws.com/tly-blog-images/temp/sample-raccoon.gif"
+        },
+        {
+          width: "half",
+          image: "https://s3.amazonaws.com/tly-blog-images/temp/sample-oldlady.gif"
         }
       ]
     ]

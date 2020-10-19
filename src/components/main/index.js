@@ -282,10 +282,17 @@ class Main extends Component {
   }
 
   setAllTags(){
-    let allTags = [];
+    let allTags = {};
     BlogData.forEach(b => {
       b.tags && b.tags.forEach(t => {
-        if(allTags.indexOf(t) === -1) allTags.push(t);
+        if(!allTags[t]){
+          allTags[t] = {
+            id: t,
+            count: 1 
+          }
+        }else{
+          allTags[t].count++;
+        }
       });
     });
 

@@ -11,8 +11,11 @@ export default class BlogTagMenu extends Component {
       <div className="blog-tag-menu" >
         <h2>{'Tags:'}</h2>
         <ul>
-          { allTags && allTags.map((t,i) => (
-            <BlogTagButton key={i} tag={t} isActive={currentTags.indexOf(t) > -1} onTagClicked={this.props.onTagClicked}/>
+          { allTags && Object.keys(allTags).map((t,i) => (
+            <React.Fragment key={i} >
+              <BlogTagButton tag={allTags[t]} isActive={currentTags.indexOf(allTags[t].id) > -1} onTagClicked={this.props.onTagClicked}/>
+              <li className={'blog-tag-divider'}>{' • '}</li>
+            </React.Fragment>
           ))}
         </ul>
       </div>

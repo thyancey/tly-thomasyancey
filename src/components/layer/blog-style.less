@@ -4,7 +4,7 @@
 
 .layer-blog{
   list-style:none; 
-  margin-top:5rem;
+  margin-bottom:5rem;
   // margin:5rem 30rem 0rem 5rem;
   background-color:@color-white;
   border-radius: @border-radius-large;
@@ -72,14 +72,18 @@
     text-align:left;
     line-height:2rem;
   }
+  
 }
 
 .blog-tag-label{
   display:inline;
 
   a{
+    font-family: @font-style-heading;
     color:@color-blue;
+    font-weight:100;
     cursor:pointer;
+    .mixin-text-stroke(1px, 1px, @color-black);
 
     &:hover{
       color:@color-blue-light;
@@ -97,9 +101,49 @@
   }
 }
 
+  
+
+.blog-area{
+  padding-left:20rem;
+
+  .blog-tag-menu{
+    width:20rem;
+    position:fixed;
+    top:18rem;
+    left:0;
+    padding-left:1rem;
+    display:inline-block;
+    font-size:2rem;
+
+    h2{
+      font-family: @font-style-heading;
+    }
+
+    .blog-tag{
+      padding-left:1rem;
+    }
+
+    .blog-tag-divider{
+      display:none;
+    }
+  }
+  li{
+    list-style:none;
+  }
+  .blog-posts{
+    padding:5rem;
+    max-width:120rem;
+    margin: 0 auto;
+  }
+
+}
+
+
+
 .blog-tag-button{
   line-height: 2rem;
   margin-top:.5rem;
+  font-size:2rem;
 
   a{
     font-family: @font-style-heading;
@@ -115,6 +159,14 @@
     }
   }
 
+  span{
+    margin-right:.5rem;
+    color:@color-white-dark;
+    font-size:1.5rem;
+    vertical-align:top;
+  }
+  
+
   &.mod-active{
     a{
       color: @color-green;
@@ -124,29 +176,36 @@
       }
     }
   }
+
 }
 
-.blog-area{
-  >.blog-tag-menu{
-    h2{
-      font-family: @font-style-heading;
-    }
 
-    position:fixed;
-    top:18rem;
-    width:20rem;
-    padding-left:1rem;
-
-    .blog-tag{
-      padding-left:1rem;
-    }
-  }
-  li{
-    list-style:none;
+/* when mobile, get a tiny nav all the time */
+@media (max-width: @breakpoint-mobile) {
+  .blog-tag-button{
+    display:inline-block;
   }
 
-  >.blog-posts{
-    margin-left:20rem;
-    padding:5rem;
+
+  .blog-area{
+    padding-left:0;
+    .blog-tag-menu{
+      position:relative;
+      width:100%;
+      top:auto;
+      
+      .blog-tag-divider{
+        color:@color-white;
+        display:inline-block;
+        margin:0 .5rem;
+      }
+    }
+
+
+    .blog-posts{
+      margin-left:0rem;
+      padding:2.5rem;
+      max-width:none;
+    }
   }
 }
