@@ -15,6 +15,8 @@ import JobData from 'src/data/jobdata.js';
 import ProjectData from 'src/data/projectdata.js';
 import BlogData from 'src/data/blogdata.js';
 
+import { getFilteredBlogPosts } from 'src/utils/blog-utils';
+
 require('./style.less');
 
 const SCROLL_INTERVAL_FRAMERATE = 25;
@@ -66,7 +68,6 @@ class Main extends Component {
     const centerPoint = this.centerRegionEl.offsetTop - this.refs.element.scrollTop;
     const currentRegion = this.getRegionAtCurrentScrollPosition(this.centerRegionEl.offsetTop, this.refs.element.scrollTop, global.innerHeight);
     const currentLayerObj = this.getLayerAtCurrentScrollPosition(currentRegion, this.centerRegionEl.offsetTop, this.refs.element.scrollTop, global.innerHeight);
-    // console.log('currentRegion:', currentRegion);
 
     if(currentLayerObj && currentLayerObj.idx !== this.props.curLayerIdx){
       this.props.actions.setCurrentLayer(currentLayerObj);
@@ -392,38 +393,60 @@ class Main extends Component {
     );
   }
 
-
   render() {
-    let className = `main theme-${this.props.curLayerTheme} curregion-${this.state.currentRegion}`;
+    const layerTheme = (this.state.currentRegion === 'bottom' && this.props.bottomRegionMode === 'blog') ? 'blog' : this.props.curLayerTheme
+    let className = `main theme-${layerTheme} curregion-${this.state.currentRegion}`;
+    global.Main = this;
 
     return(
       <div ref="element" className={className}>
         {this.renderLoader()}
         <div id="region-top" className="region" >
           {this.renderLayers(ProjectData, 'top', true)}
+          <h2>{'SCROLL UP!'}</h2>
           <Butler currentRegion={this.state.currentRegion} 
                   region="top" 
                   butlerType="topDragon" 
                   butlerHeight={this.state.butlerHeight} />
-          <ScrollCover type="top" label="projects" active={this.state.currentRegion === 'middle'} onScrollButtonClick={e => this.scrollToIndex('top-0')} />
+          <ScrollCover 
+            type="top" 
+            links={[{ label:'projects' }]} 
+            active={this.state.currentRegion === 'middle'} 
+            regionMode={this.props.bottomRegionMode}
+            toggleRegionMode={mode => this.props.actions.toggleRegionMode('top', mode)}
+            onScrollButtonClick={e => this.scrollToIndex('top-0')} />
         </div>
         <div ref="element" id="region-middle" className="region" data-idx={'middle'} onClick={e => this.onMiddleClick(e)}>
-          <NavBar currentRegion={this.state.currentRegion} curLayerTitle={this.props.curLayerTitle} />
+          <NavBar 
+            currentRegion={this.state.currentRegion} 
+            curLayerTitle={this.state.currentRegion === 'top' && this.props.curLayerTitle}  />
         </div>
         <div id="region-bottom" className="region" >
-          {this.props.bottomMode === 'job' ? (
+          {this.props.bottomRegionMode === 'job' ? (
             <React.Fragment>
               <Butler currentRegion={this.state.currentRegion} 
                       region="bottom" 
                       butlerType="bottomTree" 
                       butlerHeight={this.state.butlerHeight}/>
               {this.renderLayers(JobData, 'bottom')}
-              <ScrollCover type="bottom" label="career" active={this.state.currentRegion === 'middle'} onScrollButtonClick={e => this.scrollToIndex('bottom-0')} />
+              <ScrollCover 
+                type="bottom" 
+                links={[{ label: 'blog', mode: 'blog' }, { label:'career', mode: 'job' }]} 
+                active={this.state.currentRegion === 'middle'}
+                regionMode={this.props.bottomRegionMode}
+                toggleRegionMode={mode => this.props.actions.toggleRegionMode('bottom', mode)}
+                onScrollButtonClick={e => this.scrollToIndex('bottom-0')} />
             </React.Fragment>
           ):(
             <React.Fragment>
-              {this.renderBlog(BlogData, this.props.currentTags, 'bottom')}
-              <ScrollCover type="bottom" label="blog" active={this.state.currentRegion === 'middle'} onScrollButtonClick={e => this.scrollToIndex('bottom-0')} />
+              {this.renderBlog(this.props.filteredBlogPosts, this.props.currentTags, 'bottom')}
+              <ScrollCover 
+                type="bottom" 
+                links={[{ label: 'blog', mode: 'blog' }, { label:'career', mode: 'job' }]} 
+                active={this.state.currentRegion === 'middle'}
+                regionMode={this.props.bottomRegionMode}
+                toggleRegionMode={mode => this.props.actions.toggleRegionMode('bottom', mode)}
+                onScrollButtonClick={e => this.scrollToIndex('bottom-0')} />
             </React.Fragment>
           )}
         </div>
@@ -433,11 +456,12 @@ class Main extends Component {
 }
 
 export default connect(state => ({ 
-  bottomMode: state.bottomMode,
+  bottomRegionMode: state.bottomRegionMode,
   curLayerIdx: state.curLayerIdx,
   curLayerTheme: state.curLayerTheme,
   curLayerTitle: state.curLayerTitle,
   targetLayerIdx: state.targetLayerIdx,
   currentTags: state.currentTags,
   allTags: state.allTags,
+  filteredBlogPosts: getFilteredBlogPosts(BlogData, state.currentTags)
 }))(Main);

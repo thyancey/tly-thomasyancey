@@ -1,4 +1,5 @@
 import { initStore } from 'react-waterfall';
+import BlogData from 'src/data/blogdata.js';
 
 const store = {
   initialState: {
@@ -7,9 +8,10 @@ const store = {
     curLayerIdx:-1,
     curLayerTheme:'default',
     curLayerTitle:'not set',
-    bottomMode: 'blog',
+    topRegionMode: '', //- not used yet
+    bottomRegionMode: 'blog',
     currentTags: [],
-    allTags: []
+    allTags: [],
   },
   actions: {
     toggleLoaded: ({ loaded }) => ({ loaded: !loaded }),
@@ -19,14 +21,29 @@ const store = {
       curLayerTheme: newLayerObj.theme || 'default',
       curLayerTitle: newLayerObj.title
     }),
-    setMode_job:() => ({ bottomMode: 'job' }),
-    setMode_blog:() => ({ bottomMode: 'blog' }),
+    setMode_job:() => ({ bottomRegionMode: 'job' }),
+    setMode_blog:() => ({ bottomRegionMode: 'blog' }),
+    toggleRegionMode: ({ bottomRegionMode }, region, force) => {
+      console.log('toggleRegionMode', region, force)
+      if(region === 'bottom'){
+        if(force) {
+          return { bottomRegionMode: force };
+        } else{
+          return { bottomRegionMode: bottomMode === 'job' ? 'blog' : 'job' };
+        }
+      }else{
+        //- not supported for anything else yet
+        return {};
+      }
+    },
     setAllTags:({}, allTags) => ({ allTags: allTags }),
-    selectTag:({}, tagId) => ({ currentTags: [ tagId ] }),
+    selectTag:({}, tagId) => ({ 
+      currentTags:  [ tagId ]
+    }),
     toggleTag:({ currentTags }, tagId) => { 
       if(currentTags.indexOf(tagId) > -1){
         return { 
-          currentTags: currentTags.filter(t => t !== tagId) 
+          currentTags: currentTags.filter(t => t !== tagId)
         };
       }else{
         return { 

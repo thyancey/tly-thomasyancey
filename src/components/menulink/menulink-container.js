@@ -6,6 +6,7 @@ import MenuLink from './menulink';
 import JobData from 'src/data/jobdata.js';
 import ProjectData from 'src/data/projectdata.js';
 import BlogData from 'src/data/blogdata.js';
+import { getFilteredBlogPosts } from 'src/utils/blog-utils';
 
 require('./style.less');
 
@@ -111,16 +112,17 @@ class MenuLinks extends Component {
     }
   }
 
-  renderBottomMenuLinkGroup(bottomMode){
+  renderBottomMenuLinkGroup(bottomMode, currentTags){
     if(this.props.curRegion === 'bottom'){
       let linkLabels;
       let label;
+      
       if(bottomMode === 'job'){
         label = 'career';
         linkLabels = JobData.map(pd => pd.linkTitle || pd.title);
       }else{
         label = 'blog';
-        linkLabels = BlogData.map(pd => pd.linkTitle || pd.title);
+        linkLabels = getFilteredBlogPosts(BlogData, currentTags).map(pd => `#${pd.entry}: ` + (pd.linkTitle || pd.title));
       }
       return (
         <div className="menulinks-group-container" >
@@ -160,7 +162,7 @@ class MenuLinks extends Component {
         <div className="menulinks-menus-container">
           {this.renderTopMenuLinkGroup()}
           {this.renderMiddleMenuLinkGroup()}
-          {this.renderBottomMenuLinkGroup(this.props.bottomMode)}
+          {this.renderBottomMenuLinkGroup(this.props.bottomMode, this.props.currentTags)}
         </div>
       </div>
     )
@@ -170,5 +172,6 @@ class MenuLinks extends Component {
 
 export default connect(state => ({ 
   bottomMode: state.bottomMode,
-  curLayerIdx: state.curLayerIdx
+  curLayerIdx: state.curLayerIdx,
+  currentTags: state.currentTags
 }))(MenuLinks);

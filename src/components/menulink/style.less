@@ -19,18 +19,25 @@
   top:50%;
   transform: translateY(-50%);
   width:33%;
-
   right:1rem;
   text-align:right;
   color:white;
   z-index:1;
+  pointer-events:none;
+
+  &.mod-active{
+    pointer-events:all;
+  }
 }
 
 .menulinks-openbutton{
-  // padding:1.5rem;
+  position:absolute;
+  right:0;
   padding-right:1.75rem;
   color:@color-blue;
   cursor:pointer;
+
+  pointer-events:all;
 }
 
 .menulinks-container{
@@ -44,6 +51,7 @@
     padding:1rem;
     border-radius:@border-radius-small;
   }
+
   &.mod-active{
     .menulinks-menus-container{
       display:block;

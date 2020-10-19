@@ -24,7 +24,5 @@ export default class MenuLink extends Component {
         </a>
       );
     }
-
-
   }
 }
