@@ -2,6 +2,115 @@
 
 module.exports = [
   {
+    title: "Virtual Pet",
+    description: "like a tom-a-got-yee",
+    links: "hey there buddy",
+    theme: "",
+    dividerTheme: "clouds-left",
+    text: "todo: title",
+    listGroups: [
+      {
+        title: "Links",
+        items:[
+          {
+            type: "link",
+            text: "CHECK IT OUT!",
+            url: "//www.thomasyancey.com/projects/virtualpet/index.html"
+          },
+          {
+            type: "link",
+            text: "Fork it on GitHub",
+            url: "//github.com/thyancey/tly-virtualpet"
+          }
+        ]
+      }
+    ],
+    details:[
+      {
+        title: "01",
+        description: "Little dudes that live in your browser",
+        blorbs: [
+          [
+            {
+              width: "full",
+              text: "Make any pet that you want, give them custom stats and they'll live in your browser! Stats update with time (even when you arent using the site). Keep that little guy fed now"
+            },
+            {
+              width: "full",
+              image: "project-virtualpet/virtualpet-01.png"
+            }
+          ]
+        ]
+      },
+      {
+        title: "Stats, states, and actions",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "half",
+              text: [
+                "This is some long text about stats and status.",
+                "Talk about how they come together",
+                "Overall, this does this and that, which makes the experience good",
+              ]
+            },
+            {
+              width: "half",
+              image: "project-virtualpet/virtualpet-02.png"
+            }
+          ]
+        ]
+      },
+      {
+        title: "behavior loop",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "full",
+              text: [
+                "Driving all of the stats and everything",
+                "Explain the loop in detail",
+                "The result is the ability to make anything! change what you want, add any stats, etc",
+              ]
+            },
+            {
+              width: "full",
+              image: "project-virtualpet/virtualpet-04.png"
+            }
+          ]
+        ]
+      },
+      {
+        title: "make anything!",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "half",
+              text: [
+                "Some stuff about how the app is loose on purpose. As long as you can animate it, you can make it a desktop pet! Maybe put mona lisa painting or other thing, multiple xamples",
+                "Some stuff about the pet attribute breakdown and image overlays",
+                "Tie it up with talking about the stats and persistent stuff again",
+              ]
+            },
+            {
+              width: "half",
+              image: "project-virtualpet/virtualpet-03.png"
+            },
+            {
+              width: "full",
+              type: "link",
+              link: "//thomasyancey.com/projects/virtualpet/index.html",
+              linkText: "check it out now!"
+            }
+          ]
+        ]
+      },
+    ]
+  },
+  {
     title: "Guitar App",
     description: "Music theory and learning tool",
     links: "hey there buddy",
@@ -15,12 +124,12 @@ module.exports = [
           {
             type: "link",
             text: "CHECK IT OUT!",
-            url: "http://www.thomasyancey.com/projects/guitarapp/index.html"
+            url: "//www.thomasyancey.com/projects/guitarapp/index.html"
           },
           {
             type: "link",
             text: "Fork it on GitHub",
-            url: "https://github.com/thyancey/tly-guitarapp"
+            url: "//github.com/thyancey/tly-guitarapp"
           }
         ]
       }
@@ -81,6 +190,225 @@ module.exports = [
     ]
   },
   {
+    title: "Yanzee",
+    description: "A drawing game that you play with friends",
+    linkTitle: "",
+    theme: "",
+    dividerTheme: "clouds-left",
+    text: "bla balbalbalbal game",
+    listGroups: [
+      {
+        title: "Links",
+        items:[
+          {
+            type: "link",
+            text: "Play the beta now!",
+            url: "//www.thomasyancey.com/projects/yanzee/index.html"
+          }
+        ]
+      }
+    ],
+    details:[
+      {
+        title: "What is this game",
+        description: "I wanted my own pictionary game",
+        blorbs: [
+          [
+            {
+              width: "half",
+              text: "something about a good pictionary game"
+            },
+            {
+              width: "half",
+              image: "project-yanzee/yanzee-02.png"
+            },
+          ]
+        ]
+      },
+      {
+        title: "but its not just gonna be drawings!",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "half",
+              text: "custom word lists"
+            },
+            {
+              width: "half",
+              image: "project-yanzee/yanzee-03.png"
+            },
+            {
+              width: "half",
+              image: "project-yanzee/yanzee-04.png"
+            },
+            {
+              width: "half",
+              text: "share images and vote"
+            },
+          ]
+        ]
+      },
+      {
+        title: "Hows it made, whats left",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "half",
+              text: "gotta figure out server stuff"
+            },
+            {
+              width: "half",
+              image: "project-yanzee/yanzee-01.png"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    title: "Raccoon Trapper",
+    description: "Phaser JS game",
+    linkTitle: "",
+    theme: "",
+    dividerTheme: "clouds-left",
+    text: "bla balbalbalbal game",
+    listGroups: [
+      {
+        title: "Links",
+        items:[
+          {
+            type: "link",
+            text: "CHECK IT OUT!",
+            url: "//www.thomasyancey.com/projects/raccoontrapper/index.html"
+          }
+        ]
+      }
+    ],
+    details:[
+      {
+        title: "What is this game",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "full",
+              text: "raccoon trapper is a wild bal bal"
+            },
+            {
+              width: "full",
+              image: "project-raccoontrapper/raccoontrapper-01.png"
+            },
+          ]
+        ]
+      },
+      {
+        title: "learning sprites and things",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "half",
+              text: "blabla stuff about aseprite"
+            },
+            {
+              width: "half",
+              image: "project-raccoontrapper/sample-oldlady.gif"
+            },
+            {
+              width: "half",
+              image: "project-raccoontrapper/sample-oldlady.gif"
+            },
+            {
+              width: "half",
+              image: "project-raccoontrapper/sample-raccoon.gif"
+            }
+          ]
+        ]
+      },
+      {
+        title: "About phaser and stuff",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "full",
+              text: "overview of the gameplay, tapper inspiration, put some junk in about why its like flash and talk about hte code, etc"
+            },
+            {
+              width: "half",
+              image: "project-raccoontrapper/phaser-logo.png"
+            },
+            {
+              width: "half",
+              image: "project-rotater/jsonstructure.jpg"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    title: "Office Dashboard",
+    description: "A persistent dashboard with touch events",
+    linkTitle: "",
+    theme: "",
+    dividerTheme: "clouds-left",
+    text: "At Ozmo, I had the opportunity to pitch an idea for a dashboard to show analytics, company events, new hires, birthdays, etc. We were able to get a large touch screen display to power it",
+    listGroups: [],
+    details:[
+      {
+        title: "Jumpin between iframes",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "full",
+              text: "The dashboard is basically an iframe slideshow, with a few built in pages"
+            },
+            {
+              width: "full",
+              image: "project-rotater/jsonstructure.jpg"
+            }
+          ]
+        ]
+      },
+      {
+        title: "On at the right times",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "half",
+              text: "I had a few people help me get a pi4 setup on rasbian. The computer hides behind the screen, and also controls turning on/turning off the display. On launch, it loads the internal site. Any updates to the dashboard can be deployed at anytime without touching hardware"
+            },
+            {
+              width: "half",
+              image: "project-rotater/jsonstructure.jpg"
+            }
+          ]
+        ]
+      },
+      {
+        title: "Details! Dogs! Data!",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "half",
+              text: "After about a year of use, we integrated with our HR system's API to pull user info. We even put a setup together for keeping track of dog birthdays :)"
+            },
+            {
+              width: "half",
+              image: "project-rotater/jsonstructure.jpg"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
     title: "Rotater",
     description: "React component for animating image sequences",
     linkTitle: "",
@@ -94,12 +422,12 @@ module.exports = [
           {
             type: "link",
             text: "CHECK IT OUT!",
-            url: "http://www.thomasyancey.com/projects/rotater/index.html"
+            url: "//www.thomasyancey.com/projects/rotater/index.html"
           },
           {
             type: "link",
             text: "Fork it on GitHub",
-            url: "https://github.com/thyancey/tly-rotater"
+            url: "//github.com/thyancey/tly-rotater"
           }
         ]
       }
@@ -129,6 +457,106 @@ module.exports = [
             {
               width: "full",
               text: "I simulated some amount of velocity, acceleration, and drag to the rotation, so that when you gave it a spin, it seems more real."
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    title: "Other projects",
+    description: "Just a bunch a random little things",
+    linkTitle: "",
+    theme: "",
+    dividerTheme: "clouds-left",
+    text: "I like to make web apps for fun, so I tend to jump around a lot",
+    listGroups: [],
+    details:[
+      {
+        title: "Bingotown",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "full",
+              link: "http://www.google.com",
+              linkText: "check it out now"
+            },
+            {
+              width: "half",
+              text: [
+                "It's bingo"
+              ],
+            },
+            {
+              width: "half",
+              image: "project-rotater/jsonstructure.jpg"
+            }
+          ]
+        ]
+      },
+      {
+        title: "Feud",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "half",
+              image: "project-rotater/jsonstructure.jpg"
+            },
+            {
+              width: "half",
+              text: [
+                "Bla bla did it for work"
+              ],
+            }
+          ]
+        ]
+      },
+      {
+        title: "Nerftillery",
+        description: "",
+        blorbs: [
+          [
+            {
+              width: "half",
+              text: [
+                "An app that controls a turret"
+              ],
+            },
+            {
+              width: "half",
+              image: "project-rotater/jsonstructure.jpg"
+            }
+          ]
+        ]
+      },
+      {
+        title: "Extreme cat attack",
+        description: "A few different games under a similar theme",
+        blorbs: [
+          [
+            {
+              width: "half",
+              text: [
+                "This was the first large game I made (and never finished)"
+              ],
+            },
+            {
+              width: "half",
+              image: "project-rotater/jsonstructure.jpg"
+            }
+          ],
+          [
+            {
+              width: "half",
+              image: "project-rotater/jsonstructure.jpg"
+            },
+            {
+              width: "half",
+              text: [
+                "Then I made this mobile one"
+              ],
             }
           ]
         ]
