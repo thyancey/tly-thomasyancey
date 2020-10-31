@@ -1,0 +1,244 @@
+{
+  "items": [
+    {
+      "title": "About My Career",
+      "description": "10 years of experience in a changing landscape",
+      "linkTitle": "About My Career",
+      "date": "",
+      "theme": "",
+      "dividerTheme": "clouds-right",
+      "listGroups": [
+        {
+          "title": "Skills",
+          "items": [
+            {
+              "text": "Languages: JS/Node (jQuery, Backbone, React), HTML/CSS, Bash, Ruby/Rails, As3, C#"
+            },
+            {
+              "text": "Cloud Architecture with AWS (S3, Route53, EC2, ELB, QuickSight)"
+            },
+            {
+              "text": "CI and Automation design"
+            },
+            {
+              "text": "Agile and Kanban LEAN practices"
+            },
+            {
+              "text": "Enough UX and design to get by"
+            },
+            {
+              "text": "I have great soft skills (I'm also very humble)"
+            }
+          ]
+        }
+      ],
+      "details": [
+        {
+          "title": "Soft Skills",
+          "description": "",
+          "blorbs": [
+            [
+              {
+                "width": "full",
+                "bullets": [
+                  "Positive, enthusiastic attitude with strong communication and risk assessment skills",
+                  "Plenty of experience with interviewing, training, and mentoring peers",
+                  "Strong drive for developing standards and processes",
+                  "I care a lot about company culture, and want everyone to have a great time at work"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ozmo",
+      "description": "Software Engineer (senior)",
+      "linkTitle": "Ozmo - Software Engineer (senior)",
+      "date": "Jan 2015 - Present",
+      "theme": "",
+      "dividerTheme": "clouds-right",
+      "listGroups": [
+        {
+          "title": "Responsibilities",
+          "items": [
+            {
+              "text": "develop react applications for SaaS products"
+            },
+            {
+              "text": "implement robust reporting solutions"
+            },
+            {
+              "text": "develop CI pipelines for rapid deployment and automation"
+            },
+            {
+              "text": "engage in peer review, unit testing, and documentation"
+            },
+            {
+              "text": "interview prospective employees"
+            }
+          ]
+        },
+        {
+          "title": "Accolades",
+          "items": [
+            {
+              "text": "Employee of the Year, 2015"
+            }
+          ]
+        }
+      ],
+      "details": []
+    },
+    {
+      "title": "Modea",
+      "description": "Software Engineer",
+      "linkTitle": "Modea - Software Engineer",
+      "date": "Dec 2012 - Dec 2014",
+      "theme": "",
+      "dividerTheme": "clouds-left",
+      "text": "",
+      "listGroups": [
+        {
+          "title": "Responsibilities",
+          "items": [
+            {
+              "text": "Developed an MVP product to prepare the business for a new SaaS model"
+            },
+            {
+              "text": "Helped grow team from 4 for 30+ members"
+            },
+            {
+              "text": "Led team of content developers, created standards, managed team leads"
+            },
+            {
+              "text": "Interviewed, trained, and mentored team members"
+            },
+            {
+              "text": "Resolved implementation issues with clients"
+            },
+            {
+              "text": "Served as a liason between engineers, project managers, content developers, and quality assurance"
+            }
+          ]
+        }
+      ],
+      "details": []
+    },
+    {
+      "title": "Modea",
+      "description": "Design and Development Contractor",
+      "linkTitle": "Modea - Design and Development Contractor",
+      "date": "Feb 2012 - Nov 2012",
+      "theme": "",
+      "dividerTheme": "clouds-left",
+      "text": "",
+      "listGroups": [
+        {
+          "title": "Responsibilities",
+          "items": [
+            {
+              "text": "Developed interactive advertising content"
+            },
+            {
+              "text": "Maintained multiple As3 frameworks"
+            }
+          ]
+        }
+      ],
+      "details": []
+    },
+    {
+      "title": "Modea",
+      "description": "Content Developer / Team Lead",
+      "linkTitle": "Modea - Content Developer / Team Lead",
+      "date": "Oct 2009 - Jan 2012",
+      "theme": "",
+      "dividerTheme": "clouds-left",
+      "text": "",
+      "listGroups": [
+        {
+          "title": "Responsibilities",
+          "items": [
+            {
+              "text": "Estimated and managed a consistent delivery of a large volume of independent projects"
+            },
+            {
+              "text": "Maintained multiple As3 frameworks"
+            },
+            {
+              "text": "Interviewed, trained and mentored team members"
+            },
+            {
+              "text": "Implemented a standardized process across all team members"
+            }
+          ]
+        }
+      ],
+      "details": []
+    },
+    {
+      "title": "Education",
+      "description": "B.F.A, Virginia Tech",
+      "linkTitle": "",
+      "date": "2007",
+      "theme": "vt",
+      "dividerTheme": "clouds-left",
+      "text": "I had a strong focus on 3d animation and modeling. Although that didn't really pan out in the real world, I had a lot of exposure to web development and digital media. I also learned the value of peer critiques, constant improvement, and thinking outside of the box",
+      "listGroups": [
+        {
+          "title": "Accolades",
+          "items": [
+            {
+              "text": "Outstanding Graduating Senior for Creative Technology/Digital Media"
+            }
+          ]
+        }
+      ],
+      "details": [
+        {
+          "title": "3d Models",
+          "description": "",
+          "blorbs": [
+            [
+              {
+                "width": "half",
+                "image": "job-education/char-leonard.jpg"
+              },
+              {
+                "width": "half",
+                "image": "job-education/model-cheese.jpg"
+              },
+              {
+                "width": "half",
+                "image": "job-education/model-ipods.jpg"
+              },
+              {
+                "width": "half",
+                "image": "job-education/model-nes.jpg"
+              }
+            ]
+          ]
+        },
+        {
+          "title": "Awesome3d.net",
+          "description": "",
+          "blorbs": [
+            [
+              {
+                "width": "full",
+                "text": "This website was built in Adobe Flash using actionscript on the timeline. I had an interest in rendering 3d environments on a simple 2d plane. Since it was over 10 years ago, a lot of the copy on it makes me cringe, but I still think the overall expereince is pretty neat."
+              },
+              {
+                "width": "full",
+                "image": "job-education/awesome3d.jpg",
+                "link": "http://www.awesome3d.net"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

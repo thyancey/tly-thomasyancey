@@ -1,5 +1,4 @@
 import { initStore } from 'react-waterfall';
-import BlogData from 'src/data/blogdata.js';
 
 const store = {
   initialState: {

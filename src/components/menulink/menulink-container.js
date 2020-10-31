@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'src/store';
 
 import MenuLink from './menulink';
-import JobData from 'src/data/jobdata.js';
-import ProjectData from 'src/data/projectdata.js';
-import BlogData from 'src/data/blogdata.js';
+import DataBoss from 'src/utils/databoss';
 import { getFilteredBlogPosts } from 'src/utils/blog-utils';
 
 require('./style.less');
@@ -86,7 +84,7 @@ class MenuLinks extends Component {
 
   renderTopMenuLinkGroup(){
     if(this.props.curRegion === 'top'){
-      const linkLabels = ProjectData.map(pd => pd.linkTitle || pd.title);
+      const linkLabels = DataBoss.getData('projects').map(pd => pd.linkTitle || pd.title);
       return (
         <div className="menulinks-group-container" >
           <p className="menulinks-group-label mod-top" onClick={e => this.onMenuLink(e, 'top-0')}>
@@ -119,10 +117,10 @@ class MenuLinks extends Component {
       
       if(bottomMode === 'job'){
         label = 'career';
-        linkLabels = JobData.map(pd => pd.linkTitle || pd.title);
+        linkLabels = DataBoss.getData('jobs').map(pd => pd.linkTitle || pd.title);
       }else{
         label = 'blog';
-        linkLabels = getFilteredBlogPosts(BlogData, currentTags).map(pd => `#${pd.entry}: ` + (pd.linkTitle || pd.title));
+        linkLabels = getFilteredBlogPosts(DataBoss.getData('blogs'), currentTags).map(pd => `#${pd.entry}: ` + (pd.linkTitle || pd.title));
       }
       return (
         <div className="menulinks-group-container" >
