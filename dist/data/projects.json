@@ -35,7 +35,7 @@
               },
               {
                 "width": "full",
-                "image": "project-virtualpet/virtualpet-01.png"
+                "image": "project-virtualpet/virtualpet-01.jpg"
               }
             ]
           ]
@@ -55,7 +55,7 @@
               },
               {
                 "width": "half",
-                "image": "project-virtualpet/virtualpet-02.png"
+                "image": "project-virtualpet/virtualpet-02.jpg"
               }
             ]
           ]
@@ -80,7 +80,7 @@
               },
               {
                 "width": "full",
-                "image": "project-virtualpet/virtualpet-04.png"
+                "image": "project-virtualpet/virtualpet-04.jpg"
               }
             ]
           ]
@@ -99,7 +99,7 @@
               },
               {
                 "width": "half",
-                "image": "project-virtualpet/virtualpet-03.png"
+                "image": "project-virtualpet/virtualpet-03.jpg"
               },
               {
                 "width": "full",
@@ -225,7 +225,7 @@
               },
               {
                 "width": "half",
-                "image": "project-yanzee/yanzee-02.png"
+                "image": "project-yanzee/yanzee-02.jpg"
               }
             ]
           ]
@@ -239,23 +239,24 @@
                 "width": "half",
                 "text": [
                   "custom word lists - users will be able to point to a file (or perhaps upload their own) wordlists, so that they can easily set up a custom game of inside jokes",
-                  "voting sessions - some modes that allow multiple people to participate and judge whos best",
-                  "custom palettes - along with custom words, users can define a color scheme and tie them to specific words if they want!",
-                  "custom images - some game modes built around doodling on an image from the internet, for the memers out there",
-                  "thats just a couple of the ideas i had, hopefully ill get back into working on this soon!"
+                  "voting sessions - some modes that allow multiple people to participate and judge whos best"
                 ]
               },
               {
                 "width": "half",
-                "image": "project-yanzee/yanzee-03.png"
+                "image": "project-yanzee/yanzee-03.jpg"
               },
               {
                 "width": "half",
-                "image": "project-yanzee/yanzee-04.png"
+                "image": "project-yanzee/yanzee-04.jpg"
               },
               {
                 "width": "half",
-                "text": "share images and vote"
+                "text": [
+                  "custom palettes - along with custom words, users can define a color scheme and tie them to specific words if they want!",
+                  "custom images - some game modes built around doodling on an image from the internet, for the memers out there",
+                  "thats just a couple of the ideas i had, hopefully ill get back into working on this soon!"
+                ]
               }
             ]
           ]
@@ -274,7 +275,7 @@
               },
               {
                 "width": "half",
-                "image": "project-yanzee/yanzee-01.png"
+                "image": "project-yanzee/yanzee-01.jpg"
               },
               {
                 "width": "full",
@@ -474,6 +475,22 @@
       ],
       "details": [
         {
+          "title": "Simulating rotation",
+          "description": "",
+          "blorbs": [
+            [
+              {
+                "width": "half",
+                "text": "I simulated some amount of velocity, acceleration, and drag to the rotation, so that when you gave it a spin, it seems more real."
+              },
+              {
+                "width": "half",
+                "image": "project-rotater/rotater-01.jpg"
+              }
+            ]
+          ]
+        },
+        {
           "title": "Simple definition file",
           "description": "",
           "blorbs": [
@@ -485,18 +502,6 @@
               {
                 "width": "half",
                 "image": "project-rotater/jsonstructure.jpg"
-              }
-            ]
-          ]
-        },
-        {
-          "title": "Fake-o-physics",
-          "description": "",
-          "blorbs": [
-            [
-              {
-                "width": "full",
-                "text": "I simulated some amount of velocity, acceleration, and drag to the rotation, so that when you gave it a spin, it seems more real."
               }
             ]
           ]
