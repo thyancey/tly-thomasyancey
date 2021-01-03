@@ -110,12 +110,12 @@ class MenuLinks extends Component {
     }
   }
 
-  renderBottomMenuLinkGroup(bottomMode, currentTags){
+  renderBottomMenuLinkGroup(bottomRegionMode, currentTags){
     if(this.props.curRegion === 'bottom'){
       let linkLabels;
       let label;
       
-      if(bottomMode === 'job'){
+      if(bottomRegionMode === 'job'){
         label = 'career';
         linkLabels = DataBoss.getData('jobs').map(pd => pd.linkTitle || pd.title);
       }else{
@@ -160,7 +160,7 @@ class MenuLinks extends Component {
         <div className="menulinks-menus-container">
           {this.renderTopMenuLinkGroup()}
           {this.renderMiddleMenuLinkGroup()}
-          {this.renderBottomMenuLinkGroup(this.props.bottomMode, this.props.currentTags)}
+          {this.renderBottomMenuLinkGroup(this.props.bottomRegionMode, this.props.currentTags)}
         </div>
       </div>
     )
@@ -169,7 +169,7 @@ class MenuLinks extends Component {
 }
 
 export default connect(state => ({ 
-  bottomMode: state.bottomMode,
+  bottomRegionMode: state.bottomRegionMode,
   curLayerIdx: state.curLayerIdx,
   currentTags: state.currentTags
 }))(MenuLinks);

@@ -28,7 +28,7 @@ const store = {
         if(force) {
           return { bottomRegionMode: force };
         } else{
-          return { bottomRegionMode: bottomMode === 'job' ? 'blog' : 'job' };
+          return { bottomRegionMode: bottomRegionMode === 'job' ? 'blog' : 'job' };
         }
       }else{
         //- not supported for anything else yet
