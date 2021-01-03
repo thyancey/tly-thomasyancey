@@ -3,13 +3,12 @@
     {
       "title": "Making a dog raft",
       "theme": "",
-      "date": "Oct 18th, 2020",
+      "date": "May 2016",
       "description": "",
       "tags": [
         "woodworking",
         "pets"
       ],
-      "entry": 5,
       "blorbs": [
         [
           {
@@ -32,13 +31,12 @@
     {
       "title": "Kalimbas",
       "theme": "",
-      "date": "Oct 14th, 2020",
+      "date": "Oct 2020",
       "description": "Blabla bla bla here's something about making kalimbas",
       "tags": [
         "woodworking",
         "music"
       ],
-      "entry": 4,
       "blorbs": [
         [
           {
@@ -65,14 +63,13 @@
     {
       "title": "Trying out aseprite",
       "theme": "",
-      "date": "Oct 2nd, 2020",
+      "date": "Sep 2020",
       "description": "While working on a game I'm build in Phaser.js, I started using a program called aseprite.",
       "tags": [
         "dev",
         "game dev",
         "graphics"
       ],
-      "entry": 3,
       "blorbs": [
         [
           {
