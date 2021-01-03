@@ -1,6 +1,5 @@
 @import "~themes/variables.less";
 
-
 .scrollcover{
   position:absolute;
   height:100%;
@@ -19,12 +18,14 @@
   }
 }
 
-.scrollcover-button{
+.scrollcover-button-container{
   position:absolute;
-  display:block;
-
   left:50%;
   transform:translateX(-50%);
+}
+
+.scrollcover-button{
+  display:inline-block;
 
   padding:3rem;
 
@@ -40,18 +41,23 @@
 @scrollbutton-offset: 26rem;
 
 #region-top{
-  padding-bottom:30rem;
   background-color:@color-white;
+  [data-idx="top-0"]{
+    padding-bottom:60rem;
+  }
 
   .scrollcover{
     bottom:0rem;
     background-color:@color-blue;
     text-align:center;
 
+    .scrollcover-button-container{
+      bottom:@scrollbutton-offset;
+    }
+
     .scrollcover-button{
       color:@color-blue;
-      bottom:@scrollbutton-offset;
-
+      
       &:hover{
         color:@color-white;
         transition: color .2s;
@@ -60,21 +66,37 @@
   }
 }
 
+
+
 #region-middle{
 
 }
 
+.theme-blog{
+  #region-bottom{
+    background-color:@color-purple;
+  }
+}
+
 #region-bottom{
-  padding-top:20rem;
   background-color:@color-blue-dark;
 
   .scrollcover{
     top:0;
     background-color:@color-purple;
 
-    .scrollcover-button{
-      color:@color-purple;
+    .scrollcover-button-container{
       top:@scrollbutton-offset;
+    }
+    .scrollcover-button{
+      background-color: transparent;
+      color:@color-black;
+      margin:0rem 2rem;
+      
+      &.mod-active{
+        background-color:@color-black;
+        color:@color-purple;
+      }
 
       &:hover{
         color:@color-white;

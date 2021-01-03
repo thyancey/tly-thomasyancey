@@ -10,10 +10,10 @@ export default class MenuLink extends Component {
       className += ' mod-active';
     }
 
-    if(this.props.layerData){
+    if(this.props.title){
       return(
         <a className={className} onClick={this.props.onMenuLink}>
-          <h4>{this.props.layerData.linkTitle || this.props.layerData.title}</h4>
+          <h4>{this.props.title}</h4>
         </a>
       );
     }else{
@@ -24,7 +24,5 @@ export default class MenuLink extends Component {
         </a>
       );
     }
-
-
   }
 }
