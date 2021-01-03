@@ -146,6 +146,31 @@
   }
 }
 
+.blorb-link{
+  a{
+    color:@color-black;
+    fill:@color-black;
+    &:visited{
+      color: @color-black;
+    }
+  
+    >*{
+      display:inline-block;
+      vertical-align:middle;
+    }
+  
+    &:hover{
+      color:@color-white;
+      fill:@color-white;
+  
+      p{
+        text-decoration:underline;
+      }
+    }
+
+  }
+}
+
 
 
 .blog-tag-button{

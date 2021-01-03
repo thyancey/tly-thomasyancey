@@ -1,5 +1,10 @@
 
 
+export const enhanceData = projectData => {
+  return {
+    items: projectData.items.filter(p => !p.skip)
+  };
+}
 
 export const getFilteredBlogPosts = (allPosts, filteredTags = []) => {
   if(filteredTags.length === 0){

@@ -2,7 +2,7 @@
   "items": [
     {
       "title": "About My Career",
-      "description": "10 years of experience in a changing landscape",
+      "description": "12 years of web dev",
       "linkTitle": "About My Career",
       "date": "",
       "theme": "",
@@ -12,10 +12,7 @@
           "title": "Skills",
           "items": [
             {
-              "text": "Languages: JS/Node (jQuery, Backbone, React), HTML/CSS, Bash, Ruby/Rails, As3, C#"
-            },
-            {
-              "text": "Cloud Architecture with AWS (S3, Route53, EC2, ELB, QuickSight)"
+              "text": "Languages: JS/Node (jQuery, React), HTML/CSS, Bash, Ruby/Rails, As3, C#"
             },
             {
               "text": "CI and Automation design"
@@ -25,9 +22,6 @@
             },
             {
               "text": "Enough UX and design to get by"
-            },
-            {
-              "text": "I have great soft skills (I'm also very humble)"
             }
           ]
         }

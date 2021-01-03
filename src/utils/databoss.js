@@ -1,6 +1,6 @@
 const IMAGE_LOAD_TIMEOUT = 50;
 const DATA_LOCATION = './data';
-import { enhanceBlogData } from './blog-utils';
+import { enhanceBlogData, enhanceData } from './blog-utils';
 
 class DataBoss {
   constructor(){
@@ -52,10 +52,10 @@ class DataBoss {
       this.state.data.blogs = enhanceBlogData(blogData);
       
       this.loadJsonData('projects', (projectData) => {
-        this.state.data.projects = projectData;
+        this.state.data.projects = enhanceData(projectData);
         
-        this.loadJsonData('jobs', (projectData) => {
-          this.state.data.jobs = projectData;
+        this.loadJsonData('jobs', (jobData) => {
+          this.state.data.jobs = enhanceData(jobData);
 
           callback()
         })

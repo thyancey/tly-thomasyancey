@@ -3,22 +3,21 @@
     {
       "title": "Virtual Pet",
       "description": "like a tom-a-got-yee",
-      "links": "hey there buddy",
       "theme": "",
       "dividerTheme": "clouds-left",
-      "text": "todo: title",
+      "text": "Virtual Pet is a sandbox framework that lets you take care of little creatures. It's an 'idle' game that stores timestamps within cookies, so it works even if you don't have the page open all the time. At the moment, it's just an MVP without a backend, but I hope to finish this at some point so that anyone can have browser pets made of their favorite things",
       "listGroups": [
         {
           "title": "Links",
           "items": [
             {
               "type": "link",
-              "text": "CHECK IT OUT!",
-              "url": "//www.thomasyancey.com/projects/virtualpet/index.html"
+              "text": "Try it now!",
+              "url": "https://www.thomasyancey.com/projects/virtualpet/index.html"
             },
             {
               "type": "link",
-              "text": "Fork it on GitHub",
+              "text": "GitHub",
               "url": "//github.com/thyancey/tly-virtualpet"
             }
           ]
@@ -26,13 +25,13 @@
       ],
       "details": [
         {
-          "title": "01",
-          "description": "Little dudes that live in your browser",
+          "title": "Little dudes that live in your browser",
+          "description": "",
           "blorbs": [
             [
               {
                 "width": "full",
-                "text": "Make any pet that you want, give them custom stats and they'll live in your browser! Stats update with time (even when you arent using the site). Keep that little guy fed now"
+                "text": "You can define graphics and behaviors for anything, and make it come to life, even while the website isn't open! Keep that little guy fed now"
               },
               {
                 "width": "full",
@@ -49,9 +48,9 @@
               {
                 "width": "half",
                 "text": [
-                  "This is some long text about stats and status.",
-                  "Talk about how they come together",
-                  "Overall, this does this and that, which makes the experience good"
+                  "Every pet can be assigned flexible values that drive its behavior",
+                  "Let's say you wanna make a can of soda into a pet- You may give it a stat 'bubblyness' and 'fullness', the states 'empty', 'flat', 'normal' and 'exploded', and the actions 'shake it up' and 'drink it'",
+                  "By definining these attributes and some relationships between them, perhaps the can looses bubblyness overtime as it sits idle. If the can looses too much bubblyness it gets 'flat', but you can 'shake it up' to increase bubblyness, but if to you go too far it'll be 'exploded'"
                 ]
               },
               {
@@ -69,10 +68,15 @@
               {
                 "width": "full",
                 "text": [
-                  "Driving all of the stats and everything",
-                  "Explain the loop in detail",
-                  "The result is the ability to make anything! change what you want, add any stats, etc"
+                  "Relationships between pet attributes allow them to come to life without a lot of work",
+                  "As time goes on, a stat (like 'hunger') increases, if that stat is too high, the pet may go into a 'hungry' mood, which might make it angry, and if it gets too hungry it could croak!"
                 ]
+              },
+              {
+                "width": "full",
+                "type": "link",
+                "link": "//github.com/thyancey/tly-virtualpet",
+                "linkText": "This ones a lil tough to describe in detail here, so I made a nice readme on github with pictures and everything"
               },
               {
                 "width": "full",
@@ -89,9 +93,8 @@
               {
                 "width": "half",
                 "text": [
-                  "Some stuff about how the app is loose on purpose. As long as you can animate it, you can make it a desktop pet! Maybe put mona lisa painting or other thing, multiple xamples",
-                  "Some stuff about the pet attribute breakdown and image overlays",
-                  "Tie it up with talking about the stats and persistent stuff again"
+                  "Some stuff about how the app is loose on purpose. As long as you can animate it, you can make it a desktop pet!",
+                  "Whether it's a stock photo, some cheerios on your fridge, or a full-blown spritesheet from your favorite videogame, make it come to life!"
                 ]
               },
               {
@@ -101,7 +104,7 @@
               {
                 "width": "full",
                 "type": "link",
-                "link": "//thomasyancey.com/projects/virtualpet/index.html",
+                "link": "https://www.thomasyancey.com/projects/virtualpet/index.html",
                 "linkText": "check it out now!"
               }
             ]
@@ -112,22 +115,25 @@
     {
       "title": "Guitar App",
       "description": "Music theory and learning tool",
-      "links": "hey there buddy",
       "theme": "guitarapp",
       "dividerTheme": "fretboard-right",
-      "text": "As one of my 10,000 hobbies, playing guitar is something I sorta know how to do, but I'm not very good at. I've been trying to go past chords and tabs and learn some more fundamental concepts of music theory. This is an app I made to learn notes and scales on a guitar",
+      "text": [
+        "As one of my 10,000 hobbies, playing guitar is something I sorta know how to do, but I'm not very good at. I've been trying to go past chords and tabs and learn some more fundamental concepts of music theory. This is an app I made to learn notes and scales on a guitar",
+        "Note: the writeup here is out of date, the app has changed look and feel significantly"
+      ]
+        ,
       "listGroups": [
         {
           "title": "Links",
           "items": [
             {
               "type": "link",
-              "text": "CHECK IT OUT!",
-              "url": "//www.thomasyancey.com/projects/guitarapp/index.html"
+              "text": "Try it now!",
+              "url": "https://www.thomasyancey.com/projects/guitarapp/index.html"
             },
             {
               "type": "link",
-              "text": "Fork it on GitHub",
+              "text": "GitHub",
               "url": "//github.com/thyancey/tly-guitarapp"
             }
           ]
@@ -194,28 +200,28 @@
       "linkTitle": "",
       "theme": "",
       "dividerTheme": "clouds-left",
-      "text": "bla balbalbalbal game",
+      "text": "This is an MVP implementation of a multiplayer game using websockets, inspired by jackbox's easy to use lobby system and MS Paint. Eventually, I hope to build additional game modes and rework the infrastructure into a more scaleable solution",
       "listGroups": [
         {
           "title": "Links",
           "items": [
             {
               "type": "link",
-              "text": "Play the beta now!",
-              "url": "//www.thomasyancey.com/projects/yanzee/index.html"
+              "text": "Play the alpha now!",
+              "url": "https://www.thomasyancey.com/projects/yanzee/index.html"
             }
           ]
         }
       ],
       "details": [
         {
-          "title": "What is this game",
-          "description": "I wanted my own pictionary game",
+          "title": "So... you can draw in this drawing game, right?",
+          "description": "",
           "blorbs": [
             [
               {
                 "width": "half",
-                "text": "something about a good pictionary game"
+                "text": "I'm focusing on providing a clean drawing UI that works both on mobile and desktop. As one player draws, it sends 'brush' information to other players, effectively drawing on their canvas in realtime. Although there are only basic drawing tools at the moment, I hope to pepper in some additonal fun features."
               },
               {
                 "width": "half",
@@ -226,12 +232,18 @@
         },
         {
           "title": "but its not just gonna be drawings!",
-          "description": "",
+          "description": "i'm hoping to build in more modes in the future to really spice it up",
           "blorbs": [
             [
               {
                 "width": "half",
-                "text": "custom word lists"
+                "text": [
+                  "custom word lists - users will be able to point to a file (or perhaps upload their own) wordlists, so that they can easily set up a custom game of inside jokes",
+                  "voting sessions - some modes that allow multiple people to participate and judge whos best",
+                  "custom palettes - along with custom words, users can define a color scheme and tie them to specific words if they want!",
+                  "custom images - some game modes built around doodling on an image from the internet, for the memers out there",
+                  "thats just a couple of the ideas i had, hopefully ill get back into working on this soon!"
+                ]
               },
               {
                 "width": "half",
@@ -249,17 +261,26 @@
           ]
         },
         {
-          "title": "Hows it made, whats left",
+          "title": "Lobby system",
           "description": "",
           "blorbs": [
             [
               {
                 "width": "half",
-                "text": "gotta figure out server stuff"
+                "text": [
+                  "I'm hoping to recreate an experience as easy as the one that jackbox games provide. its important to me that games like this can be shared with a link, and without a user having to sign up for something",
+                  "There is a long way to go in terms of implementing a more scaleable solution. Eventually I hope to get the backend into AWS and properly load balanced so that I could scale it up if I wanted to."
+                ]
               },
               {
                 "width": "half",
                 "image": "project-yanzee/yanzee-01.png"
+              },
+              {
+                "width": "full",
+                "type": "link",
+                "link": "https://www.thomasyancey.com/projects/virtualpet/index.html",
+                "linkText": "you can play a version of it now (with friends!), it just might take ~30sec for the server to spin up"
               }
             ]
           ]
@@ -272,15 +293,15 @@
       "linkTitle": "",
       "theme": "",
       "dividerTheme": "clouds-left",
-      "text": "bla balbalbalbal game",
+      "text": "Ive been messing around with Phaser JS and spritesheets recently.  Here's a game where an old lady domesticates raccoons",
       "listGroups": [
         {
           "title": "Links",
           "items": [
             {
               "type": "link",
-              "text": "CHECK IT OUT!",
-              "url": "//www.thomasyancey.com/projects/raccoontrapper/index.html"
+              "text": "play the prototype",
+              "url": "https://www.thomasyancey.com/projects/raccoon-trapper/index.html"
             }
           ]
         }
@@ -288,12 +309,22 @@
       "details": [
         {
           "title": "What is this game",
-          "description": "",
+          "description": "like Tapper, but with chonky bois",
           "blorbs": [
             [
               {
+                "width": "half",
+                "text": "Most of the gameplay inspiration is drawn from the classic arcade game 'Tapper'. A lot of thought has gone into the mechanics so that it has a feel of its own and sorta works with the concept of a crazy old lady taming raccoons"
+              },
+              {
+                "width": "half",
+                "image": "project-raccoontrapper/tapper.jpg"
+              }
+            ],
+            [
+              {
                 "width": "full",
-                "text": "raccoon trapper is a wild bal bal"
+                "text": "Raccoons come from the forest, they must be fed or you will be eaten! After feeding racoons, they fall in love with you. As a strong, independent old lady, you must sling bowls of cat food into the abyss, hug the happy raccoons, and ninja kick the angry ones"
               },
               {
                 "width": "full",
@@ -303,13 +334,18 @@
           ]
         },
         {
-          "title": "learning sprites and things",
+          "title": "sprites and animation with Aseprite",
           "description": "",
           "blorbs": [
             [
               {
+                "width": "full",
+                "type": "link",
+                "link": "https://www.aseprite.org/"
+              },
+              {
                 "width": "half",
-                "text": "blabla stuff about aseprite"
+                "text": "Ive been using a sprite editing tool called Aseprite. Its cheap, powerful, and really fun to use! The workflow reminds me a lot of doing timeline animation in Adobe Flash"
               },
               {
                 "width": "half",
@@ -327,21 +363,25 @@
           ]
         },
         {
-          "title": "About phaser and stuff",
+          "title": "About Phaser",
           "description": "",
           "blorbs": [
             [
               {
                 "width": "full",
-                "text": "overview of the gameplay, tapper inspiration, put some junk in about why its like flash and talk about hte code, etc"
+                "type": "link",
+                "link": "https://phaser.io/"
+              },
+              {
+                "width": "full",
+                "text": [
+                  "Im using the JS game framework 'Phaser', which has a very strong online community. They seem to provide just enough framework to allow you to build games quckly, while not so much that it impedes on your creativity.",
+                  "Ive been working through setting up a template using webpack and other tools."
+                ]
               },
               {
                 "width": "half",
                 "image": "project-raccoontrapper/phaser-logo.png"
-              },
-              {
-                "width": "half",
-                "image": "project-rotater/jsonstructure.jpg"
               }
             ]
           ]
@@ -349,6 +389,7 @@
       ]
     },
     {
+      "skip": true,
       "title": "Office Dashboard",
       "description": "A persistent dashboard with touch events",
       "linkTitle": "",
@@ -420,12 +461,12 @@
           "items": [
             {
               "type": "link",
-              "text": "CHECK IT OUT!",
-              "url": "//www.thomasyancey.com/projects/rotater/index.html"
+              "text": "Get rotatin!",
+              "url": "https://www.thomasyancey.com/projects/rotater/index.html"
             },
             {
               "type": "link",
-              "text": "Fork it on GitHub",
+              "text": "GitHub",
               "url": "//github.com/thyancey/tly-rotater"
             }
           ]
@@ -463,6 +504,7 @@
       ]
     },
     {
+      "skip": true,
       "title": "Other projects",
       "description": "Just a bunch a random little things",
       "linkTitle": "",
