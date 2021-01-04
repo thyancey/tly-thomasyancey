@@ -32,7 +32,7 @@ export default class BlogEntry extends Component {
               { data.tags && data.tags.map((t, i) => (
                 <React.Fragment key={i} >
                   <BlogTagLabel tag={t} isActive={currentTags.indexOf(t) > -1} onTagClicked={this.props.onTagClicked}/>
-                  {i !== data.tags.length - 1 && <li className={'blog-tag-divider'}>{' • '}</li>}
+                  {i !== data.tags.length - 1 && <li className={'blog-tag-divider'}>{' - '}</li>}
                 </React.Fragment>
               ))}
             </ul>

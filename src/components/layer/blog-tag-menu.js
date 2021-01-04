@@ -14,7 +14,7 @@ export default class BlogTagMenu extends Component {
           { allTags && Object.keys(allTags).map((t,i) => (
             <React.Fragment key={i} >
               <BlogTagButton tag={allTags[t]} isActive={currentTags.indexOf(allTags[t].id) > -1} onTagClicked={this.props.onTagClicked}/>
-              <li className={'blog-tag-divider'}>{' • '}</li>
+              <li className={'blog-tag-divider'}>{' - '}</li>
             </React.Fragment>
           ))}
         </ul>

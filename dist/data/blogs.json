@@ -1,6 +1,137 @@
 {
   "items": [
     {
+      "title": "Updating the site",
+      "theme": "",
+      "date": "Jan 2021",
+      "description": "",
+      "tags": [
+        "dev"
+      ],
+      "blorbs": [
+        [
+          {
+            "width": "full",
+            "text": [
+              "I've been working on updating this site over the past few years, but never got around to pushing changes.",
+              "Hopefully soon I can update the UX of this site and focus on lazy loading a lot of the assets.",
+              "Otherwise, I'm going to try to update it more often, as I tend to make a lot of things that never end up anywhere. For now, I added a whole bunch of project info and a few blog posts"
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "title": "Card games",
+      "theme": "",
+      "date": "Dec 2020",
+      "description": "",
+      "tags": [
+        "dev",
+        "game dev",
+        "puzzles"
+      ],
+      "blorbs": [
+        [
+          {
+            "width": "full",
+            "text": "I was thinking about a couple of games from my youth, one is the Parker Brother's game 'Set', and the other a DOS puzzle game titled 'Heaven & Earth'"
+          }
+        ],
+        [
+          {
+            "width": "half",
+            "text": [
+              "SET is a card game I played with my mom a lot when I was younger. The general concept is that you have to make matches of 3 where all the attributes are the same or different.",
+              "It's pretty difficult to explain, but you can read the rules right here >"
+            ]
+          },
+          {
+            "width": "half",
+            "image": "https://s3.amazonaws.com/tly-blog-images/temp/cards-set.jpg"
+          },
+          {
+            "link": "https://www.setgame.com/set/puzzle",
+            "linkText": "you can play daily SET puzzles here :)"
+          }
+        ],
+        [
+          {
+            "width": "half",
+            "image": "https://s3.amazonaws.com/tly-blog-images/temp/cards-heavenearth.jpg"
+          },
+          {
+            "width": "half",
+            "text": [ 
+              "Heaven & Earth was a puzzle game JAM PACKED with content. One of the modes was a little too complicated for my age, but after going back and looking at it, it had some fun concepts around discovering relationships between cards",
+              "Aside from the card game, there was a fantasic 'Illusions' part of the game containing all kinds of inspiring puzzles.",
+              "There's also some pendulum game, but I really dont understand why anyone would want to do anything wtih it."
+            ]
+          },
+          {
+            "link": "https://www.myabandonware.com/game/heaven-earth-1fb",
+            "linkText": "play Heaven & Earth in your browser"
+          }
+        ],
+        [
+          {
+            "width": "half",
+            "text": [ 
+              "Anywho, I was thinking through a few of these concepts while tinkering around with meta data tags for another project. I thought it would be neat to make a modern combination of the two, combining the grouping/exploration of the Heaven & Earth game with the rigid matching structure of SET"
+            ]
+          },
+          {
+            "width": "half",
+            "image": "https://s3.amazonaws.com/tly-blog-images/temp/cards-game01.jpg"
+          }
+        ],
+        [
+          {
+            "width": "full",
+            "text": [ 
+              "My current prototype only counts attributes that are the same. I designed the systems in a way so that you could define any attribute and image you wanted on a card",
+              "In the example below, you get more points from only matching the two Aces, beacause they have so much in common. By dragging the queen of hearts on the stack, now the only thing they have in common is the color 'red'"
+            ]
+          },
+          {
+            "width": "half",
+            "image": "https://s3.amazonaws.com/tly-blog-images/temp/cards-game02.jpg"
+          },
+          {
+            "width": "half",
+            "image": "https://s3.amazonaws.com/tly-blog-images/temp/cards-game03.jpg"
+          }
+        ],
+        [
+          {
+            "width": "half",
+            "text": [ 
+              "playing cards are kinda boring though. I'm hoping to make something that can match MANY things together. Since it's based on meta data, you can match anything as long as it has the right info defined on it!",
+              "pepe and ugandan knuckles share 'meme-status: legendary', and they're both dudes, I think.",
+              "If you wanted to, you could throw ugandan knuckles on the queen of hearts and get the 'color':'red' match"
+            ]
+          },
+          {
+            "width": "half",
+            "image": "https://s3.amazonaws.com/tly-blog-images/temp/cards-game04.jpg"
+          }
+        ],
+        [
+          {
+            "width": "full",
+            "text": [ 
+              "I'm trying to get this game to a semi-finished state before I lose interest. I still need to implement some better constraints and rules to make it a challenging puzzle experience."
+            ]
+          },
+          {
+            "width": "full",
+            "link": "https://www.thomasyancey.com/projects/cards/index.html",
+            "linkText": "try it out!"
+          }
+        ]
+      ]
+    },
+    {
       "title": "Making a dog raft",
       "theme": "",
       "date": "May 2016",
@@ -30,9 +161,7 @@
     },
     {
       "title": "Kalimbas",
-      "theme": "",
       "date": "Oct 2020",
-      "description": "Blabla bla bla here's something about making kalimbas",
       "tags": [
         "woodworking",
         "music"
@@ -41,21 +170,45 @@
         [
           {
             "width": "half",
-            "text": "First I made a few small ones"
+            "text": "A kalimba is an instrument composed of a wooden soundboard and metal tines. The shorter/tighter the tines are, the higer the note. I purchased a 'gecko' brand kalimba online and thought it'd be fun to work through making some of my own"
           },
           {
             "width": "half",
-            "image": "https://s3.amazonaws.com/tly-blog-images/temp/mini-kalimbas.jpg"
+            "image": "https://s3.amazonaws.com/tly-blog-images/temp/gecko-kalimba.jpg"
           }
         ],
         [
+          {
+            "width": "half",
+            "image": "https://s3.amazonaws.com/tly-blog-images/temp/mini-kalimbas.jpg"
+          },
+          {
+            "width": "half",
+            "text": "I made several small prototypes, which were pretty easy and fun. I found that with smaller ones, having a really solid piece (vs a hollowbody) creates a much better tone"
+          }
+        ],
+        [
+          {
+            "width": "full",
+            "text": "After the little ones I moved onto making these big boys. Im still working through prototypes, and hopefully will end up with an instrument I'm really proud of"
+          },
           {
             "width": "half",
             "image": "https://s3.amazonaws.com/tly-blog-images/temp/big-kalimba.jpg"
           },
           {
             "width": "half",
-            "text": "Then I made this big boy"
+            "image": "https://s3.amazonaws.com/tly-blog-images/temp/kalimba-01.jpg"
+          }
+        ],
+        [
+          {
+            "width": "half",
+            "image": "https://s3.amazonaws.com/tly-blog-images/temp/kalimba-02.jpg"
+          },
+          {
+            "width": "half",
+            "text": "Im still working through prototypes, and hopefully will end up with an instrument I'm really proud of"
           }
         ]
       ]

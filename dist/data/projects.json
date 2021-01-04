@@ -1,6 +1,178 @@
 {
   "items":[
     {
+      "title": "Misc projects",
+      "description": "A few small projects before we get to the rest of em",
+      "linkTitle": "",
+      "theme": "",
+      "dividerTheme": "clouds-left",
+      "text": "Keep scrolling up (or use the 'Skip to...' in the lower left) to jump to other projects, some of which are on github for you poke around with!",
+      "listGroups": [],
+      "details": [
+        {
+          "title": "Some cardgame",
+          "description": "A cardgame based on matching unrelated things",
+          "blorbs": [
+            [
+              {
+                "width": "full",
+                "link": "https://www.thomasyancey.com/projects/cards/index.html",
+                "linkText": "try it out!"
+              },
+              {
+                "width": "full",
+                "text": "I'm actively working on this one, trying to get it to a pseudo-finished state. Blog post coming soon!"
+              },
+              {
+                "width": "full",
+                "image": "project-misc/cardgame-01.jpg"
+              }
+            ]
+          ]
+        },
+        {
+          "title": "Bingotown",
+          "description": "A simple bingo game sourced from custom word banks",
+          "blorbs": [
+            [
+              {
+                "width": "full",
+                "link": "https://www.thomasyancey.com/projects/bingotown/index.html",
+                "linkText": "try it out!"
+              },
+              {
+                "width": "full",
+                "image": "project-misc/bingotown.jpg"
+              }
+            ]
+          ]
+        },
+        {
+          "title": "Butterbait",
+          "description": "Hey y'all! ...not sure where the inspiration for this came from",
+          "blorbs": [
+            [
+              {
+                "width": "full",
+                "link": "https://www.thomasyancey.com/tests/butterbait/index.html",
+                "linkText": "try it out!"
+              },
+              {
+                "width": "full",
+                "image": "project-misc/butterbait.jpg"
+              }
+            ]
+          ]
+        },
+        {
+          "title": "Nerftillery",
+          "description": "Dialing in artillery for office warfare",
+          "blorbs": [
+            [
+              {
+                "width": "full",
+                "text": [
+                  "The general idea is that you could calibrate a remote-operated nerf turret to certain coordinates, then present those on an easy to use map",
+                  "No physics, geometry, sensorts, or OCR involved here... the user calibrates a target with the real turret until the darts land where they want. That rotation/angle is then locked in, and can be replayed later",
+                  "I got most of the little web app working (and for multiple locations/turrets/maps), but got hung up on actually building the turret and microcontroller to run it"
+                ]
+              }
+            ],
+            [
+              {
+                "width": "half",
+                "image": "project-misc/nerftillery-01.jpg"
+              },
+              {
+                "width": "half",
+                "image": "project-misc/nerftillery-02.jpg"
+              }
+            ]
+          ]
+        },
+        {
+          "title": "Shifty shapes",
+          "description": "A physics game for android devices",
+          "blorbs": [
+            [
+              {
+                "width": "half",
+                "text": [
+                  "The core concept used the accelerometer to influence the gravity in the game. Basically - the objects in the game responded as if you were holding a box with them inside.",
+                  "Like a few other projects, this one died when I stopped developing in Flash"
+                ]
+              },
+              {
+                "width": "half",
+                "image": "project-misc/shifty-03.jpg"
+              }
+            ],
+            [
+              {
+                "width": "half",
+                "image": "project-misc/shifty-01.jpg"
+              },
+              {
+                "width": "half",
+                "text": [
+                  "To play, you flip and shake your phone to get similar pieces to touch",
+                  "Other features like barriers, pits, and explosions were added in to keep the gameplay fresh, as you do with good mobile games"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "title": "Extreme Cat Attack",
+          "description": "Control princess buttercup as she defends earth from terrible cats (or don't)",
+          "blorbs": [
+            [
+              {
+                "width": "full",
+                "link": "//extremecatattack.com",
+                "linkText": "you could try running it, but i wouldnt recommend all the hoops and issues with running swf files on newer machines"
+              },
+              {
+                "width": "half",
+                "text": [
+                  "This was the first large game I... never finished. I built it in flash, making almost all of the systems on my own. It was a great project to have while I was learning how to code"
+                ]
+              },
+              {
+                "width": "half",
+                "image": "project-misc/eca-01.jpg"
+              }
+            ],
+            [
+              {
+                "width": "half",
+                "image": "project-misc/eca-02.jpg"
+              },
+              {
+                "width": "half",
+                "text": [
+                  "I had built in a lot of neat features like upgrades, custom load-outs, a store, an enemy encyclopedia, etc"
+                ]
+              }
+            ],
+            [
+              {
+                "width": "half",
+                "text": [
+                  "Ultimately the core game, although fun to make, wasn't that fun. The animations and features sure were neat though.",
+                  "What really killed it for me was the lack of support for Flash content."
+                ]
+              },
+              {
+                "width": "half",
+                "image": "project-misc/eca-03.jpg"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
       "title": "Virtual Pet",
       "description": "like a tom-a-got-yee",
       "theme": "",
@@ -502,107 +674,6 @@
               {
                 "width": "half",
                 "image": "project-rotater/jsonstructure.jpg"
-              }
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "skip": true,
-      "title": "Other projects",
-      "description": "Just a bunch a random little things",
-      "linkTitle": "",
-      "theme": "",
-      "dividerTheme": "clouds-left",
-      "text": "I like to make web apps for fun, so I tend to jump around a lot",
-      "listGroups": [],
-      "details": [
-        {
-          "title": "Bingotown",
-          "description": "",
-          "blorbs": [
-            [
-              {
-                "width": "full",
-                "link": "http://www.google.com",
-                "linkText": "check it out now"
-              },
-              {
-                "width": "half",
-                "text": [
-                  "It's bingo"
-                ]
-              },
-              {
-                "width": "half",
-                "image": "project-rotater/jsonstructure.jpg"
-              }
-            ]
-          ]
-        },
-        {
-          "title": "Feud",
-          "description": "",
-          "blorbs": [
-            [
-              {
-                "width": "half",
-                "image": "project-rotater/jsonstructure.jpg"
-              },
-              {
-                "width": "half",
-                "text": [
-                  "Bla bla did it for work"
-                ]
-              }
-            ]
-          ]
-        },
-        {
-          "title": "Nerftillery",
-          "description": "",
-          "blorbs": [
-            [
-              {
-                "width": "half",
-                "text": [
-                  "An app that controls a turret"
-                ]
-              },
-              {
-                "width": "half",
-                "image": "project-rotater/jsonstructure.jpg"
-              }
-            ]
-          ]
-        },
-        {
-          "title": "Extreme cat attack",
-          "description": "A few different games under a similar theme",
-          "blorbs": [
-            [
-              {
-                "width": "half",
-                "text": [
-                  "This was the first large game I made (and never finished)"
-                ]
-              },
-              {
-                "width": "half",
-                "image": "project-rotater/jsonstructure.jpg"
-              }
-            ],
-            [
-              {
-                "width": "half",
-                "image": "project-rotater/jsonstructure.jpg"
-              },
-              {
-                "width": "half",
-                "text": [
-                  "Then I made this mobile one"
-                ]
               }
             ]
           ]

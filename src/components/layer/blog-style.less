@@ -138,6 +138,7 @@
 
 }
 
+/*
 .blorb-text{
   p{
     font-size:2rem;
@@ -145,6 +146,7 @@
     font-family: @font-style-copy;
   }
 }
+*/
 
 .blorb-link{
   a{
@@ -171,7 +173,16 @@
   }
 }
 
-
+.layer-blog{
+  .blorb-link{
+    a{
+      &:hover{
+        color:@color-blue;
+        fill:@color-blue;
+      }
+    }
+  }
+}
 
 .blog-tag-button{
   line-height: 2rem;
