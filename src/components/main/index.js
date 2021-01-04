@@ -186,7 +186,7 @@ class Main extends Component {
     //- numbers below would be 0, but they help snap it in more naturally than dead center.
     if(centerPoint < 100){
       return 'bottom';
-    }else if((centerPoint - windowHeight) > 20){
+    }else if((centerPoint - windowHeight) > -200){
       return 'top';
     }else{
       return 'middle';
