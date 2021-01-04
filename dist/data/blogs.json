@@ -199,16 +199,10 @@
           {
             "width": "half",
             "image": "https://s3.amazonaws.com/tly-blog-images/temp/kalimba-01.jpg"
-          }
-        ],
-        [
-          {
-            "width": "half",
-            "image": "https://s3.amazonaws.com/tly-blog-images/temp/kalimba-02.jpg"
           },
           {
             "width": "half",
-            "text": "Im still working through prototypes, and hopefully will end up with an instrument I'm really proud of"
+            "image": "https://s3.amazonaws.com/tly-blog-images/temp/kalimba-02.jpg"
           }
         ]
       ]
